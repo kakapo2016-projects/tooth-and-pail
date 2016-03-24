@@ -16,3 +16,5 @@ open index.html in a web browser
 step 4:
 
 REACT QUICKLY!
+
+to run tests:  npm run test
