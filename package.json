@@ -37,6 +37,8 @@
     "react-dom": "^0.14.7",
     "react-router": "^2.0.1",
     "react-tap-event-plugin": "^0.2.2",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
     "sqlite3": "^3.1.2",
     "uuid": "^2.0.1"
   },
