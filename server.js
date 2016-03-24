@@ -35,6 +35,7 @@ function renderPage(appHtml) {
     <!doctype html public="storage">
     <html>
     <meta charset=utf-8/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
     <title>TOOTH AND NAIL</title>
     <link rel=stylesheet href=/index.css>
     <div id=app>${appHtml}</div>
