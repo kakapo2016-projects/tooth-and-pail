@@ -46,3 +46,21 @@ div.photoFooter {
   text-align: center;
     background-color: lightgrey;
 }
+
+/*link colors*/
+
+a:link {
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:active {
+  color: black;
+}
