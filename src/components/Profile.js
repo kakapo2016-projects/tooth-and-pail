@@ -22,9 +22,11 @@ export default React.createClass({
   },
 
   render: function () {
+    const { recipientID } = this.props.params
+
     return (
       <div className='profile'>
-        <ProfileName name='test name'/>
+        <ProfileName name={recipientID}/>
         <ProgressBar/>
         <DonateForm donateFunction={this.handleDonation.bind(this)} />
         <SobStory sobstory='test sob story' />

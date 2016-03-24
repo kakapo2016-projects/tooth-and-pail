@@ -62,10 +62,6 @@ export default React.createClass({
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
         <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
-        <ProfileName name='Richard'/>
-        <SobStory sobstory='I AM SO SAD ALL MY TEETH ARE GONE'/>
-        <ProgressBar received={134} target={23452}/>
-        <DonateForm donateFunction={this.handleDonation.bind(this)} />
       </div>
     )
   }
