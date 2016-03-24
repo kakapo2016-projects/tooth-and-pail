@@ -7,5 +7,6 @@ describe('Header', () => {
   it('should render a Header', () => {
     const wrapper = shallow(React.createElement(Header))
     expect(wrapper.find('header')).to.have.length(1)
+    expect(wrapper.find('h1')).to.have.length(1)
   })
 })
