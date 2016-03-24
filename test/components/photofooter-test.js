@@ -20,7 +20,7 @@ describe('<PhotoFooter />', () => {
   })
   it('has a name of fred', () => {
     const wrapper = shallow(React.createElement(PhotoFooter, {name: "fred"}))
-    console.log("wrapper props", wrapper.props())
+    // console.log("wrapper props", wrapper.props())
     expect(wrapper.find('div.photoFooter').first()).to.have.text('fred')
   })
 
