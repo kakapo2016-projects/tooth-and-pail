@@ -6,3 +6,43 @@ h1 {
   font-size: 10vw;
   text-align: center;
 }
+
+
+div.animal:hover {
+    border: 3px solid #777;
+}
+
+
+
+div.gallery{
+  width: 100%;
+  background-color: red;
+
+}
+div.galleryPhoto:hover {
+    border: 3px solid #777;
+    padding: 1px;
+
+}
+
+div.galleryPhoto {
+  padding: 3px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 30%;
+    margin: 1%;
+
+
+}
+div.galleryPhoto img {
+  width: 100%;
+  height: auto;
+  float:left;
+
+}
+
+div.photoFooter {
+  padding: 15px;
+  text-align: center;
+    background-color: lightgrey;
+}
