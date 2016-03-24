@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import MyTheme from '../theme.js';
 // import ProfilePhoto from './ProfilePhoto'
 import NavBar from './NavBar'
 import Header from './Header'
@@ -10,6 +11,16 @@ import DonateForm from './DonateForm'
 import SobStory from './SobStory'
 
 export default React.createClass({
+
+  childContextTypes : {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(MyTheme),
+    };
+  },
 
     getInitialState: function () {
     return {
@@ -32,6 +43,7 @@ export default React.createClass({
         <Header header={recipientID}/>
         <ProfileName name='Richard'/>
         <ProgressBar/>
+        <br />
         <DonateForm donateFunction={this.handleDonation.bind(this)} />
         <SobStory sobstory='test sob story' />
       </div>

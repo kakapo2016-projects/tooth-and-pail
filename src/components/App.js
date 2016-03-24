@@ -1,4 +1,6 @@
 import React from 'react'
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import MyTheme from '../theme.js';
 import Header from './Header'
 import NavBar from './NavBar'
 import SobStory from './SobStory'
@@ -11,6 +13,16 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
 export default React.createClass({
+
+  childContextTypes : {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(MyTheme),
+    };
+  },
 
     getInitialState: function () {
     return {
