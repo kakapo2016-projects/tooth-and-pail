@@ -1,8 +1,29 @@
 import { expect } from 'chai'
+import chai from 'chai'
 import { shallow, render, mount } from 'enzyme'
+import { spy } from 'sinon'
 import React from 'react'
+import sinonChai from 'sinon-chai'
+
 
 import DonateForm from '../../src/components/DonateForm'
+
+chai.should();
+chai.use(sinonChai);
+
+
+// describe('DonateForm', () => {
+//   const props = { getValue: spy() }
+//   const expected = 'test.value'
+//   it('should pass the value of the input field to the donateFunction function when the button is clicked', () => {
+//     const wrapper = mount(React.createElement(DonateForm))
+//     let input = wrapper.find('TextField')
+//     input.get(5).value = expected
+//     let button = wrapper.find('RaisedButton')
+//     button.simulate('keyDown', onClick)
+//     spy.assert.calledOnce(donateFunction)
+//   })
+// })
 
 describe('DonateForm', () => {
   it('should render a donation form in a span', () => {
@@ -31,3 +52,8 @@ describe('InputField', () => {
     expect(wrapper.find('#donateInput')).to.have.attr('type', 'number')
   })
 })
+
+
+
+//give props of donateFunction
+//pass down result of spy
