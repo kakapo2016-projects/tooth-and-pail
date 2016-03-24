@@ -36,7 +36,7 @@ export default React.createClass ({
 
     return (
       <span id="DonateForm">
-      <TextField type="number" onChange={this.handleChange} />
+      <TextField type="number" class="donateInput" onChange={this.handleChange} />
       <br />
       <RaisedButton label="Donate!" onClick={this.handleDonate} />
       </span>

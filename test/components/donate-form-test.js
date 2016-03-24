@@ -14,7 +14,7 @@ describe('DonateForm', () => {
 describe('DonateButton', () => {
   it('should render a raised button', () => {
     const wrapper = shallow(React.createElement(DonateForm))
-    expect(wrapper.contains('<RaisedButton />')).to.equal(true)
+    expect(wrapper.find('RaisedButton')).to.have.length(1)
   })
 })
 
@@ -28,6 +28,6 @@ describe('InputField', () => {
 describe('InputField', () => {
   it('should render an input field with the type of number', () => {
     const wrapper = shallow(React.createElement(DonateForm))
-    expect(wrapper.find('TextField')).to.have.attr('type', 'number')
+    expect(wrapper.find('#donateInput')).to.have.attr('type', 'number')
   })
 })
