@@ -3,10 +3,11 @@ import PhotoFooter from './PhotoFooter.js'
 
 export default React.createClass({
   render () {
+    console.log("in GalleryPhoto", this.props)
     return (
       <div className='galleryPhoto'>
-        <img src={this.props.imageurl} />
-        <PhotoFooter name={this.props.name} />
+        <img src={this.props.imgurl} />
+        <PhotoFooter name={this.props.name} target={this.props.target} received={this.props.received} recipientid={this.props.recipientid} />
       </div>
     )
   }

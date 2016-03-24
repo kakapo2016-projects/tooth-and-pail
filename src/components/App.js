@@ -14,7 +14,27 @@ export default React.createClass({
 
     getInitialState: function () {
     return {
-      amountDonated: 0
+      amountDonated: 0,
+      gallery: [
+        { name : "cat",
+          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+          target : 1000,
+          received : 0,
+          recipientid : 1111
+        },
+        { name : "Sue",
+          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+          target :  3000,
+          received : 0,
+          recipientid : 2222
+        },
+        { name : "Anne",
+          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+          target : 4000,
+          received : 100,
+          recipientid : 3333
+        }
+      ]
     }
   },
 
@@ -30,7 +50,7 @@ export default React.createClass({
       <div className='app'>
         <NavBar/>
         <Header/>
-        <GalleryPhoto name='Cat' imageurl='https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png'/>
+        <Gallery gallery={this.state.gallery} />
         <ProfileName/>
         <SobStory sobstory='I AM SO SAD ALL MY TEETH ARE GONE'/>
         <ProgressBar received={134} target={23452}/>
