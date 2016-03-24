@@ -60,12 +60,8 @@ export default React.createClass({
     return (
       <div className='app'>
         <NavBar/>
-        <Header/>
+        <Header header='TOOTH & PAIL'/>
         <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
-        <ProfileName/>
-        <SobStory sobstory='I AM SO SAD ALL MY TEETH ARE GONE'/>
-        <ProgressBar received={134} target={23452}/>
-        <DonateForm donateFunction={this.handleDonation.bind(this)} />
       </div>
     )
   }
