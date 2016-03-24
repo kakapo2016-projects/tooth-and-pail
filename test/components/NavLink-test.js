@@ -4,7 +4,7 @@ import React from 'react'
 
 import NavLink from '../../src/components/NavLink'
 
-describe('Template', () => {
+describe('NavLink', () => {
   it('should render a link', () => {
     const wrapper = shallow(React.createElement(NavLink))
     expect(wrapper.find('Link')).to.have.length(1)
