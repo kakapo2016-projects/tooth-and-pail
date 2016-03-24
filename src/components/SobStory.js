@@ -6,7 +6,7 @@ export default React.createClass({
   render: function () {
     return (
 			<div className="sobstory">
-				 <input type="text" />
+				 {this.props.sobstory}
 	    </div>
   	);
 	}

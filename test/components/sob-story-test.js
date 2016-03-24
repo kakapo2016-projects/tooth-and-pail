@@ -13,7 +13,6 @@ describe('SobStory', () => {
   it('renders a sob story in the component div', () => {
   	const wrapper = shallow(
   		<div>
-  			<input type='text' />
   		</div>
   		);
   	expect(wrapper.text()).to.include.text
