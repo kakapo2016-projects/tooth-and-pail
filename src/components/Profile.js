@@ -8,13 +8,26 @@ import DonateForm from './DonateForm'
 import SobStory from './SobStory'
 
 export default React.createClass({
-  render() {
+
+    getInitialState: function () {
+    return {
+      amountDonated: 0
+    }
+  },
+
+
+  handleDonation: function (p) {
+  console.log("hey look this is being passed up!", p, "type", typeof p)
+  this.setState({amountDonated: p})
+  },
+
+  render: function () {
     return (
       <div className='profile'>
         <ProfileName name='test name'/>
         <ProgressBar/>
-        <DonateForm/>
-        <SobStory sobstory='test sob story'/>
+        <DonateForm donateFunction={this.handleDonation.bind(this)} />
+        <SobStory sobstory='test sob story' />
       </div>
     )
   }
