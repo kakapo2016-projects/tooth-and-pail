@@ -5,7 +5,7 @@ export default React.createClass({
   render () {
     return (
       <div className='galleryPhoto'>
-        <image src="{this.props.imageurl}"></image>
+        <img src={this.props.imageurl} />
         <PhotoFooter name={this.props.name} />
       </div>
     )
