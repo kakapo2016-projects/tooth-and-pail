@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyTheme from '../theme.js';
-// import ProfilePhoto from './ProfilePhoto'
+import ProfilePhoto from './ProfilePhoto'
 import NavBar from './NavBar'
 import Header from './Header'
 import ProfileName from './ProfileName'
