@@ -9,6 +9,7 @@ import ProfileName from './ProfileName'
 import ProgressBar from './ProgressBar'
 import DonateForm from './DonateForm'
 import SobStory from './SobStory'
+import SocialSharing from './SocialSharing'
 
 export default React.createClass({
 
@@ -46,6 +47,7 @@ export default React.createClass({
         <br />
         <DonateForm donateFunction={this.handleDonation.bind(this)} />
         <SobStory sobstory='test sob story' />
+        <SocialSharing url="#" title="title" />
       </div>
     )
   }
