@@ -9,7 +9,7 @@ describe('Gallery', () => {
   const props = [
     { name : "John",
       imgurl : "http://john.jpg",
-      target : 1000
+      target : 1000,
       received : 0,
       recipientid : 1111
     },
