@@ -2,11 +2,12 @@ import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
 
+
 import Gallery from '../../src/components/Gallery'
 import GalleryPhoto from '../../src/components/GalleryPhoto'
 
 describe('Gallery', () => {
-  const props = [
+  const props = { gallery :[
     { name : "John",
       imgurl : "http://john.jpg",
       target : 1000,
@@ -25,17 +26,14 @@ describe('Gallery', () => {
       received : 100,
       recipientid : 3333
     }
-  ]
+  ]}
   it('renders a gallery', () => {
-     const wrapper = shallow(React.createElement(Gallery))
+     const wrapper = mount(React.createElement(Gallery, props))
      expect(wrapper.find('div.gallery')).to.be.length(1)
   })
   it('renders a galleryPhoto', () => {
-     const wrapper = shallow(React.createElement(Gallery), props)
+     const wrapper = mount(React.createElement(Gallery, props) )
      expect(wrapper.find('div.galleryPhoto')).to.be.length(3)
   })
-  // it('renders a galleryPhoto', () => {
-  //    const wrapper = shallow(React.createElement(Gallery))
-  //    expect(wrapper.find('div.galleryPhoto')).to.be.length(1)
-  // })
+  
 })
