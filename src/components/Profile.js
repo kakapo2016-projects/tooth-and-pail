@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // import ProfilePhoto from './ProfilePhoto'
+import NavBar from './NavBar'
+import Header from './Header'
 import ProfileName from './ProfileName'
 import ProgressBar from './ProgressBar'
 import DonateForm from './DonateForm'
@@ -26,7 +28,9 @@ export default React.createClass({
 
     return (
       <div className='profile'>
-        <ProfileName name={recipientID}/>
+        <NavBar/>
+        <Header header={recipientID}/>
+        <ProfileName name='Richard'/>
         <ProgressBar/>
         <DonateForm donateFunction={this.handleDonation.bind(this)} />
         <SobStory sobstory='test sob story' />
