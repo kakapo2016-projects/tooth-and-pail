@@ -4,7 +4,7 @@ import React from 'react'
 
 import ProgressBar from '../../src/components/ProgressBar'
 
-describe('Template', () => {
+describe('ProgressBar', () => {
   it('should render a progress bar in a span', () => {
     const wrapper = shallow(React.createElement(ProgressBar))
     expect(wrapper.find('#ProgressBar')).to.have.length(1)
