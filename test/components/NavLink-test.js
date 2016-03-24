@@ -2,10 +2,11 @@ import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
 
-// import Component from '../../src/components/???'
+import NavLink from '../../src/components/NavLink'
 
 describe('Template', () => {
-  // it('should test something', () => {
-    // expect()
-  // })
+  it('should render a link', () => {
+    const wrapper = shallow(React.createElement(NavLink))
+    expect(wrapper.find('Link')).to.have.length(1)
+  })
 })
