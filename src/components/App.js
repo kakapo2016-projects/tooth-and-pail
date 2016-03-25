@@ -3,7 +3,6 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
-import Login from './Login'
 
 // database functions
 import getRequest from '../getRequest.js'
@@ -11,7 +10,7 @@ import postRequest from '../postRequest.js'
 
 // material-ui helpers
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
-import MyTheme from '../theme.js';
+import MyTheme from '../theme.js'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
@@ -90,7 +89,6 @@ export default React.createClass({
   render () {
     return (
       <div className='app'>
-        <Login />
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
         <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
