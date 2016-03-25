@@ -5,6 +5,7 @@ import _ from 'lodash'
 export default React.createClass({
   render () {
     var galleryClick = this.props.galleryClick
+    console.log('props', this.props.gallery)
     return (
       <div className='gallery'>
         {_.map(this.props.gallery, function(gp){
