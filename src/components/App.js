@@ -3,10 +3,11 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
+import Login from './Login'
 
 // database functions
 import getRequest from '../getRequest.js'
-import Login from '../Login.js'
+
 
 // material-ui helpers
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
