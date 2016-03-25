@@ -3,21 +3,28 @@ import ReactDOM from 'react-dom'
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field'
 
-// to be a separate page from the login pop up
-
 export default class Login extends React.Component {
- 
   render() {
     return (
         <form role='form'>
         <div className='signup'>
-          <TextField type='text' className='username' placeholder='Username' />
+          <br/>
+          <h2> SIGN UP </h2>
+          <TextField multiline={false} type='text' className='username' placeholder='Username' />
+          <br/>
+          <br/>
+          <TextField type='text' className='email' placeholder='Email Address' />
+          <br/>
+          <br/>
           <TextField type='password' className='password' placeholder='Password' />
+          <br/>
+          <br/>
+          <TextField type='password' className='confirm-password' placeholder='Confirm Password' />
+          <br/>
+          <br/>
+          <RaisedButton label='Submit' onTouchTap={this.handleOpen} />
         </div>
-        <RaisedButton label='Submit' onTouchTap={this.handleOpen} />
       </form>
     );
   }
 }
-
-
