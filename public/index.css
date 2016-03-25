@@ -64,3 +64,7 @@ a:visited {
 a:active {
   color: black;
 }
+
+.tooth-icon {
+	content: url(http://thecraftchop.com/files/images/tooth2.svg);
+}
