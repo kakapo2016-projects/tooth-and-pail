@@ -33,6 +33,12 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('recipients')
+    .then(function (){
+      return knex.schema.dropTableIfExists('donors')
+    })
+    .then(function (){
+      return knex.schema.dropTableIfExists('donations')
+    })
     .then(function () {
         process.exit()
     })
