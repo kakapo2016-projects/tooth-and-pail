@@ -1,13 +1,14 @@
 body {
   font-family: 'Roboto', sans-serif;
   padding 10px;
-  background-color: black;
+  background-color: white;
 }
 
 h1 {
   font-size: 10vw;
   text-align: center;
-  color: white;
+  color: black;
+  margin-top: 15px;
 }
 
 .columns {
@@ -47,7 +48,7 @@ div.galleryPhoto img {
 div.photoFooter {
   padding: 15px;
   text-align: center;
-  background-color: lightgrey;
+  background-color: #b71c1c;
 }
 
 /*link colors*/
@@ -70,4 +71,11 @@ a:active {
 
 .tooth-icon {
 	content: url(images/tooth-icon.svg);
+}
+
+.signup {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 }

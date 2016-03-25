@@ -19,17 +19,14 @@ export default React.createClass({
     return (
       <AppBar
         title="TOOTH & PAIL"
-        iconElementLeft={<Link to={'/'}><ToothIcon/></Link>}
+        iconElementLeft={<Link to={'gallery'}><ToothIcon/></Link>}
         iconElementRight={
           <IconMenu
             iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
           >
-            <MenuItem primaryText="Donate Teeth" />
-            <MenuItem primaryText="Buy Used Teeth" />
-            <MenuItem primaryText="Perform Amature Sergery" />
-            <MenuItem primaryText="Sign out" />
+            <MenuItem primaryText="Log In / Sign Up" />
           </IconMenu>
         }
       />
