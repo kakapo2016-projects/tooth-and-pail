@@ -40,7 +40,7 @@ export default React.createClass({
     return (
       <div className='profile'>
         <NavBar/>
-        <Header header={recipientID}/>
+        <Header header={this.props.recipientID}/>
         <ProfileName name='Richard'/>
         <ProgressBar/>
         <br />
