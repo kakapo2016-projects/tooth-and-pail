@@ -71,16 +71,16 @@ export default React.createClass({
     }
   },
 
-
   componentDidMount: function() {
-    console.log("IN componentDidMount")
-    getRequest('http://localhost:3000/recipients', dbSetstate)
-
+    console.log("IN componentDidMount", this.state.gallery)
+    getRequest('http://localhost:3000/recipients', this.dbSetState)
   },
 
-  dbSetstate: function(data) {
+  dbSetState: function (data) {
     console.log("IN DB SETSTATE", data)
-    this.setState(data)
+    console.log(this.state.gallery)
+    this.setState({gallery: data})
+    console.log("State", this.state)
   },
 
 // the handle Donation function can be deleted once DonateForm is part of profile rather than app
