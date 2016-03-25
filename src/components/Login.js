@@ -3,21 +3,57 @@ import ReactDOM from 'react-dom'
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field'
 
-export default class Login extends React.Component {
+export default React.createClass ({
+  getInitialState: function() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+
+  handleEmailField: function(e) {
+     this.setState({
+         email: e.target.value
+     })
+   },
+
+  handlePasswordField: function(e) {
+     this.setState({
+         password: e.target.value
+     })
+   },
+
   render() {
     return (
         <form role='form'>
         <div className='signup'>
-          <h2> SIGN IN </h2>
-          <TextField type='text' className='email' placeholder='Email Address' />
+          <h2> LOG IN </h2>
+
+          <TextField type='text'
+            className='email'
+            value={this.state.email}
+            onChange={this.handleEmailField}
+            placeholder='Email Address' />
           <br/>
           <br/>
-          <TextField type='password' className='password' placeholder='Password' />
+
+          <TextField type='password'
+          className='password'
+          value={this.state.password}
+          onChange={this.handlePasswordField}
+          placeholder='Password' />
           <br/>
           <br/>
-          <RaisedButton label='Submit' onTouchTap={this.handleOpen} />
+
+          <RaisedButton
+            label='Submit'
+            onTouchTap={() => {this.props.attemptLogIn(
+              this.state.email,
+              this.state.password
+            )}}
+          />
         </div>
       </form>
-    );
+    )
   }
-}
+})

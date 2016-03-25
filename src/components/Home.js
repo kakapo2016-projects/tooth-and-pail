@@ -19,13 +19,25 @@ export default React.createClass({
     }
   },
 
+  attemptLogIn: function (email, password) {
+    console.log('email: ', email)
+    console.log('password: ', password)
+  },
+
+  attemptSignUp: function (username, email, password, confirm) {
+    console.log('email: ', email)
+    console.log('username: ', username)
+    console.log('password: ', password)
+    console.log('confirm: ', confirm)
+  },
+
   render() {
     return (
       <div className='home'>
         <NavBar />
         <Header header='TOOTH & PAIL'/>
-        <Login />
-        <SignUp />
+        <Login attemptLogIn={this.attemptLogIn}/>
+        <SignUp attemptSignUp={this.attemptSignUp}/>
       </div>
     )
   }
