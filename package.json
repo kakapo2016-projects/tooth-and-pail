@@ -11,7 +11,7 @@
     "build:server": "webpack --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
-    "runme": "node ./dbserver/dbserver.js "
+    "runme": "nodemon ./dbserver/dbserver.js "
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "sqlite3": "^3.1.2",
+    "superagent": "^1.8.3",
     "uuid": "^2.0.1"
   },
   "devDependencies": {
