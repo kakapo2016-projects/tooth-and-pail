@@ -8,7 +8,7 @@ export default React.createClass({
     return (
       <div className='gallery'>
         {_.map(this.props.gallery, function(gp){
-          return <GalleryPhoto className='galleryPhoto' galleryClick={galleryClick} name={gp.name} imgurl={gp.imgurl} target={gp.target} received={gp.received} recipientid={gp.recipientid} ></GalleryPhoto>
+          return <GalleryPhoto className='galleryPhoto' galleryClick={galleryClick} name={gp.name} imgURL={gp.imgURL} target={gp.target} received={gp.received} recipientID={gp.recipientID} ></GalleryPhoto>
           })
         }
       </div>
