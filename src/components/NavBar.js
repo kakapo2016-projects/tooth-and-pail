@@ -10,14 +10,12 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import { Link } from 'react-router'
 
-//<ToothIcon />
-
 export default React.createClass({
   render() {
     return (
       <AppBar
         title="TOOTH & PAIL"
-        iconElementLeft={<Link to={'/'}><IconButton><NavigationHome/></IconButton></Link>}
+        iconElementLeft={<Link to={'/'}><IconButton><ToothIcon /></IconButton></Link>}
         iconElementRight={
           <IconMenu
             iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
