@@ -26,7 +26,7 @@ exports.up = function(knex, Promise) {
         table.varchar('donorID')
         table.varchar('recipientID')
         table.integer('amount')
-        table.timestamp('timeStamp')
+        table.timestamp('createdAt').defaultTo(knex.fn.now())
         })
     })
 }
