@@ -11,6 +11,7 @@ import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import getRequest from '../getRequest.js'
+import Login from '../Login.js'
 
 injectTapEventPlugin();
 
@@ -98,6 +99,7 @@ export default React.createClass({
   render () {
     return (
       <div className='app'>
+        <Login />
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
         <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
