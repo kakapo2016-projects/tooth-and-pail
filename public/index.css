@@ -1,10 +1,12 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: black;
 }
 
 h1 {
   font-size: 10vw;
   text-align: center;
+  color: white;
 }
 
 
@@ -63,4 +65,8 @@ a:visited {
 
 a:active {
   color: black;
+}
+
+.tooth-icon {
+	content: url(images/tooth-icon.svg);
 }

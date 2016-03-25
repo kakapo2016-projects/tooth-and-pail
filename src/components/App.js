@@ -28,29 +28,41 @@ export default React.createClass({
     return {
       amountDonated: 0,
       gallery: [
-        { name : "cat",
-          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+        { name : "Jeff",
+          imgurl : 'https://i.ytimg.com/vi/OzVaVVjnjEI/maxresdefault.jpg',
           target : 1000,
           received : 0,
-          recipientid : 1111
+          recipientID : 1
         },
-        { name : "Sue",
-          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+        { name : "Martin",
+          imgurl : 'http://1.bp.blogspot.com/-bi3Zn6jq4MM/TwEfw9ZKRXI/AAAAAAAAB1M/jG66N193504/s1600/Funny+Teeth5.JPG',
           target :  3000,
           received : 0,
-          recipientid : 2222
+          recipientID : 2
         },
         { name : "Anne",
-          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+          imgurl : 'http://i.dailymail.co.uk/i/pix/2015/12/17/23/2F78BF0F00000578-0-image-m-11_1450396660957.jpg',
           target : 4000,
           received : 100,
-          recipientid : 3333
+          recipientID : 3
         },
-        { name : "Anne",
-          imgurl : 'https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png',
+        { name : "Jaws",
+          imgurl : 'http://i.telegraph.co.uk/multimedia/archive/02910/James-Bond-jaws_2910844b.jpg',
           target : 4000,
           received : 100,
-          recipientid : 4
+          recipientID : 4
+        },
+        { name : "Logan",
+          imgurl : 'http://id3442.securedata.net/cosmetic-dentistry/images/tetracycline%20teeth%20before%20veneers.jpg',
+          target : 4000,
+          received : 100,
+          recipientID : 4
+        },
+        { name : "Carol",
+          imgurl : 'http://www.healthable.org/wp-content/uploads/2013/11/Teeth-Discoloration.jpg',
+          target : 4000,
+          received : 100,
+          recipientID : 4
         }
       ]
     }
@@ -63,9 +75,9 @@ export default React.createClass({
   this.setState({amountDonated: p})
   },
 
-  galleryClick: function (recipientid) {
+  galleryClick: function (recipientID) {
     //  go to the profile page for this recipient
-    console.log("gallery click in app.js for ",  recipientid)
+    console.log("gallery click in app.js for ",  recipientID)
   },
 
   render () {
