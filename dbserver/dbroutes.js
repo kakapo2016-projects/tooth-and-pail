@@ -22,32 +22,48 @@ var knex = require('knex')({
 
 module.exports = function routes(app) {
 
+  // GET
   app.get('/', function(req, res) {
     res.send('hello world')
   })
 
   app.get('/recipients', function(req, res) {
-    console.log("getting recipients", req)
-      knex('recipients')
-      .select('*')
-      .then(function(resp) {
-        console.log ("inget", resp)
-          res.send(resp)
+    knex('recipients')
+    .select('*')
+    .then(function(resp) {
+      res.send(resp)
+    })
   })
-})
 
+  app.get('/recipients/:recipientID', function(req, res) {
+    console.log("in GET for user", req.params.recipientID)
+    knex('recipients')
+    .where('recipients.recipientID', req.params.recipientID)
+    .then(function(resp) {
+      console.log ("in get with recipientid", resp)
+      res.send(resp[0])
+    })
+  })
 
-    app.get('/recipients/:recipientID', function(req, res) {
-      console.log("in GET for user", req.params.recipientID)
+  // POST
+  var urlencodedParser = bodyparser.urlencoded({ extended: false })
 
-        knex('recipients')
+  app.use(bodyparser.json())
 
-        .where('recipients.recipientID', req.params.recipientID)
-        .then(function(resp) {
-          console.log ("inget with userid", resp)
-            res.send(resp[0])
-        })
-
+  app.post('/recipient', function(req, res) {
+    var newId = uuid.v4()
+    knex('recipients')
+      .insert({
+        recipientID: newId ,
+        name: req.body.Name,
+        imgURL: req.body.imgURL,
+        received: req.body.received,
+        target: req.body.target,
+        sobStory: req.body.sobStory
+      })
+      .then(function(resp) {
+          res.send(resp)
+      })
     })
 
 }
