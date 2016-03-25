@@ -36,7 +36,6 @@ export default React.createClass({
   },
 
   render: function () {
-    const { recipientID } = this.props.params
 
     return (
       <div className='profile'>
@@ -47,7 +46,7 @@ export default React.createClass({
         <br />
         <DonateForm donateFunction={this.handleDonation.bind(this)} />
         <SobStory sobstory='test sob story' />
-        <SocialSharing url="#" title="title" />
+        <SocialSharing url="http://google.com" title="A Title!" media="https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png" />
       </div>
     )
   }
