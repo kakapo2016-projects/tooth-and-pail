@@ -1,11 +1,13 @@
 body {
   font-family: 'Roboto', sans-serif;
   padding 10px;
+  background-color: black;
 }
 
 h1 {
   font-size: 10vw;
   text-align: center;
+  color: white;
 }
 
 .columns {
@@ -72,5 +74,5 @@ a:active {
 }
 
 .tooth-icon {
-	content: url(http://thecraftchop.com/files/images/tooth2.svg);
+	content: url(images/tooth-icon.svg);
 }
