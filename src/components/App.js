@@ -10,7 +10,10 @@ import ProfileName from './ProfileName'
 import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import getRequest from '../getRequest.js'
+
 injectTapEventPlugin();
+
 
 export default React.createClass({
 
@@ -66,6 +69,18 @@ export default React.createClass({
         }
       ]
     }
+  },
+
+
+  componentDidMount: function() {
+    console.log("IN componentDidMount")
+    getRequest('http://localhost:3000/recipients', dbSetstate)
+
+  },
+
+  dbSetstate: function(data) {
+    console.log("IN DB SETSTATE", data)
+    this.setState(data)
   },
 
 // the handle Donation function can be deleted once DonateForm is part of profile rather than app
