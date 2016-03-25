@@ -10,7 +10,7 @@ import ProfilePhoto from '../../src/components/ProfilePhoto'
 describe('<ProfilePhoto />', () => {
   it('renders a profile photo', () => {
      const wrapper = shallow(React.createElement(ProfilePhoto))
-     expect(wrapper.find('div.profilePhoto')).to.be.length(1)
+     expect(wrapper.find('span.profilePhoto')).to.be.length(1)
   })
 
   it('finds the url to display profile photo', () => {
