@@ -28,9 +28,9 @@ module.exports = function routes(app) {
   // GET
   app.get('/', function(req, res) {
     res.send('hello world')
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/recipients', function(req, res) {
@@ -39,9 +39,9 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/recipients/:recipientID', function(req, res) {
@@ -52,9 +52,9 @@ module.exports = function routes(app) {
       console.log ("in get with recipientid", resp)
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/donations', function(req, res) {
@@ -64,9 +64,9 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/donations/:donationID', function(req, res) {
@@ -76,9 +76,9 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/donations/donor/:donorID', function(req, res) {
@@ -88,9 +88,9 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/donations/recipient/:recipientID', function(req, res) {
@@ -100,9 +100,9 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/donors', function(req, res) {
@@ -112,9 +112,9 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
   app.get('/donors/:donorID', function(req, res) {
@@ -124,31 +124,31 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
-  app.get('/donors/:donorName', function(req, res) {
+  app.get('/donors/name/:donorName', function(req, res) {
     console.log("in GET donors by donorName", req.params.donorName)
     knex('donors')
     .where('donors.donorName', req.params.donorName)
     .then(function(resp) {
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
-  app.get('/donors/:email', function(req, res) {
+  app.get('/donors/email/:email', function(req, res) {
     console.log("in GET donors by email", req.params.email)
     knex('donors')
     .where('donors.email', req.params.email)
     .then(function(resp) {
       res.send(resp[0])
     })
-    .catch(function(err){
-      console.log("ERROR! ", err)
-    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
   })
 
 
@@ -167,9 +167,6 @@ module.exports = function routes(app) {
       })
       .then(function(resp) {
           res.send(resp)
-      })
-      .catch(function(err){
-        console.log("ERROR! ", err)
       })
     })
 
