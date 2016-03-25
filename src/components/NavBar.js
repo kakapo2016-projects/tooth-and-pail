@@ -26,7 +26,8 @@ export default React.createClass({
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
           >
-            <MenuItem primaryText="Log In / Sign Up" />
+          <Link to={'/'}><MenuItem primaryText="Log In" /></Link>
+          <Link to={'gallery'}><MenuItem primaryText="Gallery" /></Link>
           </IconMenu>
         }
       />
