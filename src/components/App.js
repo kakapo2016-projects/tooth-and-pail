@@ -7,7 +7,7 @@ import Login from './Login'
 
 // database functions
 import getRequest from '../getRequest.js'
-
+import postRequest from '../postRequest.js'
 
 // material-ui helpers
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
@@ -71,6 +71,7 @@ export default React.createClass({
   },
 
   componentDidMount: function() {
+    // get all the recipients from the database
     getRequest('http://localhost:3000/recipients', this.dbSetState)
   },
 
@@ -84,6 +85,7 @@ export default React.createClass({
     //  go to the profile page for this recipient
     console.log("gallery click in app.js for ",  recipientID)
   },
+
 
   render () {
     return (
