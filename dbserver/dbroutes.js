@@ -22,9 +22,15 @@ var knex = require('knex')({
 
 module.exports = function routes(app) {
 
+  var urlencodedParser = bodyparser.urlencoded({ extended: false })
+  app.use(bodyparser.json())
+
   // GET
   app.get('/', function(req, res) {
     res.send('hello world')
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
   })
 
   app.get('/recipients', function(req, res) {
@@ -32,6 +38,9 @@ module.exports = function routes(app) {
     .select('*')
     .then(function(resp) {
       res.send(resp)
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
     })
   })
 
@@ -43,12 +52,107 @@ module.exports = function routes(app) {
       console.log ("in get with recipientid", resp)
       res.send(resp[0])
     })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
   })
 
-  // POST
-  var urlencodedParser = bodyparser.urlencoded({ extended: false })
+  app.get('/donations', function(req, res) {
+    console.log("in GET all donations")
+    knex('donations')
+    .select('*')
+    .then(function(resp) {
+      res.send(resp)
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
 
-  app.use(bodyparser.json())
+  app.get('/donations/:donationID', function(req, res) {
+    console.log("in GET donations for a single donation", req.params.donationID)
+    knex('donations')
+    .where('donations.donationID', req.params.donationID)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+
+  app.get('/donations/donor/:donorID', function(req, res) {
+    console.log("in GET donations for a single donor", req.params.donorID)
+    knex('donations')
+    .where('donations.donorID', req.params.donorID)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+
+  app.get('/donations/recipient/:recipientID', function(req, res) {
+    console.log("in GET donations for a single recipient", req.params.recipientID)
+    knex('donations')
+    .where('donations.recipientID', req.params.recipientID)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+
+  app.get('/donors', function(req, res) {
+    console.log("in GET all donors")
+    knex('donors')
+    .select('*')
+    .then(function(resp) {
+      res.send(resp)
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+
+  app.get('/donors/:donorID', function(req, res) {
+    console.log("in GET donors by donorID", req.params.donorID)
+    knex('donors')
+    .where('donors.donorID', req.params.donorID)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+  app.get('/donors/:donorName', function(req, res) {
+    console.log("in GET donors by donorName", req.params.donorName)
+    knex('donors')
+    .where('donors.donorName', req.params.donorName)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+  app.get('/donors/:email', function(req, res) {
+    console.log("in GET donors by email", req.params.email)
+    knex('donors')
+    .where('donors.email', req.params.email)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+    .catch(function(err){
+      console.log("ERROR! ", err)
+    })
+  })
+
+
+  // POST
 
   app.post('/recipient', function(req, res) {
     var newId = uuid.v4()
@@ -63,6 +167,9 @@ module.exports = function routes(app) {
       })
       .then(function(resp) {
           res.send(resp)
+      })
+      .catch(function(err){
+        console.log("ERROR! ", err)
       })
     })
 
