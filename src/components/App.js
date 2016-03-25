@@ -1,30 +1,27 @@
 import React from 'react'
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import MyTheme from '../theme.js';
 import Header from './Header'
 import NavBar from './NavBar'
-import SobStory from './SobStory'
-import ProgressBar from './ProgressBar'
-import DonateForm from './DonateForm'
-import ProfileName from './ProfileName'
 import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
-import injectTapEventPlugin from 'react-tap-event-plugin'
+
+// database functions
 import getRequest from '../getRequest.js'
 import Login from '../Login.js'
 
+// material-ui helpers
+import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import MyTheme from '../theme.js';
+import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
-
 export default React.createClass({
-
   childContextTypes : {
     muiTheme: React.PropTypes.object
   },
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getMuiTheme(MyTheme),
+      muiTheme: GetMuiTheme(MyTheme),
     };
   },
 
@@ -82,13 +79,6 @@ export default React.createClass({
     console.log(this.state.gallery)
     this.setState({gallery: data})
     console.log("State", this.state)
-  },
-
-// the handle Donation function can be deleted once DonateForm is part of profile rather than app
-
-  handleDonation: function (p) {
-  console.log("hey look this is being passed up!", p, "type", typeof p)
-  this.setState({amountDonated: p})
   },
 
   galleryClick: function (recipientID) {
