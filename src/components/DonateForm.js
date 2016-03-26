@@ -1,13 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RaisedButton from 'material-ui/lib/raised-button';
+import RaisedButton from 'material-ui/lib/raised-button'
 import TextField from 'material-ui/lib/text-field'
 import Profile from './Profile'
 
-
-
 export default React.createClass ({
-
 
   propTypes : {
     donateFunction: React.PropTypes.func
@@ -24,7 +21,11 @@ export default React.createClass ({
   },
 
   handleDonate: function (e) {
-    this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
+    if (this.state.inputValue < 0){
+      alert("Donation invalid. That's a really mean thing to do!")
+    } else {
+      this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
+    }
     this.setState({inputValue: 0})
   },
 
@@ -44,4 +45,5 @@ export default React.createClass ({
         )
       }
   }
+
 })
