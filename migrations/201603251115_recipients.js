@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.integer('received')
     table.integer('target')
     table.string('sobStory')
-
+    table.timestamp('createdAt').defaultTo(knex.fn.now())
     })
     .then(function (){
       return knex.schema.createTableIfNotExists('donors', function (table) {
@@ -17,6 +17,7 @@ exports.up = function(knex, Promise) {
         table.string('donorName')
         table.string('passwordHash')
         table.string('email')
+        table.timestamp('createdAt').defaultTo(knex.fn.now())
         })
     })
     .then(function (){
@@ -42,4 +43,5 @@ exports.down = function(knex, Promise) {
     .then(function () {
         process.exit()
     })
+
 }

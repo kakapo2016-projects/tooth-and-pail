@@ -151,8 +151,22 @@ module.exports = function routes(app) {
     // })
   })
 
-
   // POST
+
+  app.post('/donors', function(req, res) {
+    console.log("in POST to donors", req.body)
+    var newId = uuid.v4()
+    knex('donors')
+      .insert({
+        donorID: newId ,
+        donorName: req.body.donorName,
+        passwordHash: req.body.passwordHash,
+        email: req.body.email
+      })
+      .then(function(resp) {
+          res.send(resp)
+      })
+    })
 
   app.post('/recipient', function(req, res) {
     var newId = uuid.v4()
