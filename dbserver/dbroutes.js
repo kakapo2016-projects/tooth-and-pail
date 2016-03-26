@@ -198,5 +198,4 @@ module.exports = function routes(app) {
           res.send(resp)
       })
     })
-
 }
