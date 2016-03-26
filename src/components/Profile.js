@@ -32,15 +32,15 @@ export default React.createClass({
   },
 
 
-  handleDonation: function (p) {
+  handleDonation: function (donorID, recipientID, amount) {
   console.log("handleDonation", this.props)
     //post the donation to the database
     let data = {
-      donorID: '1111',
-      recipientID: '2',
-      amount: 300
+      donorID: donorID,
+      recipientID: recipientID,
+      amount: amount
     }
-    postRequest('http://localhost:3000/', data, (err, resp) => {
+    postRequest('http://localhost:3000/donations', data, (err, resp) => {
       if (err) {
         console.log("ERROR!", err)
       } else {
@@ -53,7 +53,7 @@ export default React.createClass({
   },
 
   render: function () {
-
+    console.log("this props in profile", this.props)
     return (
       <div className='profile'>
         <div>
@@ -68,7 +68,7 @@ export default React.createClass({
               <ProfileName name='Richard Joe Esq.'/>
               <ProgressBar/>
               <br />
-              <DonateForm donateFunction={this.handleDonation} />
+              <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} />
             </div>
           </div>
           <div className="row">
