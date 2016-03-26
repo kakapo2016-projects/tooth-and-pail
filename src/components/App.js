@@ -35,10 +35,10 @@ export default React.createClass({
   componentDidMount: function() {
     // get all the recipients from the database
     getRequest('http://localhost:3000/recipients', this.dbSetState)
-  },
+    },
 
   dbSetState: function (data) {
-    console.log('---->', this.state.gallery)
+    // console.log('---->', this.state.gallery)
     this.setState({gallery: data})
     console.log("State", this.state)
   },
