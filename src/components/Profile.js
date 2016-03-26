@@ -61,7 +61,7 @@ export default React.createClass({
     getRequest(`http://localhost:3000/recipients/${this.props.params.recipientID} `, (err, resp) => {
       if (err) { console.log("ERROR!", err); return }
       console.log('recipient details', resp.target, resp.name, resp.imgURL)
-      this.setState({target: resp.target, name: resp.name, imgURL: resp.imgURL})
+      this.setState({target: resp.target, name: resp.name, imgURL: resp.imgURL, sobStory: resp.sobStory})
       getRequest(`http://localhost:3000/donations/recipient/${this.props.params.recipientID} `, (err, resp) => {
         if (err) { console.log("ERROR!", err); return }
         console.log('all donations for recipient from componentdidmount in profile', resp)
@@ -98,7 +98,8 @@ export default React.createClass({
   },
 
   render: function () {
-    console.log("this props in profile", this.props, this.state.name, this.state.target, this.state.received, this.state.imgURL)
+    console.log("this props in profile", this.props, this.state.name, this.state.target, this.state.received, this.state.imgURL, this.state.sobStory)
+
     return (
         <div className='profile'>
           <div>
@@ -112,14 +113,15 @@ export default React.createClass({
                 <ProfileName name={this.state.name}/>
                 <ProgressBar target={this.state.target} received={this.state.received}/>
                 <br />
-                <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} />
+                <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} target={this.state.target} received={this.state.received} />
               </div>
             </div>
             <div className="row">
               <div className="twelve columns">
-                <SobStory sobstory='Cheese and wine squirty cheese cheesy feet. Blue castello lancashire cheesy grin smelly cheese babybel queso squirty cheese mascarpone. Mozzarella smelly cheese cheese triangles cheese on toast cream cheese paneer hard cheese cheese triangles. Cheesecake who moved my cheese airedale airedale dolcelatte cheese strings camembert de normandie bocconcini. Fromage frais cheese on toast fromage smelly cheese mozzarella pecorino cheese on toast cauliflower cheese. Chalk and cheese monterey jack bavarian bergkase cut the cheese cream cheese cream cheese.
-                  Cheese and wine paneer bavarian bergkase. Paneer croque monsieur cheesy feet dolcelatte feta pecorino stilton edam. Cottage cheese cheese slices feta who moved my cheese babybel fondue fromage frais red leicester. Croque monsieur cheese triangles cottage cheese cheese strings ricotta melted cheese queso stilton. Chalk and cheese mozzarella cheesecake say cheese lancashire stinking bishop cheesy feet mascarpone. Cream cheese blue castello chalk and cheese boursin smelly cheese feta taleggio gouda. Jarlsberg.' />
+                <SobStory sobstory={this.state.sobStory} />
+
                 <SocialSharing url="http://google.com" title="A Title!" media="https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png" />
+
               </div>
             </div>
           </div>

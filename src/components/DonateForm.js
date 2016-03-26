@@ -9,10 +9,9 @@ import Profile from './Profile'
 export default React.createClass ({
 
 
-    propTypes : {
-  donateFunction: React.PropTypes.func
-},
-
+  propTypes : {
+    donateFunction: React.PropTypes.func
+  },
 
   getInitialState: function () {
     return {
@@ -20,27 +19,29 @@ export default React.createClass ({
     }
   },
 
-
   handleChange: function (e) {
     this.setState({inputValue: e.target.value})
   },
 
   handleDonate: function (e) {
-
-    console.log("recipientID", this.props.recipientID, this.state.inputValue)
-
     this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
+    this.setState({inputValue: 0})
   },
 
   render: function () {
-  //  console.log({this.props.donationClick})
 
-    return (
-      <span id="DonateForm">
-      <TextField type="number" className="donateInput" onChange={this.handleChange} />
-      <br />
-      <RaisedButton label="Donate!" onClick={this.handleDonate} />
-      </span>
-      )
+      if (this.props.received >= this.props.target){
+        return(
+          <div>Fully Funded</div>
+        )
+      } else {
+        return (
+          <span id="DonateForm">
+          $<TextField type="number" className="donateInput" onChange={this.handleChange}  value={this.state.inputValue} />
+          <br />
+          <RaisedButton label="Donate!" onClick={this.handleDonate} />
+          </span>
+        )
+      }
   }
 })
