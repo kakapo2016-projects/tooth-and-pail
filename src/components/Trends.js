@@ -35,16 +35,9 @@ export default React.createClass ({
     };
   },
 
-  componentDidMount: function() {
-    console.log("I mounted!")
-    getRequest('http://localhost:3000/trends', this.dbSetState)
 
-  },
 
-  dbSetState: function (err, data) {
-    this.setState({trenddonations: data})
-    console.log("oh hey this is in the trends file do you read me?", this.state.trenddonations)
-  },
+
 
   handleTime: function() {
     this.setState({isTime: true})
@@ -65,7 +58,6 @@ export default React.createClass ({
   },
 
   render: function() {
-
     return (
       <div>
         <NavBar/>
@@ -86,10 +78,10 @@ export default React.createClass ({
             <TrendTeethFunded />
           </ToggleDisplay>
           <ToggleDisplay show={this.state.isTime}>
-            <TrendDonationsTime timedata={this.state.trenddonations}  />
+            <TrendDonationsTime />
           </ToggleDisplay>
           <ToggleDisplay show={this.state.isSize}>
-            <TrendDonationSize sizedata={this.state.trenddonations} />
+            <TrendDonationSize />
           </ToggleDisplay>
         </div>
       </div>
