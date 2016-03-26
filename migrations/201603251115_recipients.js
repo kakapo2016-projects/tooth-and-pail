@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('imgURL')
     table.integer('received')
     table.integer('target')
-    table.string('sobStory')
+    table.string('sobStory', 2000)
     table.timestamp('createdAt').defaultTo(knex.fn.now())
     })
     .then(function (){

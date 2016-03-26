@@ -28,7 +28,8 @@ export default React.createClass({
 
   getInitialState: function () {
     return {
-      amountDonated: 0
+      amountDonated: 0,
+      name: "ally"
     }
   },
 
@@ -42,30 +43,52 @@ export default React.createClass({
       amount: amount
     }
     postRequest('http://localhost:3000/donations', data, (err, res) => {
-      if (err) { console.log("ERROR!", err); return } 
+      if (err) { console.log("ERROR!", err); return }
         getRequest(`http://localhost:3000/donations/recipient/${recipientID}`, (err, resp) => {
-        if (err) { console.log("ERROR!", err); return } 
-        console.log('resp', resp)
+          if (err) { console.log("ERROR!", err); return }
+          console.log('all donations for recipient', resp)
+          this.donationSetState(resp, recipientID)
       })
+    })
+  },
+
+
+  componentDidMount: function () {
+    getRequest(`http://localhost:3000/donations/recipient/${this.props.params.recipientID} `, (err, resp) => {
+      if (err) { console.log("ERROR!", err); return }
+      console.log('all donations for recipient from componentdidmount in profile', resp)
+      this.donationSetState(resp, this.props.params.recipientID)
+    })
+  },
+
+  donationSetState: function (donations, recipientID) {
+    getRequest(`http://localhost:3000/recipients/${this.props.params.recipientID} `, (err, resp) => {
+      if (err) { console.log("ERROR!", err); return }
+      console.log('recipient details', resp.target, resp.name)
+      var total = 0
+      donations.map(function (x){
+        total += x.amount
+      })
+      this.setState({target: resp.target, received: total, name: resp.name})
     })
   },
 
 //set the state of the amount donated to the new total
   render: function () {
-    console.log("this props in profile", this.props)
+    console.log("this props in profile", this.props, this.state.name, this.state.target, this.state.received)
     return (
       <div className='profile'>
         <div>
               <NavBar/>
-              <Header header={this.props.recipientID}/>
+              <Header header={this.props.params.recipientID} />}
 
           <div className="row">
             <div className="six columns">
               <ProfilePhoto imgurl="http://images6.fanpop.com/image/quiz/948000/948761_1353447278493_500_273.jpg" />
             </div>
             <div className="six columns">
-              <ProfileName name='Richard Joe Esq.'/>
-              <ProgressBar/>
+              <ProfileName name={this.state.name}/>
+              <ProgressBar target={this.state.target} received={this.state.received}/>
               <br />
               <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} />
             </div>
