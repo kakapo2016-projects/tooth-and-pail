@@ -5,6 +5,11 @@ import NavBar from './NavBar'
 import Login from './Login'
 import SignUp from './SignUp'
 
+// database helpers
+import getRequest from '../getRequest.js'
+import postRequest from '../postRequest.js'
+
+// material-ui helpers
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 import MyTheme from '../theme.js'
 
@@ -20,16 +25,21 @@ export default React.createClass({
   },
 
   attemptLogIn: function (email, password) {
-    console.log('email: ', email)
-    console.log('password: ', password)
+    console.log(`http://localhost:3000/donors/email/${email}`)
+    getRequest(`http://localhost:3000/donors/email/${email}`, (res) => {
+      console.log('RESPONSE: ', res)
+      if (res === null) {
+        alert(`sorry, we don't have that email address in our database!
+        maybe try making a new account?`)
+      }
+    })
   },
 
   attemptSignUp: function (username, email, password, confirm) {
     if (password !== confirm) alert ("those passwords don't match, idiot!"); return
-    console.log('email: ', email)
-    console.log('username: ', username)
-    console.log('password: ', password)
-    console.log('confirm: ', confirm)
+    getRequest(`http://localhost:3000/donors/email/${email}`, (res) => {
+      console.log('RESPONSE: ', res)
+    })
   },
 
   render() {
