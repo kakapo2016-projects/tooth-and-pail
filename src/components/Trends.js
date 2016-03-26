@@ -8,6 +8,8 @@ import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyTheme from '../theme.js';
 import RaisedButton from 'material-ui/lib/raised-button';
 
+import getRequest from '../getRequest.js'
+
 
 import TrendDonationSize from './TrendDonationSize'
 import TrendDonationsTime from './TrendDonationsTime'
@@ -31,6 +33,17 @@ export default React.createClass ({
       isSize: false,
       isFunded: false
     };
+  },
+
+  componentDidMount: function() {
+    console.log("I mounted!")
+    getRequest('http://localhost:3000/trends', this.dbSetState)
+
+  },
+
+  dbSetState: function (err, data) {
+    this.setState({trenddonations: data})
+    console.log("oh hey this is in the trends file do you read me?", this.state.trenddonations)
   },
 
   handleTime: function() {
@@ -73,10 +86,10 @@ export default React.createClass ({
             <TrendTeethFunded />
           </ToggleDisplay>
           <ToggleDisplay show={this.state.isTime}>
-            <TrendDonationsTime />
+            <TrendDonationsTime timedata={this.state.trenddonations}  />
           </ToggleDisplay>
           <ToggleDisplay show={this.state.isSize}>
-            <TrendDonationSize />
+            <TrendDonationSize sizedata={this.state.trenddonations} />
           </ToggleDisplay>
         </div>
       </div>

@@ -151,6 +151,28 @@ module.exports = function routes(app) {
     //   console.log("ERROR! ", err)
     // })
   })
+      app.get('/trends', function(req, res) {
+    // console.log("in GET all donations")
+    knex('donations')
+    .select('*')
+    .then(function(resp) {
+      res.send(resp)
+    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
+  })
+    app.get('/trendsrecipients', function(req, res) {
+    // console.log("in GET all donations")
+    knex('recipients')
+    .select('*')
+    .then(function(resp) {
+      res.send(resp)
+    })
+    // .catch(function(err){
+    //   console.log("ERROR! ", err)
+    // })
+  })
 
   // POST
 
@@ -199,4 +221,7 @@ module.exports = function routes(app) {
           res.send(resp)
       })
     })
+
+
+
 }
