@@ -5,7 +5,7 @@ export default React.createClass({
   render () {
     return (
       <div className='photoFooter'>
-        {this.props.name}
+        <p className='photo-footer-name'>{this.props.name}</p>
         <p className='galleryProgressBar'>
           <ProgressBar target={this.props.target} received={this.props.received}/>
         </p>
