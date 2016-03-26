@@ -85,8 +85,9 @@ module.exports = function routes(app) {
     // console.log("in GET donations for a single donor", req.params.donorID)
     knex('donations')
     .where('donations.donorID', req.params.donorID)
+    .select('*')
     .then(function(resp) {
-      res.send(resp[0])
+      res.send(resp)
     })
     // .catch(function(err){
     //   console.log("ERROR! ", err)
@@ -188,16 +189,33 @@ module.exports = function routes(app) {
   app.post('/recipient', function(req, res) {
     var newId = uuid.v4()
     knex('recipients')
-    .insert({
-      recipientID: newId ,
-      name: req.body.Name,
-      imgURL: req.body.imgURL,
-      received: req.body.received,
-      target: req.body.target,
-      sobStory: req.body.sobStory
-    })
-    .then(function(resp) {
-      res.send(resp)
+      .insert({
+        recipientID: newId ,
+        name: req.body.Name,
+        imgURL: req.body.imgURL,
+        received: req.body.received,
+        target: req.body.target,
+        sobStory: req.body.sobStory
+      })
+      .then(function(resp) {
+          res.send(resp)
+      })
+
+      app.put('/recipient', function(req, res) {
+        var newId = uuid.v4()
+        knex('recipients')
+          .update({
+            recipientID: newId ,
+            name: req.body.Name,
+            imgURL: req.body.imgURL,
+            received: req.body.received,
+            target: req.body.target,
+            sobStory: req.body.sobStory
+          })
+          .then(function(resp) {
+              res.send(resp)
+          })
+        })
     })
   })
 
