@@ -16,6 +16,12 @@ h1 {
   padding: 20px;
 }
 
+.socialmediasharebutton {
+  display: inline-block;
+  float: left
+  padding-top: 10px;
+}
+
 div.animal:hover {
     border: 3px solid #777;
 }
