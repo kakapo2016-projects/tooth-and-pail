@@ -199,5 +199,21 @@ module.exports = function routes(app) {
       .then(function(resp) {
           res.send(resp)
       })
+
+      app.put('/recipient', function(req, res) {
+        var newId = uuid.v4()
+        knex('recipients')
+          .update({
+            recipientID: newId ,
+            name: req.body.Name,
+            imgURL: req.body.imgURL,
+            received: req.body.received,
+            target: req.body.target,
+            sobStory: req.body.sobStory
+          })
+          .then(function(resp) {
+              res.send(resp)
+          })
+        })
     })
 }
