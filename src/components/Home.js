@@ -54,9 +54,8 @@ export default React.createClass({
       postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
         console.log('CALLBACK RESP: ', resp)
         console.log('CALLBACK ERROR: ', err)
+        this.props.history.push('/gallery')
         // set a session ID, redirect the user to the gallery
-        Router.transitionTo('/gallery')
-        
       })
     })
   },

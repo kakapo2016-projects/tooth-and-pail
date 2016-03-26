@@ -27,8 +27,9 @@ export default React.createClass ({
 
   handleDonate: function (e) {
 
-    console.log(this.state.inputValue)
-    //this.props.donationClick(this.props.recipientID, this.state.inputValue)
+    console.log("recipientID", this.props.recipientID, this.state.inputValue)
+
+    this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
   },
 
   render: function () {
