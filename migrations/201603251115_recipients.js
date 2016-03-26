@@ -43,4 +43,5 @@ exports.down = function(knex, Promise) {
     .then(function () {
         process.exit()
     })
+
 }

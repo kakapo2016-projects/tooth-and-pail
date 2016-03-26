@@ -7,5 +7,4 @@ module.exports = function (url, data, callback){
   .end(function(err, res){
     callback(res)
   })
-
 }

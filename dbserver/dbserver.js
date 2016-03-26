@@ -1,16 +1,8 @@
-// import express from 'express'
 var express = require('express')
-// import path from 'path'
 var path = require('path')
-// import cors from 'cors'
 var cors = require('cors')
-// import body-parser from 'body-parser'
-// var bodyparser = require('body-parser')
-// import uuid from 'uuid'
 var uuid = require('uuid')
-// import compression from 'compression'
 var compression = require('compression')
-// import routes from './dbroutes'
 var routes = require('./dbroutes')
 
 var app = express()
