@@ -8,7 +8,7 @@ export default React.createClass({
    },
 
   render () {
-    console.log("galleryPhoto ---", this.props )
+    // console.log("galleryPhoto ---", this.props )
     return (
       <Link to={`/recipient/${this.props.recipientID}`}>
       <div className='galleryPhoto'>

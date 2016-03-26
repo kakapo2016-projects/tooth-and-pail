@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  console.log('up')
+  // console.log('up')
   return knex.schema.createTableIfNotExists('recipients', function (table) {
     console.log('creating table: recipients')
     table.varchar('recipientID').primary()
