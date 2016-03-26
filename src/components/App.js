@@ -35,24 +35,20 @@ export default React.createClass({
   componentDidMount: function() {
     // get all the recipients from the database
     getRequest('http://localhost:3000/recipients', this.dbSetState)
-    },
+  //  session.user.id = "testuserid"
+    console.log('bbbbb', this.state.gallery)
+  },
 
-  dbSetState: function (data) {
+  dbSetState: function (err, data) {
     this.setState({gallery: data})
   },
-
-  galleryClick: function (recipientID) {
-    //  go to the profile page for this recipient
-    console.log("gallery click in app.js for ",  recipientID)
-  },
-
 
   render () {
     return (
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
-        <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
+        <Gallery gallery={this.state.gallery} />
       </div>
     )
   }

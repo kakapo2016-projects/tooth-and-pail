@@ -28,19 +28,18 @@ export default React.createClass ({
   handleDonate: function (e) {
 
     console.log(this.state.inputValue)
-    this.props.donateFunction(this.state.inputValue);
+    //this.props.donationClick(this.props.recipientID, this.state.inputValue)
   },
 
   render: function () {
-
+  //  console.log({this.props.donationClick})
 
     return (
       <span id="DonateForm">
-      <TextField type="number" class="donateInput" onChange={this.handleChange} />
+      <TextField type="number" className="donateInput" onChange={this.handleChange} />
       <br />
       <RaisedButton label="Donate!" onClick={this.handleDonate} />
       </span>
       )
   }
 })
-

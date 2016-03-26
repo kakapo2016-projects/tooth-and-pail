@@ -168,6 +168,21 @@ module.exports = function routes(app) {
       })
     })
 
+    app.post('/donations', function(req, res) {
+      console.log("in POST to donations", req.body)
+      var newId = uuid.v4()
+      knex('donations')
+        .insert({
+          donationID: newId,
+          donorID: req.body.donorID,
+          recipientID: req.body.recipientID,
+          amount: req.body.amount
+        })
+        .then(function(resp) {
+            res.send(resp)
+        })
+      })
+
   app.post('/recipient', function(req, res) {
     var newId = uuid.v4()
     knex('recipients')

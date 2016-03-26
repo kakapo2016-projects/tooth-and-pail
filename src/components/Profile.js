@@ -11,6 +11,7 @@ import DonateForm from './DonateForm'
 import SobStory from './SobStory'
 import SocialSharing from './SocialSharing'
 import Paper from 'material-ui/lib/paper'
+import postRequest from '../postRequest.js'
 
 export default React.createClass({
 
@@ -32,8 +33,23 @@ export default React.createClass({
 
 
   handleDonation: function (p) {
-  console.log("hey look this is being passed up!", p, "type", typeof p)
-  this.setState({amountDonated: p})
+  console.log("handleDonation", this.props)
+    //post the donation to the database
+    let data = {
+      donorID: '1111',
+      recipientID: '2',
+      amount: 300
+    }
+    postRequest('http://localhost:3000/', data, (err, resp) => {
+      if (err) {
+        console.log("ERROR!", err)
+      } else {
+         console.log('resp', resp)
+      }
+    })
+    // get all the donations for this donor and total
+    //set the state of the amount donated to the new total
+
   },
 
   render: function () {
@@ -55,7 +71,7 @@ export default React.createClass({
               <ProfileName name='Richard Joe Esq.'/>
               <ProgressBar/>
               <br />
-              <DonateForm donateFunction={this.handleDonation.bind(this)} />
+              <DonateForm donateFunction={this.handleDonation} />
             </div>
           </div>
           <div className="row">
