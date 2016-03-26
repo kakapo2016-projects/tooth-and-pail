@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Chart} from 'react-google-charts'
+import getRequest from '../getRequest.js'
 
 export default React.createClass ({
 
@@ -14,31 +15,56 @@ export default React.createClass ({
     };
   },
   componentDidMount: function() {
-    var ChartData =  {
-     dataArray : [
-     ['Amount', 'Number of Donations', { role: 'style' }],
-         ['Under $10', 432, '#b87333'],            // RGB value
-         ['$10-25', 5404, 'silver'],            // English color name
-         ['$25-50', 2342, 'gold'],
-         ['$50-100', 802, 'color: #e5e4e2' ], // CSS-style declaration
-         ['$100-250', 94, 'color: #e5e4e2' ],
-         ['more than $250', 8, 'color: #e5e4e2' ]
-         ],
-         options : {
-          title: "Donations",
-          bar: {groupWidth: "300%"},
-          legend: { position: "none" },
+      // var originalData = [{"donationID":"d1","donorID":"1111","recipientID":"1","amount":10,"createdAt":"2016-03-26 06:05:50"},{"donationID":"d2","donorID":"2222","recipientID":"2","amount":20,"createdAt":"2016-03-26 06:05:50"},{"donationID":"d3","donorID":"3333","recipientID":"3","amount":30,"createdAt":"2016-03-26 06:05:50"},{"donationID":"d4","donorID":"1111","recipientID":"4","amount":40,"createdAt":"2016-03-26 06:05:51"},{"donationID":"d5","donorID":"2222","recipientID":"5","amount":50,"createdAt":"2016-03-26 06:05:51"}]
+      console.log("Is this the originalData?", this.props)
+      getRequest('http://localhost:3000/donations', this.dbSetState)
+
+      },
+
+
+  dbSetState: function(err, data) {
+    this.setState({sizedata: data})
+      var originalData = this.state.sizedata
+      var u10 = 0
+      var ten = 0
+      var twentyfive = 0
+      var fifty = 0
+      var hundred = 0
+      var twofifty = 0
+      for (var i=0; i < originalData.length; i++) {
+        if (originalData[i].amount < 10) {
+          u10++
+        } else if (originalData[i].amount < 26) {
+          ten++
+        } else if (originalData[i].amount < 51) {
+          twentyfive++
+        } else if (originalData[i].amount < 101) {
+          fifty++
+        } else if (originalData[i].amount < 251) {
+          hundred++
+        } else {
+          twofifty++
         }
-      };
+      }
+      var u10arr = ['Under $10', u10, '#b71c1c']
+      var tenarr = ['$10-25', ten, '#b71c1c']
+      var twentyfivearr = ['$25-50', twentyfive, '#b71c1c']
+      var fiftyarr = ['$50-100', fifty, '#b71c1c']
+      var hundredarr = ['$100-250', hundred, '#b71c1c']
+      var twofiftyarr = ['more than $250', twofifty, '#b71c1c']
+      var allData = []
+      allData.push(['Amount', 'Number of Donations', { role: 'style' }], u10arr, tenarr, twentyfivearr, fiftyarr, hundredarr, twofiftyarr)
+      var ChartData = {}
+      ChartData.dataArray = allData
+      ChartData.options = {title: "Donations", legend: { position: "none" }}
+
+
       var ColumnChart = {
         data : ChartData.dataArray,
         options: ChartData.options,
         chartType: "ColumnChart",
         div_id: "ColumnChart"
-      };
-
-
-
+  }
 
       this.setState({
         'ColumnChart': ColumnChart
@@ -53,7 +79,7 @@ export default React.createClass ({
       return (
 
       <div className="Examples">
-      <Chart chartType={this.state.ColumnChart.chartType} width={"1000px"} height={"600px"} data={this.state.ColumnChart.data} options = {this.state.ColumnChart.options} graph_id={this.state.ColumnChart.div_id} />
+      <Chart chartType={this.state.ColumnChart.chartType} width={"1000px"} height={"500px"} data={this.state.ColumnChart.data} options = {this.state.ColumnChart.options} graph_id={this.state.ColumnChart.div_id} />
       </div>
         )
 
