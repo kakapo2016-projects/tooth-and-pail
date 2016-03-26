@@ -22,6 +22,10 @@ h1 {
   padding-top: 10px;
 }
 
+.TrendButtons {
+  padding: 10px;
+}
+
 div.animal:hover {
     border: 3px solid #777;
 }

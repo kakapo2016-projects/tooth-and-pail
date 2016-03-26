@@ -41,12 +41,9 @@ export default React.createClass({
     return (
       <div className='profile'>
         <div>
-          <div className="row">
-            <div className="twelve columns">
               <NavBar/>
               <Header header={this.props.recipientID}/>
-            </div>
-          </div>
+
           <div className="row">
             <div className="six columns">
               <ProfilePhoto imgurl="http://images6.fanpop.com/image/quiz/948000/948761_1353447278493_500_273.jpg" />
