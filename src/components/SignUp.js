@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RaisedButton from 'material-ui/lib/raised-button';
+import RaisedButton from 'material-ui/lib/raised-button'
 import TextField from 'material-ui/lib/text-field'
 
 export default React.createClass ({
@@ -90,5 +90,3 @@ export default React.createClass ({
     )
   }
 })
-
-// hello gay
