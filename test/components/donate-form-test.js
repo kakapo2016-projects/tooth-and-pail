@@ -46,12 +46,12 @@ describe('InputField', () => {
   })
 })
 
-describe('InputField', () => {
-  it('should render an input field with the type of number', () => {
-    const wrapper = shallow(React.createElement(DonateForm))
-    expect(wrapper.find('#donateInput')).to.have.attr('type', 'number')
-  })
-})
+// describe('InputField', () => {
+//   it('should render an input field with the type of number', () => {
+//     const wrapper = shallow(React.createElement(DonateForm))
+//     expect(wrapper.find('#donateInput')).to.have.attr('type', 'number')
+//   })
+// })
 
 
 

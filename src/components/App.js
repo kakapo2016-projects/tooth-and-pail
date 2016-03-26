@@ -38,9 +38,7 @@ export default React.createClass({
     },
 
   dbSetState: function (data) {
-    // console.log(this.state.gallery)
     this.setState({gallery: data})
-    console.log("State", this.state)
   },
 
   galleryClick: function (recipientID) {

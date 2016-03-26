@@ -49,7 +49,7 @@ module.exports = function routes(app) {
     knex('recipients')
     .where('recipients.recipientID', req.params.recipientID)
     .then(function(resp) {
-      console.log ("in get with recipientid", resp)
+      // console.log ("in get with recipientid", resp)
       res.send(resp[0])
     })
     // .catch(function(err){
@@ -106,7 +106,7 @@ module.exports = function routes(app) {
   })
 
   app.get('/donors', function(req, res) {
-    console.log("in GET all donors")
+    // console.log("in GET all donors")
     knex('donors')
     .select('*')
     .then(function(resp) {
