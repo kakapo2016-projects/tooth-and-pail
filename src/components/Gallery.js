@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 export default React.createClass({
   render () {
-    console.log("in gallery", this.props)
+    // console.log("in gallery", this.props)
     return (
       <div className='gallery'>
         {_.map(this.props.gallery, function(gp){
