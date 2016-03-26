@@ -3,6 +3,7 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
+import Sort from './Sort'
 
 // database functions
 import getRequest from '../getRequest.js'
@@ -36,11 +37,14 @@ export default React.createClass({
     // get all the recipients from the database
     getRequest('http://localhost:3000/recipients', this.dbSetState)
   //  session.user.id = "testuserid"
-    console.log('bbbbb', this.state.gallery)
   },
 
   dbSetState: function (err, data) {
     this.setState({gallery: data})
+  },
+
+  sortHandleChange: function(event, index, value) {
+    this.setState({valueSort:sortName})
   },
 
   render () {
@@ -48,7 +52,9 @@ export default React.createClass({
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
+        <Sort/>
         <Gallery gallery={this.state.gallery} />
+
       </div>
     )
   }

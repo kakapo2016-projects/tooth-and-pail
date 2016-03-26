@@ -16,6 +16,16 @@ h1 {
   padding: 20px;
 }
 
+.socialmediasharebutton {
+  display: inline-block;
+  float: left
+  padding-top: 10px;
+}
+
+.TrendButtons {
+  padding: 10px;
+}
+
 div.animal:hover {
     border: 3px solid #777;
 }
@@ -23,7 +33,6 @@ div.animal:hover {
 div.gallery{
   width: 100%;
   background-color: red;
-
 }
 
 div.galleryPhoto:hover {
@@ -43,6 +52,7 @@ div.galleryPhoto img {
   width: 100%;
   height: auto;
   float:left;
+  padding-bottom: 30px;
 }
 
 div.photoFooter {
@@ -51,22 +61,30 @@ div.photoFooter {
   background-color: #b71c1c;
 }
 
+.photo-footer-name {
+  margin-bottom: 0;
+}
+
 /*link colors*/
 
 a:link {
-  color: black;
+  color: white;
+  text-decoration: none;
 }
 
 a:hover {
-  color: black;
+  color: white;
+  text-decoration: none;
 }
 
 a:visited {
-  color: black;
+  color: white;
+  text-decoration: none;
 }
 
 a:active {
-  color: black;
+  color: white;
+  text-decoration: none;
 }
 
 .tooth-icon {
