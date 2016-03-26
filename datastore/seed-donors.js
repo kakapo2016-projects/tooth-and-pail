@@ -1,6 +1,21 @@
 module.exports = [
   {donorID: '1111', donorName:'money-bags', passwordHash: 'r111', email:'moneybags@xtra.co.nz'},
-  {donorID: '2222', donorName:'richie-rich', passwordHash: 'r111', email:'loadsofcash@cashking.co.nz'},
-  {donorID: '3333', donorName:'donald', passwordHash: 'r111', email:'richascroecus@cashisking.co.nz'}
-
+  {donorID: '2222', donorName:'richie-rich', passwordHash: 'r222', email:'loadsofcash@cashking.co.nz'},
+  {donorID: '3333', donorName:'the-donald', passwordHash: 'r333', email:'richascroecus@cashisking.co.nz'},
+  {donorID: '4444', donorName:'Bill-Gates', passwordHash: 'r555', email:'billgates@cashking.co.nz'},
+  {donorID: '5555', donorName:'Amancio-Ortega', passwordHash: 'r666', email:'Amancio-Ortega@cashisking.co.nz'},
+  {donorID: '6666', donorName:'Warren-Buffett', passwordHash: 'r888', email:'Warren-Buffett@cashking.co.nz'},
+  {donorID: '7777', donorName:'Carlos-Slim-Helu', passwordHash: 'r999', email:'Carlos-Slim-Helu@cashisking.co.nz'},
+  {donorID: '8888', donorName:'Jeff-Bezos', passwordHash: 'r102', email:'Jeff-Bezos@cashking.co.nz'},
+  {donorID: '9999', donorName:'Mark-Zuckerberg', passwordHash: 'r103', email:'rMark-Zuckerberg@cashisking.co.nz'},
+  {donorID: '1010', donorName:'Larry-Ellison', passwordHash: 'r105', email:'Larry-Ellison@cashking.co.nz'},
+  {donorID: '1212', donorName:'Michael-Bloomberg', passwordHash: 'r106', email:'Michael-Bloomberg@cashisking.co.nz'},
+  {donorID: '2323', donorName:'Liliane-Bettencourt', passwordHash: 'r108', email:'Liliane-Bettencourt@cashking.co.nz'},
+  {donorID: '3232', donorName:'Larry-Page', passwordHash: 'r109', email:'Larry-Page@cashisking.co.nz'},
+  {donorID: '4343', donorName:'Sergey-Brin', passwordHash: 'r112', email:'Sergey-Brin@cashking.co.nz'},
+  {donorID: '4545', donorName:'Bernard-Arnault', passwordHash: 'r113', email:'Bernard-Arnault@cashisking.co.nz'},
+  {donorID: '5454', donorName:'Wang-Jianlin', passwordHash: 'r115', email:'Wang-Jianlin@cashking.co.nz'},
+  {donorID: '5656', donorName:'Jorge-Paulo-Lemann', passwordHash: 'r116', email:'Jorge-Paulo-Lemann@cashisking.co.nz'},
+  {donorID: '6565', donorName:'Li-Ka-shing', passwordHash: 'r118', email:'Li-Ka-shing@cashking.co.nz'},
+  {donorID: '6767', donorName:'Phil-Knight', passwordHash: 'r119', email:'Phil-Knight@cashisking.co.nz'}
 ]
