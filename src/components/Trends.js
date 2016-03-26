@@ -25,6 +25,32 @@ export default React.createClass ({
     };
   },
 
+  getInitialState: function () {
+    return {
+      isTime: false,
+      isSize: false,
+      isFunded: false
+    };
+  },
+
+  handleTime: function() {
+    this.setState({isTime: true})
+    this.setState({isSize: false})
+    this.setState({isFunded: false})
+  },
+
+  handleSize: function() {
+    this.setState({isTime: false})
+    this.setState({isSize: true})
+    this.setState({isFunded: false})
+  },
+
+  handleFunded: function() {
+    this.setState({isTime: false})
+    this.setState({isSize: false})
+    this.setState({isFunded: true})
+  },
+
   render: function() {
 
     return (
@@ -35,17 +61,23 @@ export default React.createClass ({
           <h2>Trends</h2>
           <p>Here at Tooth and Pail we have a proud history in these twilight years of the welfare state of ensuring there are still options for people to not die of septic shock or malnutrition due to tooth decay. Take a look at these graphs to see how many we've been able to help. We'll just leave you to imagine the profits we've been able to make from our cut of this funding.</p>
           <span className="TrendButtons">
-            <RaisedButton label="Donations over time"/>
+            <RaisedButton label="Donations over time" onClick={this.handleTime} />
           </span>
           <span className="TrendButtons">
-            <RaisedButton label="Size of Donations" />
+            <RaisedButton label="Size of Donations" onClick={this.handleSize} />
           </span>
           <span className="TrendButtons">
-            <RaisedButton label="Treatments Funded" />
+            <RaisedButton label="Treatments Funded" onClick={this.handleFunded} />
           </span>
-          <TrendTeethFunded />
-          <TrendDonationsTime />
-          <TrendDonationSize />
+          <ToggleDisplay show={this.state.isFunded}>
+            <TrendTeethFunded />
+          </ToggleDisplay>
+          <ToggleDisplay show={this.state.isTime}>
+            <TrendDonationsTime />
+          </ToggleDisplay>
+          <ToggleDisplay show={this.state.isSize}>
+            <TrendDonationSize />
+          </ToggleDisplay>
         </div>
       </div>
       )

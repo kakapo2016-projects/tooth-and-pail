@@ -176,9 +176,10 @@ export default React.createClass ({
       var AirPassengersChart =  {
         rows : AirPassengerData.rows,
         columns : AirPassengerData.columns,
-        options : {title: "Air Passengers", hAxis: {title: 'Year'}, vAxis: {title: 'Count'}},
+        options : {title: "Air Passengers", hAxis: {title: 'Year'}, vAxis: {title: 'Count'}, colors:['#b71c1c'] },
         chartType : "LineChart",
         div_id: "AirPassengers"
+
       };
 
 
@@ -194,7 +195,7 @@ export default React.createClass ({
 
       return (
         <div className="Examples">
-        <Chart chartType={this.state.AirPassengersChart.chartType} width={"500px"} height={"300px"} rows={this.state.AirPassengersChart.rows} columns={this.state.AirPassengersChart.columns} options = {this.state.AirPassengersChart.options} graph_id={this.state.AirPassengersChart.div_id}  />
+        <Chart chartType={this.state.AirPassengersChart.chartType} width={"1000px"} height={"500px"} rows={this.state.AirPassengersChart.rows} columns={this.state.AirPassengersChart.columns} options = {this.state.AirPassengersChart.options} graph_id={this.state.AirPassengersChart.div_id}  />
         </div>
         );
     }

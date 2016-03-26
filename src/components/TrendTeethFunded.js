@@ -17,18 +17,17 @@ getInitialState: function() {
   componentDidMount: function() {
     var ChartData =  {
      dataArray : [
-     ['Amount', 'Number of Donations', { role: 'style' }],
-         ['Under $10', 432, '#b87333'],            // RGB value
-         ['$10-25', 5404, 'silver'],            // English color name
-         ['$25-50', 2342, 'gold'],
-         ['$50-100', 802, 'color: #e5e4e2' ], // CSS-style declaration
-         ['$100-250', 94, 'color: #e5e4e2' ],
-         ['more than $250', 8, 'color: #e5e4e2' ]
+     ['Treatment Status', 'Number'],
+         ['Fully Funded', 18],            // RGB value
+         ['In Progress', 902]
          ],
          options : {
-          title: "Donations",
-          bar: {groupWidth: "300%"},
+          title: "Treatment Statuses",
           legend: { position: "none" },
+                  slices: {
+            0: { color: 'grey' },
+            1: { color: '#b71c1c' }
+          }
         }
       };
       var PieChart = {
@@ -52,9 +51,8 @@ getInitialState: function() {
 
 
       return (
-
       <div className="Examples">
-      <Chart chartType={this.state.PieChart.chartType} width={"1000px"} height={"600px"} data={this.state.PieChart.data} options = {this.state.PieChart.options} graph_id={this.state.PieChart.div_id} />
+      <Chart chartType={this.state.PieChart.chartType} width={"450px"} height={"450px"} data={this.state.PieChart.data} options = {this.state.PieChart.options} graph_id={this.state.PieChart.div_id} />
       </div>
         )
 

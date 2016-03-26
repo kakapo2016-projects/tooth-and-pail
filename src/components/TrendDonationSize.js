@@ -17,16 +17,16 @@ export default React.createClass ({
     var ChartData =  {
      dataArray : [
      ['Amount', 'Number of Donations', { role: 'style' }],
-         ['Under $10', 432, '#b87333'],            // RGB value
-         ['$10-25', 5404, 'silver'],            // English color name
-         ['$25-50', 2342, 'gold'],
-         ['$50-100', 802, 'color: #e5e4e2' ], // CSS-style declaration
-         ['$100-250', 94, 'color: #e5e4e2' ],
-         ['more than $250', 8, 'color: #e5e4e2' ]
+         ['Under $10', 432, '#b71c1c'],            // RGB value
+         ['$10-25', 5404, '#b71c1c'],            // English color name
+         ['$25-50', 2342, '#b71c1c'],
+         ['$50-100', 802, '#b71c1c' ], // CSS-style declaration
+         ['$100-250', 94, '#b71c1c' ],
+         ['more than $250', 8, '#b71c1c' ]
          ],
          options : {
           title: "Donations",
-          bar: {groupWidth: "300%"},
+
           legend: { position: "none" },
         }
       };
@@ -53,7 +53,7 @@ export default React.createClass ({
       return (
 
       <div className="Examples">
-      <Chart chartType={this.state.ColumnChart.chartType} width={"1000px"} height={"600px"} data={this.state.ColumnChart.data} options = {this.state.ColumnChart.options} graph_id={this.state.ColumnChart.div_id} />
+      <Chart chartType={this.state.ColumnChart.chartType} width={"1000px"} height={"500px"} data={this.state.ColumnChart.data} options = {this.state.ColumnChart.options} graph_id={this.state.ColumnChart.div_id} />
       </div>
         )
 
