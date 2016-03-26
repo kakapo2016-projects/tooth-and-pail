@@ -3,6 +3,7 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import GalleryPhoto from './GalleryPhoto'
+import Sort from './Sort'
 
 // database functions
 import getRequest from '../getRequest.js'
@@ -47,11 +48,17 @@ export default React.createClass({
   },
 
 
+
+sortHandleChange: function(event, index, value) {
+  this.setState({valueSort:sortName})
+},
+
   render () {
     return (
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
+        <Sort/>
         <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
       </div>
     )
