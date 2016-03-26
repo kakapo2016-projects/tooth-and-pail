@@ -24,7 +24,7 @@ export default React.createClass({
     };
   },
 
-    getInitialState: function () {
+  getInitialState: function () {
     return {
       amountDonated: 0
     }
