@@ -36,22 +36,16 @@ export default React.createClass({
   componentDidMount: function() {
     // get all the recipients from the database
     getRequest('http://localhost:3000/recipients', this.dbSetState)
-    },
+  //  session.user.id = "testuserid"
+  },
 
-  dbSetState: function (data) {
+  dbSetState: function (err, data) {
     this.setState({gallery: data})
   },
 
-  galleryClick: function (recipientID) {
-    //  go to the profile page for this recipient
-    console.log("gallery click in app.js for ",  recipientID)
+  sortHandleChange: function(event, index, value) {
+    this.setState({valueSort:sortName})
   },
-
-
-
-sortHandleChange: function(event, index, value) {
-  this.setState({valueSort:sortName})
-},
 
   render () {
     return (
@@ -59,7 +53,8 @@ sortHandleChange: function(event, index, value) {
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
         <Sort/>
-        <Gallery gallery={this.state.gallery} galleryClick={this.galleryClick} />
+        <Gallery gallery={this.state.gallery} />
+
       </div>
     )
   }
