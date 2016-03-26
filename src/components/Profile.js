@@ -12,6 +12,7 @@ import SobStory from './SobStory'
 import SocialSharing from './SocialSharing'
 import Paper from 'material-ui/lib/paper'
 import postRequest from '../postRequest.js'
+import getRequest from '../getRequest.js'
 
 export default React.createClass({
 
@@ -40,18 +41,16 @@ export default React.createClass({
       recipientID: recipientID,
       amount: amount
     }
-    postRequest('http://localhost:3000/donations', data, (err, resp) => {
-      if (err) {
-        console.log("ERROR!", err)
-      } else {
-         console.log('resp', resp)
-      }
+    postRequest('http://localhost:3000/donations', data, (err, res) => {
+      if (err) { console.log("ERROR!", err); return } 
+        getRequest(`http://localhost:3000/donations/recipient/${recipientID}`, (err, resp) => {
+        if (err) { console.log("ERROR!", err); return } 
+        console.log('resp', resp)
+      })
     })
-    // get all the donations for this donor and total
-    //set the state of the amount donated to the new total
-
   },
 
+//set the state of the amount donated to the new total
   render: function () {
     console.log("this props in profile", this.props)
     return (
