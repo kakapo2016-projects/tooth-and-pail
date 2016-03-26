@@ -6,7 +6,7 @@ export default React.createClass ({
 
   getInitialState: function() {
     return {
-      BarChart: {
+      ColumnChart: {
         data: [],
         chartType: "",
         options : {}
@@ -26,22 +26,22 @@ export default React.createClass ({
          ],
          options : {
           title: "Donations",
-          bar: {groupWidth: "95%"},
+          bar: {groupWidth: "300%"},
           legend: { position: "none" },
         }
       };
-      var BarChart = {
+      var ColumnChart = {
         data : ChartData.dataArray,
         options: ChartData.options,
-        chartType: "BarChart",
-        div_id: "BarChart"
+        chartType: "ColumnChart",
+        div_id: "ColumnChart"
       };
 
 
 
 
       this.setState({
-        'BarChart': BarChart
+        'ColumnChart': ColumnChart
       });
 
     },
@@ -52,9 +52,8 @@ export default React.createClass ({
 
       return (
 
-              <div className="Examples">
-      <h3> Bar Chart </h3>
-      <Chart chartType={this.state.BarChart.chartType} width={"500px"} height={"300px"} data={this.state.BarChart.data} options = {this.state.BarChart.options} graph_id={this.state.BarChart.div_id} />
+      <div className="Examples">
+      <Chart chartType={this.state.ColumnChart.chartType} width={"1000px"} height={"600px"} data={this.state.ColumnChart.data} options = {this.state.ColumnChart.options} graph_id={this.state.ColumnChart.div_id} />
       </div>
         )
 
