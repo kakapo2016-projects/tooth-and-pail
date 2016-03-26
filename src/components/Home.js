@@ -25,6 +25,7 @@ export default React.createClass({
   },
 
   attemptSignUp: function (username, email, password, confirm) {
+    if (password !== confirm) alert ("those passwords don't match, idiot!"); return
     console.log('email: ', email)
     console.log('username: ', username)
     console.log('password: ', password)
