@@ -85,8 +85,9 @@ module.exports = function routes(app) {
     // console.log("in GET donations for a single donor", req.params.donorID)
     knex('donations')
     .where('donations.donorID', req.params.donorID)
+    .select('*')
     .then(function(resp) {
-      res.send(resp[0])
+      res.send(resp)
     })
     // .catch(function(err){
     //   console.log("ERROR! ", err)
