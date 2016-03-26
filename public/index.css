@@ -26,9 +26,8 @@ h1 {
   padding: 10px;
 }
 
-div.animal:hover {
-    border: 3px solid #777;
-}
+
+/* Photo gallery */
 
 div.gallery{
   width: 100%;
@@ -64,6 +63,15 @@ div.photoFooter {
 .photo-footer-name {
   margin-bottom: 0;
 }
+
+/* Profile */
+.profilePhoto img {
+  padding: 3px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin: 1%;
+}
+
 
 /*link colors*/
 
