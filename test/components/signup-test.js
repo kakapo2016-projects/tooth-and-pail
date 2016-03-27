@@ -6,7 +6,9 @@ import SignUp from '../../src/components/SignUp'
 
 describe('SignUp', () => {
   it('renders the SignUp component', () => {
-  	const wrapper = mount(<SignUp />)
-  	expect(wrapper.find(SignUp)).to.have.length(1);
+  	const wrapper = shallow(React.createElement(SignUp))
+    expect(wrapper.find('form')).to.have.length(1)
+    expect(wrapper.find('TextField')).to.have.length(4)
+    expect(wrapper.find('RaisedButton')).to.have.length(1)
   })
 })

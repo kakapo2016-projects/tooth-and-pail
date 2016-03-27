@@ -69,9 +69,12 @@ div.photoFooter {
   padding: 3px;
   border: 1px solid #ccc;
   width: 100%;
-  margin: 1%;
+  margin: 2%;
 }
-
+.story {
+  width: 80%;
+  margin: 2%;
+}
 
 /*link colors*/
 
