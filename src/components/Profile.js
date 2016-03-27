@@ -98,7 +98,6 @@ export default React.createClass({
   },
 
   render: function () {
-    console.log("this props in profile", this.props, this.state.name, this.state.target, this.state.received, this.state.imgURL)
     return (
         <div className='profile'>
           <div>

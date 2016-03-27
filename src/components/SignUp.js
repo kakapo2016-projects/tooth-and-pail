@@ -44,6 +44,7 @@ export default React.createClass ({
           <br/>
           <h2> SIGN UP </h2>
           <TextField
+            id='username-field'
             multiline={false}
             type='text'
             value={this.state.username}
@@ -53,6 +54,7 @@ export default React.createClass ({
           <br/>
           <br/>
           <TextField
+            id='email-field'
             type='text'
             className='email'
             value={this.state.email}
@@ -61,6 +63,7 @@ export default React.createClass ({
           <br/>
           <br/>
           <TextField
+            id='password-field'
             type='password'
             className='password'
             value={this.state.password}
@@ -69,6 +72,7 @@ export default React.createClass ({
           <br/>
           <br/>
           <TextField
+            id='confirm-field'
             type='password'
             className='confirm-password'
             value={this.state.confirm}
