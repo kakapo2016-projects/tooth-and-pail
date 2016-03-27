@@ -15,6 +15,12 @@ var knex = require('knex')({
   useNullAsDefault: true
 })
 
+// var knex = require('knex')({
+//   client: 'pg',
+//   connection: 'postgresql://localhost:3000',
+//   searchPath: 'knex,public'
+// })
+
 module.exports = function routes(app) {
 
   var urlencodedParser = bodyparser.urlencoded({ extended: false })
