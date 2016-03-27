@@ -164,7 +164,7 @@ module.exports = function routes(app) {
       email: req.body.email
     })
     .then(function(resp) {
-      res.send(resp)
+      res.send(newId)
     })
   })
 
