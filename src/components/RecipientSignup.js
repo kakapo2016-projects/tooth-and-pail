@@ -72,8 +72,8 @@ export default React.createClass ({
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
       })
-    })
-  },
+    }
+  ,
 
 
   render: function () {
