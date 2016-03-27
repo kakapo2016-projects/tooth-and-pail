@@ -48,7 +48,11 @@ var HBar = React.createClass({
       width: 800,
       height: 400,
       data: [
-        {v: 30, label: ''}
+        {
+          target: 30, 
+          received: 20,
+          label: 
+        }
       ]
     }
   },
@@ -70,8 +74,8 @@ var HBar = React.createClass({
 
     var data = this.props.data
 
-    if (this.props.sort === 'ascending') data.sort(function(p, q){return p.v - q.v});
-    if (this.props.sort === 'descending') data.sort(function(p, q){return q.v - p.v});
+    if (this.props.sort === 'ascending') data.sort(function(p, q){return p.targt - q.target});
+    if (this.props.sort === 'descending') data.sort(function(p, q){return q.target - p.target});
 
     /*
     <g>
@@ -135,7 +139,7 @@ var HBar = React.createClass({
 
   drawText: function(i, point, type){
 
-    var v = point.v
+    var target = point.target
 
     /* Format the point if an input formatting function is available */
     if (this.props.formatter){
