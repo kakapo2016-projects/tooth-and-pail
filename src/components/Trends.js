@@ -59,7 +59,7 @@ export default React.createClass ({
 
   render: function() {
     return (
-      <div>
+      <div id="Trends">
         <NavBar/>
         <Header header={this.props.recipientID}/>
         <div className="Trends twelve columns">
