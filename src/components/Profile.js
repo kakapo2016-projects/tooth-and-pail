@@ -14,6 +14,7 @@ import Paper from 'material-ui/lib/paper'
 import postRequest from '../postRequest.js'
 import getRequest from '../getRequest.js'
 import putRequest from '../putRequest.js'
+import RateMe from './RateMe'
 
 
 export default React.createClass({
@@ -74,14 +75,35 @@ export default React.createClass({
   updateRecipientReceived: function (totalReceived){
     //console.log("update", totalReceived)
     let recipientData = {received : totalReceived }
-    console.log("update", recipientData)
-
     putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
         console.log("no error", res)
     })
   },
-
+  updateRecipientRating: function (newRate){
+    getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
+      if (err) { console.log("ERROR!", err); return }
+      console.log('recipient ratings', resp)
+      // get a total value , get the count
+      var totalValue = 0
+      var count = 1   // for the new rating and so we never divide by 0
+      resp.rating.map(function (x){
+        totalValue += x.rating
+        count++
+      })
+      // add the new rating value, find the average by dividing by count + 1 then round
+      totalValue += newRating
+      var rating = Math.floor(total / count)
+      // update the recipients record in the database
+      let recipientsData = {rating : rating }
+      putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+        if (err) { console.log("ERROR!", err); return }
+          console.log("no error", res)
+          // update the state
+          this.setState({rating: rating})
+      })
+    })
+  },
 
   donationSetState: function (donations, recipientID) {
     getRequest(`http://localhost:3000/recipients/${this.props.params.recipientID} `, (err, resp) => {
@@ -113,6 +135,9 @@ export default React.createClass({
                 <ProgressBar target={this.state.target} received={this.state.received}/>
                 <br />
                 <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} target={this.state.target} received={this.state.received} />
+              </div>
+              <div className="six columns">
+                <RateMe rating={this.props.rating} updateRecipientRating={this.updateRecipientRating}/>
               </div>
             </div>
             <div className="row">

@@ -31,6 +31,16 @@ exports.up = function(knex, Promise) {
         table.timestamp('createdAt').defaultTo(knex.fn.now())
         })
     })
+    .then(function (){
+      return knex.schema.createTableIfNotExists('ratings', function (table) {
+        console.log('creating table: ratings')
+        table.varchar('ratingID').primary()
+        table.varchar('donorID')
+        table.varchar('recipientID')
+        table.integer('rating')
+        table.timestamp('createdAt').defaultTo(knex.fn.now())
+        })
+    })
 }
 
 exports.down = function(knex, Promise) {
@@ -40,6 +50,9 @@ exports.down = function(knex, Promise) {
     })
     .then(function (){
       return knex.schema.dropTableIfExists('donations')
+    })
+    .then(function (){
+      return knex.schema.dropTableIfExists('ratigs')
     })
     .then(function () {
         process.exit()
