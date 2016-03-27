@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.integer('received')
     table.integer('target')
     table.string('sobStory', 2000)
+    table.integer('rating')
     table.timestamp('createdAt').defaultTo(knex.fn.now())
     })
     .then(function (){
