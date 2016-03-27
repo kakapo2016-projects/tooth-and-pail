@@ -37,7 +37,6 @@ export default React.createClass({
   componentDidMount: function() {
     // get all the recipients from the database
     getRequest('http://localhost:3000/recipients', this.dbSetState)
-  //  session.user.id = "testuserid"
   },
 
   dbSetState: function (err, data) {
@@ -55,8 +54,6 @@ export default React.createClass({
   // setgallery state function takes in a gallery and sets the state to equal new gallery passed in
 
   render () {
-    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
-
     return (
       <div className='app'>
         <NavBar/>

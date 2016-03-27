@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import MyTheme from '../theme.js';
+import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import MyTheme from '../theme.js'
 import ProfilePhoto from './ProfilePhoto'
 import NavBar from './NavBar'
 import Header from './Header'
@@ -17,8 +17,6 @@ import getRequest from '../getRequest.js'
 import putRequest from '../putRequest.js'
 import RateMe from './RateMe'
 
-
-
 export default React.createClass({
 
   childContextTypes : {
@@ -27,7 +25,7 @@ export default React.createClass({
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getMuiTheme(MyTheme),
+      muiTheme: GetMuiTheme(MyTheme),
     };
   },
 
@@ -53,7 +51,6 @@ export default React.createClass({
           if (err) { console.log("ERROR!", err); return }
           console.log('all donations for recipient', resp)
           // update the received amount for this recipient
-
           this.donationSetState(resp, recipientID)
       })
     })
@@ -220,7 +217,6 @@ export default React.createClass({
   },
 
   render: function () {
-
     return (
         <div className='profile'>
           <div>
@@ -246,9 +242,7 @@ export default React.createClass({
             <div className="row">
               <div className="twelve columns">
                 <SobStory sobstory={this.state.sobStory} />
-
                 <SocialSharing url="http://google.com" title="A Title!" media="https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png" />
-
               </div>
             </div>
           </div>
