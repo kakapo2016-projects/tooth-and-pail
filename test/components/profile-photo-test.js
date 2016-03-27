@@ -13,12 +13,12 @@ describe('ProfilePhoto', () => {
      expect(wrapper.find('span.profilePhoto')).to.be.length(1)
   })
 
-  it('finds the url to display profile photo', () => {
+  it('has an image', () => {
     const wrapper = mount(<ProfilePhoto />)
     expect(wrapper.find('img')).to.be.length(1)
   })
 
-  it('pulls the profile img from gallery as per recipient id', () => {
+  it('has an image url property', () => {
     let props = {imgurl: 'imgurl'}
     const wrapper = mount(React.createElement(ProfilePhoto, props))
     expect(wrapper).to.have.prop('imgurl')

@@ -31,9 +31,9 @@ describe('Gallery', () => {
      const wrapper = mount(React.createElement(Gallery, props))
      expect(wrapper.find('div.gallery')).to.be.length(1)
   })
-  it('renders a galleryPhoto', () => {
+  it('renders the correct number of loaded galleryPhotos', () => {
      const wrapper = mount(React.createElement(Gallery, props) )
      expect(wrapper.find('div.galleryPhoto')).to.be.length(3)
   })
-  
+
 })
