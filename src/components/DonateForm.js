@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import RaisedButton from 'material-ui/lib/raised-button'
 import TextField from 'material-ui/lib/text-field'
 import Profile from './Profile'
+import cookie from 'react-cookie'
 
 export default React.createClass ({
 
@@ -24,7 +25,7 @@ export default React.createClass ({
     if (this.state.inputValue < 0){
       alert("Donation invalid. That's a really mean thing to do!")
     } else {
-      this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
+      this.props.handleDonation(cookie.load('donorID'), this.props.recipientID, this.state.inputValue)
     }
     this.setState({inputValue: 0})
   },
