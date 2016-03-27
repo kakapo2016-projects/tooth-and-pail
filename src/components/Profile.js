@@ -31,7 +31,7 @@ export default React.createClass({
   getInitialState: function () {
     return {
       amountDonated: 0,
-      name: "ally"
+      name: ""
     }
   },
 
@@ -98,7 +98,6 @@ export default React.createClass({
   },
 
   render: function () {
-    console.log("this props in profile", this.props, this.state.name, this.state.target, this.state.received, this.state.imgURL, this.state.sobStory)
 
     return (
         <div className='profile'>
