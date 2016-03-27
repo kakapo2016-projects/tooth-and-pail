@@ -8,9 +8,9 @@ import Gallery from './Gallery'
 
 export default React.createClass ({
 
-  handleChange:  function (event, index, value) {
-    this.setState({value:value})
-  },
+  // handleChange:  function (event, index, value) {
+  //   this.setState({value:value})
+  // },
 
   getInitialState: function() {
     return {
