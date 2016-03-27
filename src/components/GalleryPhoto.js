@@ -5,7 +5,6 @@ import { Link } from 'react-router'
 export default React.createClass({
 
   render () {
-
     return (
       <Link to={`/recipient/${this.props.recipientID}`} >
       <div className='galleryPhoto'>

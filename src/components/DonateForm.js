@@ -26,26 +26,22 @@ export default React.createClass ({
     } else {
       this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
     }
-
     this.setState({inputValue: 0})
-
   },
 
   render: function () {
-
-      if (this.props.received >= this.props.target){
-        return(
-          <div>Fully Funded</div>
-        )
-      } else {
-        return (
-          <span id="DonateForm">
-          $<TextField type="number" className="donateInput" onChange={this.handleChange}  value={this.state.inputValue} />
-          <br />
-          <RaisedButton label="Donate!" onClick={this.handleDonate} />
-          </span>
-        )
-      }
+    if (this.props.received >= this.props.target){
+      return(
+        <div>Fully Funded</div>
+      )
+    } else {
+      return (
+        <span id="DonateForm">
+        $<TextField type="number" className="donateInput" onChange={this.handleChange}  value={this.state.inputValue} />
+        <br />
+        <RaisedButton label="Donate!" onClick={this.handleDonate} />
+        </span>
+      )
+    }
   }
-
 })

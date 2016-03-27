@@ -56,7 +56,7 @@ module.exports = function routes(app) {
     // .catch(function(err){
     //   console.log("ERROR! ", err)
     // })
-})
+  })
 
   app.get('/donations', function(req, res) {
     // console.log("in GET all donations")
@@ -65,10 +65,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/donations/:donationID', function(req, res) {
     // console.log("in GET donations for a single donation", req.params.donationID)
@@ -77,10 +74,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/donations/donor/:donorID', function(req, res) {
     // console.log("in GET donations for a single donor", req.params.donorID)
@@ -90,10 +84,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/donations/recipient/:recipientID', function(req, res) {
     // console.log("in GET donations for a single recipient", req.params.recipientID)
@@ -103,10 +94,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/donors', function(req, res) {
     // console.log("in GET all donors")
@@ -115,10 +103,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/donors/:donorID', function(req, res) {
     // console.log("in GET donors by donorID", req.params.donorID)
@@ -127,10 +112,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
   app.get('/donors/name/:donorName', function(req, res) {
     // console.log("in GET donors by donorName", req.params.donorName)
     knex('donors')
@@ -138,10 +120,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
   app.get('/donors/email/:email', function(req, res) {
     // console.log("in GET donors by email", req.params.email)
     knex('donors')
@@ -153,6 +132,39 @@ module.exports = function routes(app) {
     //   console.log("ERROR! ", err)
     // })
 })
+
+  app.get('/ratings/:recipientID', function(req, res) {
+    console.log("in GET ratings for a recipient", req.params.recipientID)
+    knex('ratings')
+    .where('ratings.recipientID', req.params.recipientID)
+    .then(function(resp) {
+      res.send(resp)
+    })
+  })
+
+  // app.get('/ratings/:recipientID/:donorID', function(req, res) {
+  //   console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
+  //   knex('ratings')
+  //   .where({
+  //     ratings.recipientID: req.params.recipientID,
+  //     ratings.donorID:  req.params.donorID
+  //   })
+  //   .select('*')
+  //   .then(function(resp) {
+  //     console.log(resp)
+  //     res.send(resp)
+  //   })
+  // })
+
+  app.get('/ratings/:recipientID', function(req, res) {
+    console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)
+    knex('ratings')
+    .where('ratings.recipientID', req.params.recipientID)
+    .then(function(resp) {
+      console.log(resp)
+      res.send(resp)
+    })
+  })
 
   // ENCRYPTION
 
@@ -225,6 +237,19 @@ module.exports = function routes(app) {
           res.send(resp)
       })
     })
+    app.post('/ratings', function(req, res) {
+      var newId = uuid.v4()
+      knex('ratings')
+        .insert({
+          ratingID: newId ,
+          recipientID: req.body.recipientID,
+          donorID: req.body.donorID,
+          rating: req.body.rating
+        })
+        .then(function(resp) {
+            res.send(resp)
+        })
+      })
 
 // PUT
     app.put('/recipients/:recipientID', function(req, res) {
@@ -236,11 +261,30 @@ module.exports = function routes(app) {
           imgURL: req.body.imgURL,
           received: req.body.received,
           target: req.body.target,
-          sobStory: req.body.sobStory
+          sobStory: req.body.sobStory,
+          rating: req.body.rating
         })
         .then(function(resp) {
             res.send(resp)
         })
       })
+
+      app.post('/ratings/:recipientID/:donorID', function(req, res) {
+        console.log('in put to ratings')
+        knex('ratings')
+          .where({
+              recipientID: req.params.recipientID,
+              donorID:  req.params.donorID
+            })
+          .update({
+            recipientID: req.body.recipientID,
+            donorID: req.body.donorID,
+            rating: req.body.rating
+          })
+          .then(function(resp) {
+              res.send(resp)
+          })
+        })
+
 
 }
