@@ -1,5 +1,4 @@
 import React from 'react'
-import { Router } from 'react-router'
 import cookie from 'react-cookie'
 import ReactDOM from 'react-dom'
 import Header from './Header'

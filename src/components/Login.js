@@ -29,7 +29,9 @@ export default React.createClass ({
         <div className='signup'>
           <h2> LOG IN </h2>
 
-          <TextField type='text'
+          <TextField
+            id='email-field'
+            type='text'
             className='email'
             value={this.state.email}
             onChange={this.handleEmailField}
@@ -37,11 +39,13 @@ export default React.createClass ({
           <br/>
           <br/>
 
-          <TextField type='password'
-          className='password'
-          value={this.state.password}
-          onChange={this.handlePasswordField}
-          placeholder='Password' />
+          <TextField
+            id='email-field'
+            type='password'
+            className='password'
+            value={this.state.password}
+            onChange={this.handlePasswordField}
+            placeholder='Password' />
           <br/>
           <br/>
 
