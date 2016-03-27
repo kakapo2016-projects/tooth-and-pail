@@ -27,3 +27,49 @@ describe('ProgressBar', () => {
     expect(wrapper.find('#ProgressBar').first()).to.have.text('$ out of $5000 raised!')
   })
 })
+
+// example on testing for progress bar found
+// describe('ProgressBar', () => {
+//   it('renders into document w/o blowing up', () => {
+//     expect(true).to.equal(true);
+//     const component = renderIntoDocument(<ProgressBar />);
+
+//     expect(component).to.be.ok;
+//   });
+
+//   describe('#defaultLabel', () => {
+//     it('outputs expected result', () => {
+//       const max = 50;
+//       const value = 20;
+//       const percent = 40;
+
+//       expect(defaultLabel(percent, max, value)).to.equal('40%');
+//     });
+//   });
+
+//   describe('#calculatePercentage', () => {
+//     it('displays expected result', () => {
+//       const max = 80;
+//       const min = 20;
+//       const value = 60;
+
+//       expect(calculatePercentage(value, min, max)).to.be.closeTo(66.6, .1);
+//     });
+
+//     it('correct when value is at max', () => {
+//       const max = 1020;
+//       const min = 0;
+//       const value = 1020;
+
+//       expect(calculatePercentage(value, min, max)).to.equal(100);
+//     });
+    
+//     it('correct when value is at min', () => {
+//       const max = 100;
+//       const min = 0;
+//       const value = 0;
+
+//       expect(calculatePercentage(value, min, max)).to.equal(0);
+//     });
+//   });
+// });
