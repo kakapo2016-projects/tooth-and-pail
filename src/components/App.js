@@ -1,4 +1,5 @@
 import React from 'react'
+import cookie from 'react-cookie'
 import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
@@ -48,6 +49,8 @@ export default React.createClass({
   },
 
   render () {
+    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
+    
     return (
       <div className='app'>
         <NavBar/>
