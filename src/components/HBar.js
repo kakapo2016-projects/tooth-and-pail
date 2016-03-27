@@ -1,9 +1,10 @@
 'use strict';
 
-var React = require('react-addons-{addon}');
+var React = require('react/addons');
 var ReactTransitionGroup = React.addons.TransitionGroup;
 import ProgressBar from './ProgressBar'
 require('d3');
+var ReactCSS = require('reactcss');
 // require('../src/public/hbar.css');
 
 var Bar = React.createClass({
@@ -43,16 +44,15 @@ var Bar = React.createClass({
 });
 
 var HBar = React.createClass({
+
   getDefaultProps: function() {
+    
     return {
-      width: 800,
-      height: 400,
+      width: 900,
+      height: 100,
       data: [
-        {
-          target: 30, 
-          received: 20,
-          label: 
-        }
+        {v: 10, label: 'RECEIVED'},
+        {v: 30, label: 'TARGET'}
       ]
     }
   },
@@ -63,9 +63,12 @@ var HBar = React.createClass({
     }
   },
 
+
   render: function() {
+    
     var props = this.props;
     var hbar = this
+
 
     //Save space for labels before the chart
     this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 3
@@ -74,15 +77,18 @@ var HBar = React.createClass({
 
     var data = this.props.data
 
-    if (this.props.sort === 'ascending') data.sort(function(p, q){return p.targt - q.target});
-    if (this.props.sort === 'descending') data.sort(function(p, q){return q.target - p.target});
+    if (this.props.sort === 'ascending') data.sort(function(p, q){return p.v - q.v});
+    if (this.props.sort === 'descending') data.sort(function(p, q){return q.v - p.v});
 
-    /*
-    <g>
-      {bars}
-    </g>
-    {this.props.data.map(x => <li key={x.v}>{x.label}</li>)}
-    */
+    
+    // <g>
+    //   {bars}
+    // </g>
+    // {this.props.data.map(x => <li key={x.v}>{x.label}</li>)}
+    {this.props.data.map(x => console.log( 'key', x.v, x.label ))}
+    this.props.data[0].v = this.props.received
+    this.props.data[1].v = this.props.target
+   
 
     return (
       <svg className="HBar" width={this.props.width} height={this.props.height}>
@@ -139,7 +145,7 @@ var HBar = React.createClass({
 
   drawText: function(i, point, type){
 
-    var target = point.target
+    var v = point.v
 
     /* Format the point if an input formatting function is available */
     if (this.props.formatter){
@@ -223,6 +229,7 @@ var HBar = React.createClass({
 
 });
 
+
 /* Helpers */
 
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -230,58 +237,5 @@ function shadeColor(color, percent) {
     var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
     return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
 }
-
-// style = {
-//   alert('hello')
-
-// .HBar{
-//   /*
-//   border: 1px dashed rgba(255, 255, 255, 0.13);
-//   */
-//   padding-right: 4%
-// }
-
-// .HBar .texts text{
-//   dominant-baseline: central;
-//   pointer-events: none;
-//   opacity: 0.75
-// }
-
-// .HBar .axis {
-//   stroke-width: 1px
-// }
-
-
-// /* ANIMATING */
-
-// .barTransition-enter {
-//   opacity: 0.01;
-//   fill: white;
-//   transition: fill 1s ease-in;
-// }
-
-// .barTransition-enter.barTransition-enter-active {
-//   opacity: 1;
-//   fill: black;
-// }
-
-// .barTransition-leave {
-//   opacity: 1;
-//   transition: opacity .01s ease-out;
-// }
-
-// .barTransition-leave.barTransition-leave-active {
-//   opacity: 0.01;
-// }
-
-// .hover.barTransition-leave {
-//   transition: opacity 0.01s;
-// }
-// .hover.barTransition-enter {
-//   transition: fill 0.01s;
-// }
-
-
-// }
 
 module.exports = HBar;

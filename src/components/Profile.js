@@ -7,7 +7,7 @@ import NavBar from './NavBar'
 import Header from './Header'
 import ProfileName from './ProfileName'
 import ProgressBar from './ProgressBar'
-// import HBar from './Hbar.js'
+import HBar from './HBar'
 import DonateForm from './DonateForm'
 import SobStory from './SobStory'
 import SocialSharing from './SocialSharing'
@@ -115,8 +115,7 @@ export default React.createClass({
                 <br />
                 <ProgressBar target={this.state.target} received={this.state.received}/>
                 <br />
-                <HBar />
-                <br />
+                <HBar target={this.state.target} received={this.state.received}/>
               </div>
             </div>
             <div className="row">

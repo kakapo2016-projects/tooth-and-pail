@@ -48,6 +48,7 @@
     "react-share": "^1.4.1",
     "react-tap-event-plugin": "^0.2.2",
     "react-toggle-display": "^2.0.2",
+    "reactcss": "^0.4.5",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "sqlite3": "^3.1.2",
