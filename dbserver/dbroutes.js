@@ -10,25 +10,20 @@ var bcrypt = require('bcryptjs')
 var knex = require('knex')({
   client: 'pg',
   connection: {
-    username : 'josephquested',
-    password : '',
     host     : '127.0.0.1',
     database : 'tooth_and_pail'
   }
 })
 
 module.exports = function routes(app) {
-
   var urlencodedParser = bodyparser.urlencoded({ extended: false })
   app.use(bodyparser.json())
 
-  // GET
+  // GET REQUESTS //
+
   app.get('/', function(req, res) {
-    res.send('hello world')
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+    res.send('hello teeth')
+  })
 
   app.get('/recipients', function(req, res) {
     knex('recipients')
@@ -36,26 +31,17 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp)
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/recipients/:recipientID', function(req, res) {
-    // console.log("in GET for user", req.params.recipientID)
     knex('recipients')
     .where('recipients.recipientID', req.params.recipientID)
     .then(function(resp) {
-      // console.log ("in get with recipientid", resp)
       res.send(resp[0])
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
   })
 
   app.get('/donations', function(req, res) {
-    // console.log("in GET all donations")
     knex('donations')
     .select('*')
     .then(function(resp) {
@@ -64,7 +50,6 @@ module.exports = function routes(app) {
   })
 
   app.get('/donations/:donationID', function(req, res) {
-    // console.log("in GET donations for a single donation", req.params.donationID)
     knex('donations')
     .where('donations.donationID', req.params.donationID)
     .then(function(resp) {
@@ -73,7 +58,6 @@ module.exports = function routes(app) {
   })
 
   app.get('/donations/donor/:donorID', function(req, res) {
-    // console.log("in GET donations for a single donor", req.params.donorID)
     knex('donations')
     .where('donations.donorID', req.params.donorID)
     .select('*')
@@ -83,7 +67,6 @@ module.exports = function routes(app) {
   })
 
   app.get('/donations/recipient/:recipientID', function(req, res) {
-    // console.log("in GET donations for a single recipient", req.params.recipientID)
     knex('donations')
     .where('donations.recipientID', req.params.recipientID)
     .select('*')
@@ -93,7 +76,6 @@ module.exports = function routes(app) {
   })
 
   app.get('/donors', function(req, res) {
-    // console.log("in GET all donors")
     knex('donors')
     .select('*')
     .then(function(resp) {
@@ -102,23 +84,22 @@ module.exports = function routes(app) {
   })
 
   app.get('/donors/:donorID', function(req, res) {
-    // console.log("in GET donors by donorID", req.params.donorID)
     knex('donors')
     .where('donors.donorID', req.params.donorID)
     .then(function(resp) {
       res.send(resp[0])
     })
   })
+
   app.get('/donors/name/:donorName', function(req, res) {
-    // console.log("in GET donors by donorName", req.params.donorName)
     knex('donors')
     .where('donors.donorName', req.params.donorName)
     .then(function(resp) {
       res.send(resp[0])
     })
   })
+
   app.get('/donors/email/:email', function(req, res) {
-    // console.log("in GET donors by email", req.params.email)
     knex('donors')
     .where('donors.email', req.params.email)
     .then(function(resp) {

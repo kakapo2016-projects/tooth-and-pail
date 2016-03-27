@@ -18,8 +18,8 @@ module.exports = {
     user:     process.env.DBUSER,
     password: process.env.DBPASSWORD
   },
-
   directory: __dirname + '/migrations',
   tableName: 'migrations'
+  }
 }
 }
