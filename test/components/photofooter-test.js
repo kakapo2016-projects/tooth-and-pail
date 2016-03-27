@@ -8,7 +8,7 @@ import PhotoFooter from '../../src/components/PhotoFooter'
 chai.use(chaiEnzyme())
 
 
-describe('<PhotoFooter />', () => {
+describe('PhotoFooter', () => {
 
   it('renders a footer', () => {
      const wrapper = shallow(React.createElement(PhotoFooter))

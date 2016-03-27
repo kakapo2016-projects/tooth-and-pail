@@ -7,6 +7,7 @@ import NavBar from './NavBar'
 import Header from './Header'
 import ProfileName from './ProfileName'
 import ProgressBar from './ProgressBar'
+import HBar from './HBar.js'
 import DonateForm from './DonateForm'
 import SobStory from './SobStory'
 import SocialSharing from './SocialSharing'
@@ -31,7 +32,7 @@ export default React.createClass({
   getInitialState: function () {
     return {
       amountDonated: 0,
-      name: "ally"
+      name: ""
     }
   },
 
@@ -110,9 +111,12 @@ export default React.createClass({
               </div>
               <div className="six columns">
                 <ProfileName name={this.state.name}/>
+                <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} />
+                <br />
                 <ProgressBar target={this.state.target} received={this.state.received}/>
                 <br />
-                <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} />
+                <HBar />
+                <br />
               </div>
             </div>
             <div className="row">
