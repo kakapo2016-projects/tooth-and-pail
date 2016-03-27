@@ -33,8 +33,6 @@ export default React.createClass ({
       console.log("recipientID", this.props.recipientID, this.state.inputValue)
       this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
     }
-
-
   },
 
   render: function () {
