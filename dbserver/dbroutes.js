@@ -149,27 +149,27 @@ module.exports = function routes(app) {
 
   // ENCRYPTION
 
-//   app.post('/encrypt', function(req, res) {
-//     bcrypt.genSalt(10, function(err, salt) {
-//       if (err) { console.log("ERROR GENERATING SALT: ", err); return }
-//       bcrypt.hash(req.body.password, salt, (err, hash) => {
-//         if (err) { console.log("ERROR ENCRYPTING: ", err); return }
-//         res.send(hash)
-//     })
-//   })
-// })
+  app.post('/encrypt', function(req, res) {
+    bcrypt.genSalt(10, function(err, salt) {
+      if (err) { console.log("ERROR GENERATING SALT: ", err); return }
+      bcrypt.hash(req.body.password, salt, (err, hash) => {
+        if (err) { console.log("ERROR ENCRYPTING: ", err); return }
+        res.send(hash)
+    })
+  })
+})
 
-//   app.post('/unencrypt', function(req, res) {
-//     bcrypt.compare(req.body.password, req.body.passwordHash, function(err, resp) {
-//     if (resp === true) {
-//       console.log("password returned match TRUE")
-//       res.send(true)
-//     } else {
-//       console.log("password returned match FALSE")
-//       res.send(false)
-//     }
-//   })
-// })
+  app.post('/unencrypt', function(req, res) {
+    bcrypt.compare(req.body.password, req.body.passwordHash, function(err, resp) {
+    if (resp === true) {
+      console.log("password returned match TRUE")
+      res.send(true)
+    } else {
+      console.log("password returned match FALSE")
+      res.send(false)
+    }
+  })
+})
 
   // POST
 
