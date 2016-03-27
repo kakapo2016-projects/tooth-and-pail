@@ -5,7 +5,7 @@ var ReactTransitionGroup = React.addons.TransitionGroup;
 import ProgressBar from './ProgressBar'
 require('d3');
 var ReactCSS = require('reactcss');
-// require('../src/public/hbar.css');
+
 
 var Bar = React.createClass({
   getInitialState: function(){
