@@ -1,10 +1,7 @@
+// CLEANED //
 
-var express = require('express')
-var path = require('path')
-var cors = require('cors')
 var bodyparser = require('body-parser')
 var uuid = require('uuid')
-var compression = require('compression')
 var bcrypt = require('bcryptjs')
 
 var knex = require('knex')({
@@ -105,10 +102,7 @@ module.exports = function routes(app) {
     .then(function(resp) {
       res.send(resp[0])
     })
-    // .catch(function(err){
-    //   console.log("ERROR! ", err)
-    // })
-})
+  })
 
   app.get('/ratings/:recipientID', function(req, res) {
     console.log("in GET ratings for a recipient", req.params.recipientID)
@@ -151,9 +145,9 @@ module.exports = function routes(app) {
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         if (err) { console.log("ERROR ENCRYPTING: ", err); return }
         res.send(hash)
+      })
     })
   })
-})
 
   app.post('/unencrypt', function(req, res) {
     bcrypt.compare(req.body.password, req.body.passwordHash, function(err, resp) {
@@ -163,14 +157,13 @@ module.exports = function routes(app) {
     } else {
       console.log("password returned match FALSE")
       res.send(false)
-    }
+      }
+    })
   })
-})
 
-  // POST
+  // POST REQUESTS //
 
   app.post('/donors', function(req, res) {
-    console.log("in POST to donors", req.body)
     var newId = uuid.v4()
     knex('donors')
     .insert({
@@ -185,7 +178,6 @@ module.exports = function routes(app) {
   })
 
   app.post('/donations', function(req, res) {
-    console.log("in POST to donations", req.body)
     var newId = uuid.v4()
     knex('donations')
     .insert({
@@ -215,55 +207,55 @@ module.exports = function routes(app) {
           res.send(resp)
       })
     })
-    app.post('/ratings', function(req, res) {
-      var newId = uuid.v4()
-      knex('ratings')
-        .insert({
-          ratingID: newId ,
-          recipientID: req.body.recipientID,
-          donorID: req.body.donorID,
-          rating: req.body.rating
+
+  app.post('/ratings', function(req, res) {
+    var newId = uuid.v4()
+    knex('ratings')
+      .insert({
+        ratingID: newId ,
+        recipientID: req.body.recipientID,
+        donorID: req.body.donorID,
+        rating: req.body.rating
+      })
+      .then(function(resp) {
+          res.send(resp)
+      })
+    })
+
+  app.post('/ratings/:recipientID/:donorID', function(req, res) {
+    console.log('in put to ratings')
+    knex('ratings')
+      .where({
+          recipientID: req.params.recipientID,
+          donorID:  req.params.donorID
         })
-        .then(function(resp) {
-            res.send(resp)
-        })
+      .update({
+        recipientID: req.body.recipientID,
+        donorID: req.body.donorID,
+        rating: req.body.rating
+      })
+      .then(function(resp) {
+          res.send(resp)
+      })
+    })
+
+  // PUT REQUESTS //
+
+  app.put('/recipients/:recipientID', function(req, res) {
+    knex('recipients')
+      .where('recipients.recipientID', req.params.recipientID)
+      .update({
+        name: req.body.Name,
+        imgURL: req.body.imgURL,
+        received: req.body.received,
+        target: req.body.target,
+        sobStory: req.body.sobStory,
+        rating: req.body.rating,
+        donorID: req.body.donorID
       })
 
-// PUT
-    app.put('/recipients/:recipientID', function(req, res) {
-      console.log("in dbroutes PUT recp")
-      knex('recipients')
-        .where('recipients.recipientID', req.params.recipientID)
-        .update({
-          name: req.body.Name,
-          imgURL: req.body.imgURL,
-          received: req.body.received,
-          target: req.body.target,
-          sobStory: req.body.sobStory,
-          rating: req.body.rating,
-          donorID: req.body.donorID
-        })
-        .then(function(resp) {
-            res.send(resp)
-        })
-      })
-
-      app.post('/ratings/:recipientID/:donorID', function(req, res) {
-        console.log('in put to ratings')
-        knex('ratings')
-          .where({
-              recipientID: req.params.recipientID,
-              donorID:  req.params.donorID
-            })
-          .update({
-            recipientID: req.body.recipientID,
-            donorID: req.body.donorID,
-            rating: req.body.rating
-          })
-          .then(function(resp) {
-              res.send(resp)
-          })
-        })
-
-
+      .then(function(resp) {
+        res.send(resp)
+    })
+  })
 }
