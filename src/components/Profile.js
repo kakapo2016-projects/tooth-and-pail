@@ -117,7 +117,6 @@ export default React.createClass({
                 <br />
                 <HBar target={this.state.target} received={this.state.received}/>
                 <br />
-                <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} target={this.state.target} received={this.state.received} />
               </div>
             </div>
             <div className="row">
