@@ -63,15 +63,13 @@ var HBar = React.createClass({
     }
   },
 
-
   render: function() {
     
     var props = this.props;
     var hbar = this
 
-
     //Save space for labels before the chart
-    this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 3
+    this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 8
 
     hbar.scales()
 
@@ -80,16 +78,11 @@ var HBar = React.createClass({
     if (this.props.sort === 'ascending') data.sort(function(p, q){return p.v - q.v});
     if (this.props.sort === 'descending') data.sort(function(p, q){return q.v - p.v});
 
-    
-    // <g>
-    //   {bars}
-    // </g>
-    // {this.props.data.map(x => <li key={x.v}>{x.label}</li>)}
     {this.props.data.map(x => console.log( 'key', x.v, x.label ))}
     this.props.data[0].v = this.props.received
     this.props.data[1].v = this.props.target
-   
-
+   // needs if else function for reaching target then stops the donations
+    
     return (
       <svg className="HBar" width={this.props.width} height={this.props.height}>
         <g>
@@ -196,10 +189,7 @@ var HBar = React.createClass({
           </text>
         </g>
       )
-
     }
-
-
   },
 
   over: function(i){
@@ -225,8 +215,6 @@ var HBar = React.createClass({
       .domain(d3.range(this.props.data.length))
       .rangeBands([0, this.props.height], 1/3, 1/2);
   }
-
-
 });
 
 
