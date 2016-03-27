@@ -1,14 +1,11 @@
+
 var express = require('express')
 var path = require('path')
 var cors = require('cors')
 var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var compression = require('compression')
-<<<<<<< Updated upstream
 var bcrypt = require('bcryptjs')
-=======
-// var bcrypt = require('bcrypt')
->>>>>>> Stashed changes
 
 var knex = require('knex')({
   client: 'sqlite3',
@@ -149,6 +146,30 @@ module.exports = function routes(app) {
     // .catch(function(err){
     //   console.log("ERROR! ", err)
     // })
+})
+
+  // ENCRYPTION
+
+  app.post('/encrypt', function(req, res) {
+    bcrypt.genSalt(10, function(err, salt) {
+      if (err) { console.log("ERROR GENERATING SALT: ", err); return }
+      bcrypt.hash(req.body.password, salt, (err, hash) => {
+        if (err) { console.log("ERROR ENCRYPTING: ", err); return }
+        res.send(hash)
+    })
+  })
+})
+
+  app.post('/unencrypt', function(req, res) {
+    bcrypt.compare(req.body.password, req.body.passwordHash, function(err, resp) {
+    if (resp === true) {
+      console.log("password returned match TRUE")
+      res.send(true)
+    } else {
+      console.log("password returned match FALSE")
+      res.send(false)
+    }
+  })
 })
 
   // POST

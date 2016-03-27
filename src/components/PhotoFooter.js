@@ -10,9 +10,9 @@ export default React.createClass({
         <p className='galleryProgressBar'>
           <ProgressBar target={this.props.target} received={this.props.received}/>
         </p>
-        <p>
-          <Rate />
-        </p>
+
+          <Rate rating={this.props.rating}/>
+
       </div>
     )
   }
