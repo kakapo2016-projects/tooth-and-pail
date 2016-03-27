@@ -1,5 +1,6 @@
 import React from 'react'
 import ProgressBar from './ProgressBar'
+import Rate from './Rate'
 
 export default React.createClass({
   render () {
@@ -9,6 +10,9 @@ export default React.createClass({
         <p className='galleryProgressBar'>
           <ProgressBar target={this.props.target} received={this.props.received}/>
         </p>
+
+          <Rate rating={this.props.rating}/>
+
       </div>
     )
   }
