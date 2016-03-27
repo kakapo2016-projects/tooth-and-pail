@@ -49,39 +49,30 @@ export default React.createClass ({
   },
 
   photoUploaded: function (error, l){
-    console.log("you've uploaded me!")
     this.setState({'photo': l[0].secure_url})
     this.setState({'isUploaded': true})
-    console.log(this.state.photo, "this had better fucking work")
   },
-
-  // uploadCallback: function (error, result) {
-  //   // this.photoUploaded(result.secure_url)
-  //   console.log("uploadCallback", error, result)
-  // },
-
-  // document.getElementById("upload_widget_opener").addEventListener("click", function() {
-
-  //   cloudinary.openUploadWidget({ cloud_name: 'demo', upload_preset: 'a5vxnzbp'}, 
-  //     function(error, result) { console.log(error, result) });
-
-  // }, false);
 
   componentDidMount: function () {
     var _this = this
-  document.getElementById("upload_widget_opener").addEventListener("click", function() {
-
-    cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib'}, 
-
-      function(error, result) {_this.photoUploaded(error, result)} )
-
+    document.getElementById("upload_widget_opener").addEventListener("click", function() {
+      cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib'}, 
+        function(error, result) {_this.photoUploaded(error, result)} )
     }, false);
-
-},
+  },
 
   handleSubmit: function (){
-    console.log("Handle submit", this.state, "name", this.state.name, this.state.photo)
-
+    var dataObject = {}
+    dataObject.name = this.state.name
+    dataObject.imgURL = this.state.photo
+    dataObject.received = 0
+    dataObject.target = this.state.target
+    dataObject.sobStory = this.state.sobstory
+    console.log("this is the object", dataObject)
+    postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
+      if (err) { console.log("ERROR!", err); return }
+      })
+    })
   },
 
 
@@ -108,7 +99,7 @@ export default React.createClass ({
       <FlatButton secondary='true' label="Upload picture" backgroundColor='red' id="upload_widget_opener" />
       <br />
       <ToggleDisplay show={this.state.isUploaded}>
-        <p>Photo uploaded!</p>
+      <p>Photo uploaded!</p>
       </ToggleDisplay>
       <br />
       <RaisedButton label="Submit your teeth!" onClick={this.handleSubmit} />
