@@ -7,6 +7,7 @@ import Header from './Header'
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
 import SvgIcon from 'material-ui/lib/svg-icon'
+import getRequest from '../getRequest.js'
 
 // {"donationID":"d25","donorID":"2222","recipientID":"10","amount":50,"createdAt":"2016-03-26 01:22:30"}
 
@@ -21,14 +22,18 @@ export default React.createClass({
     }
   },
 
-  //sort the array
-  var textArr = []
-  for (var i = 0; i < donationArray.length; i++){
-    var donation = donationArray[0]
-    var donationText = donation.name + "just received a $"+ donation.amount " towards their goal! Just "+ donation.target-donation.received + "to go!"
-    textArr.push(donationText)
+  componentDidMount: function () {
+        //sort the array
+    var textArr = []
+    for (var i = 0; i < donationArray.length; i++){
+      var donation = donationArray[0]
+      var donationText = donation.name + "just received a $"+ donation.amount " towards their goal! Just "+ donation.target-donation.received + "to go!"
+      textArr.push(donationText)
+    }
+    this.setState({'textArr': textArr}),
   }
-  this.setState({'textArr': textArr})
+
+
 
 
   render: function () {
@@ -43,7 +48,7 @@ export default React.createClass({
           <h2>Recent Activity</h2>
           <List>
             {textsList}
-          </List
+          </List>
         </div>
       </div>
     )

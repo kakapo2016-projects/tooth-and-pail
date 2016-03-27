@@ -22,3 +22,4 @@ module.exports = {
   directory: __dirname + '/migrations',
   tableName: 'migrations'
 }
+}
