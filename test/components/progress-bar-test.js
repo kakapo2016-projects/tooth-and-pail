@@ -27,3 +27,4 @@ describe('ProgressBar', () => {
     expect(wrapper.find('#ProgressBar').first()).to.have.text('$ out of $5000 raised!')
   })
 })
+

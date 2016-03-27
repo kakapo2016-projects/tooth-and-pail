@@ -7,7 +7,7 @@ chai.use(chaiEnzyme())
 
 import ProfilePhoto from '../../src/components/ProfilePhoto'
 
-describe('<ProfilePhoto />', () => {
+describe('ProfilePhoto', () => {
   it('renders a profile photo', () => {
      const wrapper = shallow(React.createElement(ProfilePhoto))
      expect(wrapper.find('span.profilePhoto')).to.be.length(1)

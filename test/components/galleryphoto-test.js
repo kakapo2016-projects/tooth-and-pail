@@ -8,7 +8,7 @@ import chaiEnzyme from 'chai-enzyme'
 import GalleryPhoto from '../../src/components/GalleryPhoto'
 import PhotoFooter from '../../src/components/PhotoFooter'
 
-describe('<GalleryPhoto />', () => {
+describe('GalleryPhoto', () => {
   it('renders a gallery photo', () => {
      const wrapper = shallow(React.createElement(GalleryPhoto))
      expect(wrapper.find('div.galleryPhoto')).to.be.length(1)
