@@ -1,9 +1,10 @@
 'use strict';
 
-var React = require('react/addons');
+var React = require('react-addons-{addon}');
 var ReactTransitionGroup = React.addons.TransitionGroup;
+import ProgressBar from './ProgressBar'
+require('d3');
 // require('../src/public/hbar.css');
-require('d3')
 
 var Bar = React.createClass({
   getInitialState: function(){
@@ -226,7 +227,7 @@ function shadeColor(color, percent) {
     return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
 }
 
-// Styles = {
+// style = {
 //   alert('hello')
 
 // .HBar{
