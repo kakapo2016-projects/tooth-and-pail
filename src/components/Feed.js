@@ -9,8 +9,6 @@ import ListItem from 'material-ui/lib/lists/list-item'
 import SvgIcon from 'material-ui/lib/svg-icon'
 import getRequest from '../getRequest.js'
 
-// {"donationID":"d25","donorID":"2222","recipientID":"10","amount":50,"createdAt":"2016-03-26 01:22:30"}
-
 export default React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -22,8 +20,25 @@ export default React.createClass({
     }
   },
 
+  dynamicSort: function (property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+  },
+
   componentDidMount: function () {
-        //sort the array
+    getRequest('http://localhost:3000/donations', this.createFeed)
+  },
+
+  createFeed: function (data) {
+    var originalData = data
+    originalData = originalData.sort(dynamicSort("Date"));
     var textArr = []
     for (var i = 0; i < donationArray.length; i++){
       var donation = donationArray[0]
@@ -31,10 +46,7 @@ export default React.createClass({
       textArr.push(donationText)
     }
     this.setState({'textArr': textArr}),
-  }
-
-
-
+  },
 
   render: function () {
     var texts = this.state.textArr

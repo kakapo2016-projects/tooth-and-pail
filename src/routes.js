@@ -15,5 +15,6 @@ module.exports = (
     <Route path="trends" component={Trends}></Route>
     <Route path="submitteeth" component={RecipientSignup}></Route>
     <Route path="about" component={About}></Route>
+    <Route path="feed" component={Feed}></Route>
   </Router>
 )
