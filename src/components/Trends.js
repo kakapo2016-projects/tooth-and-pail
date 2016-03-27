@@ -10,7 +10,6 @@ import RaisedButton from 'material-ui/lib/raised-button';
 
 import getRequest from '../getRequest.js'
 
-
 import TrendDonationSize from './TrendDonationSize'
 import TrendDonationsTime from './TrendDonationsTime'
 import TrendTeethFunded from './TrendTeethFunded'
@@ -24,7 +23,7 @@ export default React.createClass ({
   getChildContext() {
     return {
       muiTheme: ThemeManager.getMuiTheme(MyTheme),
-    };
+    }
   },
 
   getInitialState: function () {
@@ -32,12 +31,8 @@ export default React.createClass ({
       isTime: false,
       isSize: false,
       isFunded: false
-    };
+    }
   },
-
-
-
-
 
   handleTime: function() {
     this.setState({isTime: true})
@@ -85,11 +80,6 @@ export default React.createClass ({
           </ToggleDisplay>
         </div>
       </div>
-      )
-
+    )
   }
-  
-
-
-  
 })

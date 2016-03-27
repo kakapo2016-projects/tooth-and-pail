@@ -10,8 +10,6 @@ import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyTheme from '../theme.js';
 import postRequest from '../postRequest.js'
 
-
-
 export default React.createClass ({
   childContextTypes : {
     muiTheme: React.PropTypes.object
@@ -32,9 +30,6 @@ export default React.createClass ({
       isUploaded: false
     }
   },
-
-
-
 
   handleName: function (e) {
     this.setState({'name': e.target.value});
@@ -71,40 +66,38 @@ export default React.createClass ({
     console.log("this is the object", dataObject)
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
-      })
-    }
-  ,
-
+    })
+  }
 
   render: function () {
     return (
       <div>
-      <NavBar/>
-      <Header header={this.props.recipientID}/>
-      <div className="RecipientForm twelve columns">
-      <h2>Submit Your Teeth</h2>
-      <p>Need funding for dental treatment? Submit your details here and with the help of our generous donors, the funding you need could be closer than you think.</p>
-      Your name
-      <br />
-      <TextField type="text" className="name" id="name" onChange={this.handleName} />
-      <br />
-      How much do you need to raise for your treatment?
-      <br />
-      <TextField type="number" className="target" id="target" onChange={this.handleTarget} />
-      <br />
-      Tell us about why you need funding?
-      <br />
-      <TextField type='text' multiLine='true' id="sobstory" rows='8' fullWidth onChange={this.handleSobstory} />
-      <br />
-      <FlatButton secondary='true' label="Upload picture" backgroundColor='red' id="upload_widget_opener" />
-      <br />
-      <ToggleDisplay show={this.state.isUploaded}>
-      <p>Photo uploaded!</p>
-      </ToggleDisplay>
-      <br />
-      <RaisedButton label="Submit your teeth!" onClick={this.handleSubmit} />
+        <NavBar/>
+        <Header header={this.props.recipientID}/>
+        <div className="RecipientForm twelve columns">
+          <h2>Submit Your Teeth</h2>
+          <p>Need funding for dental treatment? Submit your details here and with the help of our generous donors, the funding you need could be closer than you think.</p>
+          Your name
+          <br />
+          <TextField type="text" className="name" id="name" onChange={this.handleName} />
+          <br />
+          How much do you need to raise for your treatment?
+          <br />
+          <TextField type="number" className="target" id="target" onChange={this.handleTarget} />
+          <br />
+          Tell us about why you need funding?
+          <br />
+          <TextField type='text' multiLine='true' id="sobstory" rows='8' fullWidth onChange={this.handleSobstory} />
+          <br />
+          <FlatButton secondary='true' label="Upload picture" backgroundColor='red' id="upload_widget_opener" />
+          <br />
+          <ToggleDisplay show={this.state.isUploaded}>
+          <p>Photo uploaded!</p>
+          </ToggleDisplay>
+          <br />
+          <RaisedButton label="Submit your teeth!" onClick={this.handleSubmit} />
+        </div>
       </div>
-      </div>
-      )
-}
+    )
+  }
 })
