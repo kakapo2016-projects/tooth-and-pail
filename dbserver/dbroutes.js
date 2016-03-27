@@ -231,7 +231,8 @@ module.exports = function routes(app) {
         imgURL: req.body.imgURL,
         received: req.body.received,
         target: req.body.target,
-        sobStory: req.body.sobStory
+        sobStory: req.body.sobStory,
+        donorID: req.body.donorID
       })
       .then(function(resp) {
           res.send(resp)
@@ -262,7 +263,8 @@ module.exports = function routes(app) {
           received: req.body.received,
           target: req.body.target,
           sobStory: req.body.sobStory,
-          rating: req.body.rating
+          rating: req.body.rating,
+          donorID: req.body.donorID
         })
         .then(function(resp) {
             res.send(resp)

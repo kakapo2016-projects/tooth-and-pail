@@ -9,6 +9,7 @@ exports.up = function(knex, Promise) {
     table.integer('target')
     table.string('sobStory', 2000)
     table.integer('rating')
+    table.varchar('donorID')
     table.timestamp('createdAt').defaultTo(knex.fn.now())
     })
     .then(function (){
