@@ -1,5 +1,6 @@
 import React from 'react'
 import { Router } from 'react-router'
+import cookie from 'react-cookie'
 import ReactDOM from 'react-dom'
 import Header from './Header'
 import NavBar from './NavBar'
@@ -31,10 +32,11 @@ export default React.createClass({
       if (res === null) { alert('you call that a valid email address, idiot?'); return }
 
       postRequest(`http://localhost:3000/unencrypt`, {
-        password: password, passwordHash: res.passwordHash}, (err, res) => {
+        password: password, passwordHash: res.passwordHash}, (err, resp) => {
         if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); return }
-        if (res.body) {
+        if (resp.body) {
           alert('sucessfully logged in!')
+          cookie.save('donorID', res.donorID, { path: '/'})
           this.props.history.push('/gallery')
         } else {
           alert('incorrect password!')
@@ -58,8 +60,8 @@ export default React.createClass({
         }
 
         postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
+          cookie.save('donorID', resp.text, { path: '/'})
           this.props.history.push('/gallery')
-          // set a session ID
         })
       })
     })
