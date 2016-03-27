@@ -4,7 +4,7 @@ var cors = require('cors')
 var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var compression = require('compression')
-var bcrypt = require('bcrypt')
+var bcrypt = require('bcryptjs')
 
 var knex = require('knex')({
   client: 'sqlite3',

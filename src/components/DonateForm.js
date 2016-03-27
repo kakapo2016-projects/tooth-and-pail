@@ -26,7 +26,9 @@ export default React.createClass ({
     } else {
       this.props.handleDonation('1111', this.props.recipientID, this.state.inputValue)
     }
+
     this.setState({inputValue: 0})
+
   },
 
   render: function () {
