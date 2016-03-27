@@ -8,18 +8,14 @@ var compression = require('compression')
 var bcrypt = require('bcryptjs')
 
 var knex = require('knex')({
-  client: 'sqlite3',
+  client: 'pg',
   connection: {
-    filename: '../datastore/tandp.sqlite3'
-  },
-  useNullAsDefault: true
+    username : 'josephquested',
+    password : '',
+    host     : '127.0.0.1',
+    database : 'tooth_and_pail'
+  }
 })
-
-// var knex = require('knex')({
-//   client: 'pg',
-//   connection: 'postgresql://localhost:3000',
-//   searchPath: 'knex,public'
-// })
 
 module.exports = function routes(app) {
 

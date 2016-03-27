@@ -51,7 +51,7 @@ export default React.createClass ({
   componentDidMount: function () {
     var _this = this
     document.getElementById("upload_widget_opener").addEventListener("click", function() {
-      cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib'}, 
+      cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib'},
         function(error, result) {_this.photoUploaded(error, result)} )
     }, false);
   },
@@ -67,7 +67,7 @@ export default React.createClass ({
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
     })
-  }
+  },
 
   render: function () {
     return (
