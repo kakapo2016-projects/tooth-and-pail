@@ -44,26 +44,24 @@ export default React.createClass({
     this.setState({gallery: data})
   },
 
-  sortHandleChange: function(event, index, value) {
-    this.setState({valueSort:sortName})
-  },
-
-  setGalleryState: function (newGallery) {
-    this.setState({gallery: newGallery})
-  },
+  // sortHandleChange: function(event, index, value) {
+  //   this.setState({valueSort:sortName})
+  // },
+  //
+  // setGalleryState: function (newGallery) {
+  //   this.setState({gallery: newGallery})
+  // },
 
   // setgallery state function takes in a gallery and sets the state to equal new gallery passed in
 
   render () {
     console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
-    
+
     return (
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
-        <Sort gallery={this.state.gallery} setGalleryState={this.setGalleryState}/>
         <Gallery gallery={this.state.gallery}/>
-
       </div>
     )
   }
