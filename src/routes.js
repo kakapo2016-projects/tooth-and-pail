@@ -4,6 +4,7 @@ import App from './components/App'
 import Profile from './components/Profile'
 import Home from './components/Home'
 import Trends from './components/Trends'
+import RecipientSignup from './components/RecipientSignup'
 
 module.exports = (
   <Router history={browserHistory}>
@@ -11,5 +12,6 @@ module.exports = (
     <Route path="gallery" component={App}></Route>
     <Route path="recipient/:recipientID" component={Profile}></Route>
     <Route path="trends" component={Trends}></Route>
+    <Route path="submitteeth" component={RecipientSignup}></Route>
   </Router>
 )

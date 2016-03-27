@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router } from 'react-router'
+import cookie from 'react-cookie'
 import ReactDOM from 'react-dom'
 import Header from './Header'
 import NavBar from './NavBar'
@@ -29,13 +29,18 @@ export default React.createClass({
     getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res === null) { alert('you call that a valid email address, idiot?'); return }
-      /// run password through bcript
-      if (password === res.passwordHash) {
-        alert('sucessfully logged in!')
-        this.props.history.push('/gallery')
-      } else {
-        alert('incorrect password!')
-      }
+
+      postRequest(`http://localhost:3000/unencrypt`, {
+        password: password, passwordHash: res.passwordHash}, (err, resp) => {
+        if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); return }
+        if (resp.body) {
+          alert('sucessfully logged in!')
+          cookie.save('donorID', res.donorID, { path: '/'})
+          this.props.history.push('/gallery')
+        } else {
+          alert('incorrect password!')
+        }
+      })
     })
   },
 
@@ -44,18 +49,19 @@ export default React.createClass({
     getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res !== null) { alert('you already have an account, idiot!'); return }
-      /// run password through bcript
-      alert('creating you an account!')
-      let data = {
-        donorName: username,
-        passwordHash: password,
-        email: email
-      }
-      postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
-        console.log('CALLBACK RESP: ', resp)
-        console.log('CALLBACK ERROR: ', err)
-        this.props.history.push('/gallery')
-        // set a session ID, redirect the user to the gallery
+
+      postRequest(`http://localhost:3000/encrypt`, {password: password}, (err, res) => {
+        if (err) { console.log("ERROR RETRIVING ENCRIPTION!: ", err); return }
+        let data = {
+          donorName: username,
+          passwordHash: res.text,
+          email: email
+        }
+
+        postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
+          cookie.save('donorID', resp.text, { path: '/'})
+          this.props.history.push('/gallery')
+        })
       })
     })
   },

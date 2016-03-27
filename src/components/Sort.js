@@ -1,6 +1,8 @@
 import React from 'react'
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import Gallery from './Gallery'
+
 
 
 
@@ -16,25 +18,28 @@ export default React.createClass ({
     }
   },
 
+  generateNewGallery: function () {
+    if (this.props.gallery[0] !== undefined) {
+      var initialGallery = this.props.gallery  // initial array of gallery objects
+      var newGallery = initialGallery.filter(function(x) {
+        var percentageFunded = ((x.received/x.target)*100)
+        return percentageFunded >= 2
+      });
+      console.log(initialGallery)
+      console.log(newGallery)
+      this.props.setGalleryState(newGallery)
+    }
+},
+
   render() {
     return (
       <span className="sort" >
-        <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+        <DropDownMenu value={this.state.value} onChange={this.generateNewGallery}>
           <MenuItem value={1} primaryText="Popular Now"/>
           <MenuItem value={2} primaryText="Almost There"/>
           <MenuItem value={3} primaryText="Latest"/>
         </DropDownMenu>
       </span>
-    );
+    )
   }
 })
-
-// popular now pseudo code:
-
-// 1) user clicks on almost There
-// 2) grabs db info re target & recieved
-// 3) applies sorting algorythm with this data:
-// only display profiles which are 90 or more funded:
-// i.e. target/amount received x 100 >=90 %
-
-// 4) displays profiles that meet 3)
