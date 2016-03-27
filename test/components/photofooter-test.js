@@ -18,10 +18,9 @@ describe('PhotoFooter', () => {
     const wrapper = shallow(React.createElement(PhotoFooter))
     expect(wrapper.props().name).to.be.defined
   })
-  xit('has a name of fred', () => {
-    const wrapper = shallow(React.createElement(PhotoFooter, {name: "fred"}))
-    // console.log("wrapper props", wrapper.props())
-    expect(wrapper.find('div.photoFooter').first()).to.have.text('fred')
+  it('has corret name passed per the props', () => {
+    const wrapper = shallow(React.createElement(PhotoFooter, {name: "Fred"}))
+    expect(wrapper.find('.photo-footer-name').first()).to.have.text('Fred')
   })
 
 })

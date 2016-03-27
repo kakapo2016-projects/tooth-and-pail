@@ -28,23 +28,23 @@ export default React.createClass({
     return (
       <div className="rateMe">
         <div>
-          <span>Current Rating - {this.props.rating}</span>
+          <span className='currentRating'>Current Rating - {this.props.rating}</span>
         </div>
         Rate me now!
-        <div>
-          <span onClick={this.handleClick1} >
+        <div className='clickableTeeth'>
+          <span className='toothMed' onClick={this.handleClick1} >
             <ToothIcon />
           </span>
-          <span onClick={this.handleClick2} >
+          <span className='toothMed' onClick={this.handleClick2} >
             <ToothIcon />
           </span>
-          <span onClick={this.handleClick3} >
+          <span className='toothMed' onClick={this.handleClick3} >
             <ToothIcon />
           </span>
-          <span onClick={this.handleClick4} >
+          <span className='toothMed' onClick={this.handleClick4} >
             <ToothIcon />
           </span>
-          <span onClick={this.handleClick5} >
+          <span className='toothMed' onClick={this.handleClick5} >
             <ToothIcon />
           </span>
         </div>
