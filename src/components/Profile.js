@@ -153,7 +153,7 @@ export default React.createClass({
                 <br />
                 <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} target={this.state.target} received={this.state.received} />
                 <br />
-                <HBar target={this.state.target} received={this.state.received}/>
+                <HBar target={this.state.target} received={this.state.received} barColor='#b71c1c'/>
               </div>
               <div className="six columns">
                 <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
