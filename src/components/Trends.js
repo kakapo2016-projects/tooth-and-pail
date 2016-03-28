@@ -1,28 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ToggleDisplay from 'react-toggle-display';
-import {Chart} from 'react-google-charts'
-import NavBar from './NavBar'
-import Header from './Header'
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import MyTheme from '../theme.js';
-import RaisedButton from 'material-ui/lib/raised-button';
+// CLEANED
 
+import React from 'react'
+import ToggleDisplay from 'react-toggle-display'
+import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
 
+// components
+import NavBar from './NavBar'
+import Header from './Header'
+import RaisedButton from 'material-ui/lib/raised-button'
 import TrendDonationSize from './TrendDonationSize'
 import TrendDonationsTime from './TrendDonationsTime'
 import TrendTeethFunded from './TrendTeethFunded'
 
-export default React.createClass ({
+// material-ui helpers
+import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import MyTheme from '../theme.js'
 
+export default React.createClass ({
   childContextTypes : {
     muiTheme: React.PropTypes.object
   },
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getMuiTheme(MyTheme),
+      muiTheme: GetMuiTheme(MyTheme),
     }
   },
 
@@ -59,7 +61,12 @@ export default React.createClass ({
         <Header header={this.props.recipientID}/>
         <div className="Trends twelve columns">
           <h2>Trends</h2>
-          <p>Here at Tooth and Pail we have a proud history in these twilight years of the welfare state of ensuring there are still options for people to not die of septic shock or malnutrition due to tooth decay. Take a look at these graphs to see how many we've been able to help. We'll just leave you to imagine the profits we've been able to make from our cut of this funding.</p>
+          <p>
+            Here at Tooth and Pail we have a proud history in these twilight years of the welfare state of ensuring
+            there are still options for people to not die of septic shock or malnutrition due to tooth decay.
+            Take a look at these graphs to see how many we've been able to help.
+            We'll just leave you to imagine the profits we've been able to make from our cut of this funding.
+          </p>
           <span className="TrendButtons">
             <RaisedButton label="Donations over time" onClick={this.handleTime} />
           </span>
@@ -70,13 +77,13 @@ export default React.createClass ({
             <RaisedButton label="Treatments Funded" onClick={this.handleFunded} />
           </span>
           <ToggleDisplay show={this.state.isFunded}>
-            <TrendTeethFunded />
+            <TrendTeethFunded/>
           </ToggleDisplay>
           <ToggleDisplay show={this.state.isTime}>
-            <TrendDonationsTime />
+            <TrendDonationsTime/>
           </ToggleDisplay>
           <ToggleDisplay show={this.state.isSize}>
-            <TrendDonationSize />
+            <TrendDonationSize/>
           </ToggleDisplay>
         </div>
       </div>
