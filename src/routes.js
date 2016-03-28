@@ -12,7 +12,7 @@ import Feed from './components/Feed'
 
 module.exports = (
   <Router history={browserHistory}>
-  <Route path="/" component={Home}></Route>
+    <Route path="/" component={Home}></Route>
     <Route path="gallery" component={App}></Route>
     <Route path="recipient/:recipientID" component={Profile}></Route>
     <Route path="trends" component={Trends}></Route>
