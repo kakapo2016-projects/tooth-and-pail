@@ -29,13 +29,9 @@ export default React.createClass({
   },
 
   getInitialState: function () {
-    var galleryFilter = ['generateAll', 'generateNewGallery', 'generateWhatsPopular', 'generateLatest']
     return {
       amountDonated: 0,
       gallery: []
-      // sort func related:
-      // {value: galleryFilter[0]}
-
     }
   },
 
