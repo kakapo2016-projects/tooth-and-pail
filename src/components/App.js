@@ -1,9 +1,10 @@
+// CLEANED
+
 import React from 'react'
 import cookie from 'react-cookie'
 import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
-import GalleryPhoto from './GalleryPhoto'
 import Sort from './Sort'
 
 // database functions
@@ -50,8 +51,6 @@ export default React.createClass({
   // setGalleryState: function (newGallery) {
   //   this.setState({gallery: newGallery})
   // },
-
-  // setgallery state function takes in a gallery and sets the state to equal new gallery passed in
 
   render () {
     return (

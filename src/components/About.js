@@ -1,5 +1,6 @@
+// CLEANED
+
 import React from 'react'
-import ReactDOM from 'react-dom'
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 import MyTheme from '../theme.js'
 import NavBar from './NavBar'
