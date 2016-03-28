@@ -39,7 +39,11 @@ export default React.createClass({
   getInitialState: function () {
     return {
       amountDonated: 0,
-      name: ""
+      name: 'Mr. Tooth',
+      title: 'Fun Teeth!',
+      imgURL: 'https://image.freepik.com/free-icon/tooth-outline_318-46885.png',
+      pageURL: 'https://toothandpail.herokuapp.com',
+      sobStory: `Hello, I'm Mr. Tooth! I keep the peace around here. Try donating a little money to somebody in need.`
     }
   },
 

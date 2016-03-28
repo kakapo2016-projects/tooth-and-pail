@@ -25,6 +25,7 @@ export default React.createClass({
           <Link to={'gallery'}><MenuItem primaryText="Gallery"/></Link>
           <Link to={'submitteeth'}><MenuItem primaryText="Submit Teeth"/></Link>
           <Link to={'trends'}><MenuItem primaryText="Trends"/></Link>
+          <Link to={'log out'}><MenuItem primaryText="Trends"/></Link>
           </IconMenu>
         }
       />

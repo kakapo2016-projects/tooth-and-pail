@@ -63,25 +63,27 @@ export default React.createClass ({
     if (cookie.load('donorID')) {
       this.setState({'isLoggedIn': true})
     }
-
-    getRequest('http://localhost:3000/recipients/donorID' + cookie.log('donorID'), this.handleExistingUser)
     var _this = this
     document.getElementById("upload_widget_opener").addEventListener("click", function () {
+      console.log("You clicked?")
       cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib' },
         function (error, result) {
           _this.photoUploaded(error, result)
-          _this.setState({'alreadyHasTeeth': true})
         })
     }, false)
+    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), this.handleExistingUser)
   },
 
+
   handleExistingUser: function (data) {
-    if (data.length > 0) {
+    console.log("data", data)
+    if (data !== null) {
       this.setState({'alreadyHasTeeth': true})
     }
   },
 
   handleSubmit: function () {
+    let _this = this
     let dataObject = {
       name: this.state.name,
       imgURL: this.state.photo,
@@ -94,6 +96,7 @@ export default React.createClass ({
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
       if (err) { console.log("ERROR POSTING NEW TEETH!", err); return }
       console.log("posted new teeth object: ", res)
+      _this.setState({'alreadyHasTeeth': true})
     })
   },
 
@@ -104,7 +107,7 @@ export default React.createClass ({
         <Header header={this.props.recipientID}/>
         <div className="RecipientForm twelve columns">
           <ToggleDisplay show={this.state.isLoggedIn}>
-            <ToggleDisplay show={this.state.alreadyHasTeeth}>
+            <ToggleDisplay hide={this.state.alreadyHasTeeth}>
               <h2>Submit Your Teeth</h2>
               <p>Need funding for dental treatment? Submit your details here and with the help of our generous donors, the funding you need could be closer than you think.</p>
               Your name
@@ -130,9 +133,10 @@ export default React.createClass ({
             <ToggleDisplay show={this.state.alreadyHasTeeth}>
               <p>Thank you for requesting funding for your teeth. Please see your profile here.</p>
             </ToggleDisplay>
-            </ToggleDisplay>
+          </ToggleDisplay>
+          <ToggleDisplay hide={this.state.isLoggedIn}>
             <p>You need to log in before you can request funding.</p>
-          <ToggleDisplay show={this.state.isLoggedIn}/>
+          </ToggleDisplay>
         </div>
       </div>
     )
