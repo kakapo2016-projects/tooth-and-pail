@@ -63,7 +63,7 @@ export default React.createClass ({
 
   render: function () {
     return (
-      <div className="Examples">
+      <div className="Donations">
         <Chart
           chartType={this.state.DonationsChart.chartType}
           width={"1000px"}

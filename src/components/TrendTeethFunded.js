@@ -61,7 +61,7 @@ export default React.createClass ({
 
   render: function () {
     return (
-      <div className="Examples">
+      <div className="Funded">
         <Chart
           chartType={this.state.PieChart.chartType}
           width={"450px"}
