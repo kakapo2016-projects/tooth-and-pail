@@ -1,16 +1,23 @@
+// SEMI CLEANED
+
 import React from 'react'
 import cookie from 'react-cookie'
-import ReactDOM from 'react-dom'
-import ToggleDisplay from 'react-toggle-display';
+
+// components
 import NavBar from './NavBar'
 import Header from './Header'
-import FlatButton from 'material-ui/lib/flat-button';
-import RaisedButton from 'material-ui/lib/raised-button';
+import ToggleDisplay from 'react-toggle-display'
+import FlatButton from 'material-ui/lib/flat-button'
+import RaisedButton from 'material-ui/lib/raised-button'
 import TextField from 'material-ui/lib/text-field'
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import MyTheme from '../theme.js';
+
+// database functions
 import postRequest from '../postRequest.js'
 import getRequest from '../getRequest.js'
+
+// material-ui helpers
+import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import MyTheme from '../theme.js';
 
 export default React.createClass ({
   childContextTypes : {
@@ -19,8 +26,8 @@ export default React.createClass ({
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getMuiTheme(MyTheme),
-    };
+      muiTheme: GetMuiTheme(MyTheme),
+    }
   },
 
   getInitialState: function () {
@@ -29,22 +36,22 @@ export default React.createClass ({
       target: 0,
       sobstory: "",
       photo: "",
-      isUploaded: false
-      this.state.alreadyHasTeeth: false
-      this.state.isLoggedIn: false
+      isUploaded: false,
+      alreadyHasTeeth: false,
+      isLoggedIn: false
     }
   },
 
   handleName: function (e) {
-    this.setState({'name': e.target.value});
+    this.setState({'name': e.target.value})
   },
 
   handleTarget: function (e) {
-    this.setState({'target': e.target.value});
+    this.setState({'target': e.target.value})
   },
 
   handleSobstory: function (e) {
-    this.setState({'sobstory': e.target.value});
+    this.setState({'sobstory': e.target.value})
   },
 
   photoUploaded: function (error, l){
@@ -53,35 +60,40 @@ export default React.createClass ({
   },
 
   componentDidMount: function () {
-    if (cookie.load('donorID') === !undefined) {
+    if (cookie.load('donorID')) {
       this.setState({'isLoggedIn': true})
     }
-    getRequest('http://localhost:3000/recipients/donorID' + cookie.log('donorID', this.handleAlready)
+
+    getRequest('http://localhost:3000/recipients/donorID' + cookie.log('donorID'), this.handleExistingUser)
     var _this = this
-    document.getElementById("upload_widget_opener").addEventListener("click", function() {
-      cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib'},
-        function(error, result) {_this.photoUploaded(error, result)} this.setState({'alreadyHasTeeth': true}))
-    }, false);
+    document.getElementById("upload_widget_opener").addEventListener("click", function () {
+      cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib' },
+        function (error, result) {
+          _this.photoUploaded(error, result)
+          _this.setState({'alreadyHasTeeth': true})
+        })
+    }, false)
   },
 
-  handleAlready: function (data) {
+  handleExistingUser: function (data) {
     if (data.length > 0) {
       this.setState({'alreadyHasTeeth': true})
     }
-  }
+  },
 
   handleSubmit: function () {
-    let dataObject = {}
-    dataObject.name = this.state.name
-    dataObject.imgURL = this.state.photo
-    dataObject.received = 0
-    dataObject.target = this.state.target
-    dataObject.sobStory = this.state.sobstory
-    dataObject.donorID = cookie.load('donorID')
+    let dataObject = {
+      name: this.state.name,
+      imgURL: this.state.photo,
+      received: 0,
+      target: this.state.target,
+      sobStory: this.state.sobstory,
+      donorID: cookie.load('donorID')
+    }
     console.log("this is the object", dataObject)
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
-      if (err) { console.log("ERROR POSTING RECIPIENT!", err); return }
-      if (res) {}
+      if (err) { console.log("ERROR POSTING NEW TEETH!", err); return }
+      console.log("posted new teeth object: ", res)
     })
   },
 
@@ -118,9 +130,9 @@ export default React.createClass ({
             <ToggleDisplay show={this.state.alreadyHasTeeth}>
               <p>Thank you for requesting funding for your teeth. Please see your profile here.</p>
             </ToggleDisplay>
-          </ToggleDisplay>
+            </ToggleDisplay>
             <p>You need to log in before you can request funding.</p>
-          <ToggleDisplay show=!{this.state.isLoggedIn}>
+          <ToggleDisplay show={this.state.isLoggedIn}/>
         </div>
       </div>
     )

@@ -67,9 +67,9 @@ export default React.createClass({
         name: resp.name,
         imgURL: resp.imgURL,
         sobStory: resp.sobStory,
-        rating: resp.rating
-        title: "Help fund dental care for" + resp.name
-        pageURL: "https://toothandpail.herokuapp.com" + {this.props.params.recipientID}
+        rating: resp.rating,
+        title: `Help fund dental care for ${resp.name}`,
+        pageURL: `https://toothandpail.herokuapp.com/${this.props.params.recipientID}`
       })
       getRequest(`http://localhost:3000/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR GETTING SPECFIC PROFILE!", err); return }
