@@ -1,5 +1,5 @@
 module.exports = {
-	'@disabled': true,
+  '@disabled': true,
   'test horizontal bar' : function (browser) {
     browser
       .url('http://localhost:8080/recipient/1')

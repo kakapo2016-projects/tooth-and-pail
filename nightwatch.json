@@ -8,12 +8,12 @@
 
   "selenium" : {
     "start_process" : false,
-    "server_path" : "",
+    "server_path" : "bin/selenium-server-standalone-2.52.0.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "",
+      "webdriver.chrome.driver" : "./bin/chromedriver",
       "webdriver.ie.driver" : ""
     }
   },
@@ -29,7 +29,7 @@
         "path" : ""
       },
       "desiredCapabilities": {
-        "browserName": "firefox",
+        "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true
       }
