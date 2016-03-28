@@ -27,18 +27,19 @@ let Bar = React.createClass({
   },
 
   render: function () {
-    console.log('HBAR width: ', this.props.width)
-    if (!this.props.width) {
-      // console.log('It is nan')
-      // return
+    let width = this.props.width, x = this.props.x
+    if (!width || !x) {
+      width = 0
+      x = 0
     }
+
     let style = this.props.fillColor ?
       { fill: shadeColor(this.props.fillColor, this.state.shade) } : {}
     return (
       <rect
         className={this.props.focused ? 'focused' : ''}
-        width={this.props.width} height={this.props.height}
-        y={this.props.offset} x={this.props.x}
+        width={width} height={this.props.height}
+        y={this.props.offset} x={x}
         onMouseOver={this.props.over}
         onMouseOut={this.props.out}
         style={style}
@@ -144,8 +145,10 @@ let HBar = React.createClass({
         margin = this.props.width * 0.03,
         className = `texts ${type || ''}`
 
-    if (this.props.textPosition === 'fitted'){
-      let wide = x > this.props.width / 2
+        if (!x) { x = 1 }
+
+        if (this.props.textPosition === 'fitted'){
+          let wide = x > this.props.width / 2
 
       return (
         <g key={point.label + i} className={className} style={style}>

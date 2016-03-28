@@ -71,13 +71,13 @@ export default React.createClass ({
           _this.photoUploaded(error, result)
         })
     }, false)
-    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), this.handleExistingUser)
+    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), this.handleExistingUser())
   },
 
 
-  handleExistingUser: function (data) {
+  handleExistingUser: function (err, data) {
     console.log("data", data)
-    if (data !== null) {
+    if (data !== undefined) {
       this.setState({'alreadyHasTeeth': true})
     }
   },
@@ -95,7 +95,6 @@ export default React.createClass ({
     console.log("this is the object", dataObject)
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
       if (err) { console.log("ERROR POSTING NEW TEETH!", err); return }
-      console.log("posted new teeth object: ", res)
       _this.setState({'alreadyHasTeeth': true})
     })
   },
@@ -112,15 +111,15 @@ export default React.createClass ({
               <p>Need funding for dental treatment? Submit your details here and with the help of our generous donors, the funding you need could be closer than you think.</p>
               Your name
               <br />
-              <TextField type="text" className="name" id="name" onChange={this.handleName} />
+              <TextField id={1} type="text" className="name" id="name" onChange={this.handleName} />
               <br />
               How much do you need to raise for your treatment?
               <br />
-              <TextField type="number" className="target" id="target" onChange={this.handleTarget} />
+              <TextField id={2} type="number" className="target" id="target" onChange={this.handleTarget} />
               <br />
               Tell us about why you need funding?
               <br />
-              <TextField type='text' multiLine='true' id="sobstory" rows='8' fullWidth onChange={this.handleSobstory} />
+              <TextField id={3} type='text' multiLine='true' id="sobstory" rows='8' fullWidth onChange={this.handleSobstory} />
               <br />
               <FlatButton secondary='true' label="Upload picture" backgroundColor='red' id="upload_widget_opener" />
               <br />
