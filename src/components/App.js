@@ -52,11 +52,6 @@ export default React.createClass({
     this.setState({gallery: newGallery})
   },
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 66be3898102ec21a69ba38c3ce7ce55ac4bb385b
   render () {
     console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
 
