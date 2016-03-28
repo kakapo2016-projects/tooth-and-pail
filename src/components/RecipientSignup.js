@@ -65,7 +65,6 @@ export default React.createClass ({
     }
     var _this = this
     document.getElementById("upload_widget_opener").addEventListener("click", function () {
-      console.log("You clicked?")
       cloudinary.openUploadWidget({ cloud_name: 'toothandpail', upload_preset: 'fasiveib' },
         function (error, result) {
           _this.photoUploaded(error, result)
@@ -74,9 +73,7 @@ export default React.createClass ({
     getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), this.handleExistingUser())
   },
 
-
   handleExistingUser: function (err, data) {
-    console.log("data", data)
     if (data !== undefined) {
       this.setState({'alreadyHasTeeth': true})
     }
@@ -92,7 +89,7 @@ export default React.createClass ({
       sobStory: this.state.sobstory,
       donorID: cookie.load('donorID')
     }
-    console.log("this is the object", dataObject)
+
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
       if (err) { console.log("ERROR POSTING NEW TEETH!", err); return }
       _this.setState({'alreadyHasTeeth': true})
@@ -119,9 +116,9 @@ export default React.createClass ({
               <br />
               Tell us about why you need funding?
               <br />
-              <TextField id={3} type='text' multiLine='true' id="sobstory" rows='8' fullWidth onChange={this.handleSobstory} />
+              <TextField id={3} type='text' multiLine={true} id="sobstory" rows={8} fullWidth onChange={this.handleSobstory} />
               <br />
-              <FlatButton secondary='true' label="Upload picture" backgroundColor='red' id="upload_widget_opener" />
+              <FlatButton secondary={true} label="Upload picture" backgroundColor='red' id="upload_widget_opener" />
               <br />
               <ToggleDisplay show={this.state.isUploaded}>
                 <p>Photo uploaded!</p>
