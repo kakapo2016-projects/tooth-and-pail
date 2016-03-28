@@ -57,14 +57,38 @@ export default React.createClass ({
        this.props.setGalleryState(latestGallery)
     }
   },
+  // All Profiles:
+    generateAll: function () {
+      if (this.props.gallery[0] !== undefined) {
+        var everything = this.props.gallery
+        console.log("everything")
+        this.props.setGalleryState(everything)
+        return this.props.gallery
+      }
+    },
+// enables to change between the various sort functions
+    handleChange: function (event, index, value) {
+      console.log("handleChange", value)
+      this.setState({value: value})
+      if (value === 1) {
+        this.generateAll()
+      } else if (value === 2) {
+        this.generateNewGallery()
+      } else if (value === 3) {
+        this.generateLatest()
+      } else if (value === 4) {
+        this.generateWhatsPopular()
+      }
+    },
 
   render() {
     return (
       <span className="sort" >
-        <DropDownMenu value={this.state.value} onChange={this.generateNewGallery}>
-          <MenuItem value={1} primaryText="Popular Now"/>
+        <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+          <MenuItem value={1} primaryText="All Profiles"/>
           <MenuItem value={2} primaryText="Almost There"/>
-          <MenuItem value={3} primaryText="Latest"/>
+          <MenuItem value={3} primaryText="Latest Profiles"/>
+          <MenuItem value={4} primaryText="Popular Now"/>
         </DropDownMenu>
       </span>
     )
