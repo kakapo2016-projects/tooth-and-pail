@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="donateform-integ-test"
+    errors="0" failures="0" hostname="" id="" package="donateform-integ-test" skipped="1"
+    tests="1" time="0.000" timestamp="Mon, 28 Mar 2016 23:40:00 GMT">
+  
+  
+    
+    <testcase
+      name="donate form test">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

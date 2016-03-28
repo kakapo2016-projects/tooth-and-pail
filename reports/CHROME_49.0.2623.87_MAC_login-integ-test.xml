@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="2"
+            failures="0"
+            tests="2">
+
+  <testsuite name="login-integ-test"
+    errors="2" failures="0" hostname="" id="" package="login-integ-test" skipped="0"
+    tests="2" time="5.970" timestamp="Mon, 28 Mar 2016 23:40:00 GMT">
+  
+    <testcase name="test tooth and pail login page loads" time="4.505" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="test login for tooth and pail" time="1.465" assertions="1">
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>
