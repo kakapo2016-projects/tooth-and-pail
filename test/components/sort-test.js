@@ -11,3 +11,10 @@ describe('Sort', () => {
     expect(wrapper.find('DropDownMenu')).to.have.length(1)
   })
 })
+
+// Test for 'Almost there'
+// dummy data for expected: 90% and above
+//compare with actual  apply filter function
+// use mocha and chai
+
+var dummyData = 
