@@ -79,7 +79,7 @@ export default React.createClass ({
 
   render: function () {
     return (
-      <div className="Examples">
+      <div className="Size">
         <Chart
           chartType={this.state.ColumnChart.chartType}
           width={"1000px"}
