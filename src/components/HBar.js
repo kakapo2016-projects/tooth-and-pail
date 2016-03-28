@@ -64,7 +64,7 @@ let HBar = React.createClass({
     let hbar = this
 
     //Save space for labels before the chart
-    this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 6
+    this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 8
 
     hbar.scales()
     let data = this.props.data
