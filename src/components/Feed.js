@@ -55,7 +55,7 @@ export default React.createClass({
     })
     return (
       <div className='about'>
-        <NavBar/>
+        <NavBar />
         <Header />
         <div className='twelve columns feed'>
           <h2>Recent Activity</h2>
