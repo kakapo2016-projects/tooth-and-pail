@@ -33,3 +33,4 @@ describe('HBar', () => {
   })
 })
 
+ // { this.props.data.map(x => console.log( 'key', x.v, x.label )) }
