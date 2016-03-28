@@ -69,7 +69,7 @@ var HBar = React.createClass({
     var hbar = this
 
     //Save space for labels before the chart
-    this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 8
+    this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 6
 
     hbar.scales()
 
@@ -81,7 +81,6 @@ var HBar = React.createClass({
     // {this.props.data.map(x => console.log( 'key', x.v, x.label ))}
     this.props.data[0].v = this.props.received
     this.props.data[1].v = this.props.target
-   // needs if else function for reaching target then stops the donations
 
     return (
       <svg className="HBar" width={this.props.width} height={this.props.height}>

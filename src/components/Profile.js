@@ -146,6 +146,8 @@ export default React.createClass({
             <div className="row">
               <div className="six columns">
                 <ProfilePhoto imgurl={this.state.imgURL} />
+                <br />
+                <HBar target={this.state.target} received={this.state.received}/>
               </div>
               <div className="six columns">
                 <ProfileName name={this.state.name}/>
@@ -153,7 +155,7 @@ export default React.createClass({
                 <br />
                 <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} target={this.state.target} received={this.state.received} />
                 <br />
-                <HBar target={this.state.target} received={this.state.received}/>
+                
               </div>
               <div className="six columns">
                 <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
