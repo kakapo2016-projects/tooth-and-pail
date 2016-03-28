@@ -3,14 +3,14 @@
             failures="0"
             tests="1">
 
-  <testsuite name="hbar-integ-test"
-    errors="0" failures="0" hostname="" id="" package="hbar-integ-test" skipped="1"
+  <testsuite name="gallery-integ-test"
+    errors="0" failures="0" hostname="" id="" package="gallery-integ-test" skipped="1"
     tests="1" time="0.000" timestamp="Mon, 28 Mar 2016 21:24:27 GMT">
   
   
     
     <testcase
-      name="test horizontal bar">
+      name="test gallery page">
       <skipped />
     </testcase>
     
