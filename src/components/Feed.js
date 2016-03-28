@@ -43,7 +43,7 @@ export default React.createClass({
           <h2>Recent Activity</h2>
           <List>
             {textsList}
-          </List
+          </List>
         </div>
       </div>
     )

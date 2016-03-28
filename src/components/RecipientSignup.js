@@ -1,4 +1,5 @@
 import React from 'react'
+import cookie from 'react-cookie'
 import ReactDOM from 'react-dom'
 import ToggleDisplay from 'react-toggle-display';
 import NavBar from './NavBar'
@@ -56,16 +57,17 @@ export default React.createClass ({
     }, false);
   },
 
-  handleSubmit: function (){
-    var dataObject = {}
+  handleSubmit: function () {
+    let dataObject = {}
     dataObject.name = this.state.name
     dataObject.imgURL = this.state.photo
     dataObject.received = 0
     dataObject.target = this.state.target
     dataObject.sobStory = this.state.sobstory
+    dataObject.donorID = cookie.load('donorID')
     console.log("this is the object", dataObject)
     postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
-      if (err) { console.log("ERROR!", err); return }
+      if (err) { console.log("ERROR POSTING RECIPIENT!", err); return }
     })
   },
 
