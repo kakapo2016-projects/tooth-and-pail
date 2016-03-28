@@ -1,37 +1,39 @@
+// CLEANED
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import RaisedButton from 'material-ui/lib/raised-button'
 import TextField from 'material-ui/lib/text-field'
 
 export default React.createClass ({
-  getInitialState: function() {
-        return {
-            username: '',
-            email: '',
-            password: '',
-            confirm: ''
-        }
-    },
+  getInitialState: function () {
+    return {
+      username: '',
+      email: '',
+      password: '',
+      confirm: ''
+    }
+  },
 
-  handleUsernameField: function(e) {
+  handleUsernameField: function (e) {
      this.setState({
          username: e.target.value
      })
    },
 
-  handleEmailField: function(e) {
+  handleEmailField: function (e) {
      this.setState({
          email: e.target.value
      })
    },
 
-  handlePasswordField: function(e) {
+  handlePasswordField: function (e) {
      this.setState({
          password: e.target.value
      })
    },
 
-  handleConfirmField: function(e) {
+  handleConfirmField: function (e) {
      this.setState({
          confirm: e.target.value
      })
@@ -39,7 +41,7 @@ export default React.createClass ({
 
   render() {
     return (
-        <form role='form'>
+      <form role='form'>
         <div className='signup'>
           <br/>
           <h2> SIGN UP </h2>
@@ -50,7 +52,7 @@ export default React.createClass ({
             value={this.state.username}
             onChange={this.handleUsernameField}
             className='username'
-            placeholder='Username' />
+            placeholder='Username'/>
           <br/>
           <br/>
           <TextField
@@ -59,7 +61,7 @@ export default React.createClass ({
             className='email'
             value={this.state.email}
             onChange={this.handleEmailField}
-            placeholder='Email Address' />
+            placeholder='Email Address'/>
           <br/>
           <br/>
           <TextField
@@ -68,7 +70,7 @@ export default React.createClass ({
             className='password'
             value={this.state.password}
             onChange={this.handlePasswordField}
-            placeholder='Password' />
+            placeholder='Password'/>
           <br/>
           <br/>
           <TextField
@@ -77,7 +79,7 @@ export default React.createClass ({
             className='confirm-password'
             value={this.state.confirm}
             onChange={this.handleConfirmField}
-            placeholder='Confirm Password' />
+            placeholder='Confirm Password'/>
           <br/>
           <br/>
           <RaisedButton

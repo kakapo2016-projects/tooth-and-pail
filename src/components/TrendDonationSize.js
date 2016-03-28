@@ -1,35 +1,34 @@
+// CLEANED
+
 import React from 'react'
-import ReactDOM from 'react-dom'
-import {Chart} from 'react-google-charts'
+import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
 
 export default React.createClass ({
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       ColumnChart: {
         data: [],
         chartType: "",
         options : {}
       }
-    };
+    }
   },
 
-  componentDidMount: function() {
-    console.log("Is this the originalData?", this.props)
+  componentDidMount: function () {
     getRequest('http://localhost:3000/donations', this.dbSetState)
   },
-    
-  dbSetState: function(err, data) {
+
+  dbSetState: function (err, data) {
     this.setState({sizedata: data})
-    var originalData = this.state.sizedata
-    var u10 = 0
-    var ten = 0
-    var twentyfive = 0
-    var fifty = 0
-    var hundred = 0
-    var twofifty = 0
-    for (var i=0; i < originalData.length; i++) {
+    let originalData = this.state.sizedata
+    let u10 = 0
+    let ten = 0
+    let twentyfive = 0
+    let fifty = 0
+    let hundred = 0
+    let twofifty = 0
+    for (let i = 0; i < originalData.length; i++) {
       if (originalData[i].amount < 10) {
         u10++
       } else if (originalData[i].amount < 26) {
@@ -44,18 +43,30 @@ export default React.createClass ({
         twofifty++
       }
     }
-    var u10arr = ['Under $10', u10, '#b71c1c']
-    var tenarr = ['$10-25', ten, '#b71c1c']
-    var twentyfivearr = ['$25-50', twentyfive, '#b71c1c']
-    var fiftyarr = ['$50-100', fifty, '#b71c1c']
-    var hundredarr = ['$100-250', hundred, '#b71c1c']
-    var twofiftyarr = ['more than $250', twofifty, '#b71c1c']
-    var allData = []
-    allData.push(['Amount', 'Number of Donations', { role: 'style' }], u10arr, tenarr, twentyfivearr, fiftyarr, hundredarr, twofiftyarr)
-    var ChartData = {}
+    let u10arr = ['Under $10', u10, '#b71c1c']
+    let tenarr = ['$10-25', ten, '#b71c1c']
+    let twentyfivearr = ['$25-50', twentyfive, '#b71c1c']
+    let fiftyarr = ['$50-100', fifty, '#b71c1c']
+    let hundredarr = ['$100-250', hundred, '#b71c1c']
+    let twofiftyarr = ['more than $250', twofifty, '#b71c1c']
+    let allData = []
+
+    allData.push([
+      'Amount',
+      'Number of Donations',
+      { role: 'style' }],
+      u10arr,
+      tenarr,
+      twentyfivearr,
+      fiftyarr,
+      hundredarr,
+      twofiftyarr
+    )
+
+    let ChartData = {}
     ChartData.dataArray = allData
     ChartData.options = {title: "Donations", legend: { position: "none" }}
-    var ColumnChart = {
+    let ColumnChart = {
       data : ChartData.dataArray,
       options: ChartData.options,
       chartType: "ColumnChart",
@@ -63,13 +74,19 @@ export default React.createClass ({
     }
     this.setState({
       'ColumnChart': ColumnChart
-    });
+    })
   },
 
-  render: function() {
+  render: function () {
     return (
       <div className="Examples">
-        <Chart chartType={this.state.ColumnChart.chartType} width={"1000px"} height={"500px"} data={this.state.ColumnChart.data} options = {this.state.ColumnChart.options} graph_id={this.state.ColumnChart.div_id} />
+        <Chart
+          chartType={this.state.ColumnChart.chartType}
+          width={"1000px"}
+          height={"500px"}
+          data={this.state.ColumnChart.data}
+          options = {this.state.ColumnChart.options}
+          graph_id={this.state.ColumnChart.div_id}/>
       </div>
     )
   }
