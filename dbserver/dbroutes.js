@@ -113,19 +113,19 @@ module.exports = function routes(app) {
     })
   })
 
-  // app.get('/ratings/:recipientID/:donorID', function(req, res) {
-  //   console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
-  //   knex('ratings')
-  //   .where({
-  //     ratings.recipientID: req.params.recipientID,
-  //     ratings.donorID:  req.params.donorID
-  //   })
-  //   .select('*')
-  //   .then(function(resp) {
-  //     console.log(resp)
-  //     res.send(resp)
-  //   })
-  // })
+  app.get('/ratings/:donorID/recipient/:recipientID', function(req, res) {
+    console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
+    knex('ratings')
+    .where({
+      recipientID: req.params.recipientID,
+      donorID:  req.params.donorID
+    })
+    .select('*')
+    .then(function(resp) {
+      console.log('resp for a recipient by donorid',resp)
+      res.send(resp)
+    })
+  })
 
   app.get('/ratings/:recipientID', function(req, res) {
     console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)
@@ -213,23 +213,6 @@ module.exports = function routes(app) {
     knex('ratings')
       .insert({
         ratingID: newId ,
-        recipientID: req.body.recipientID,
-        donorID: req.body.donorID,
-        rating: req.body.rating
-      })
-      .then(function(resp) {
-          res.send(resp)
-      })
-    })
-
-  app.post('/ratings/:recipientID/:donorID', function(req, res) {
-    console.log('in put to ratings')
-    knex('ratings')
-      .where({
-          recipientID: req.params.recipientID,
-          donorID:  req.params.donorID
-        })
-      .update({
         recipientID: req.body.recipientID,
         donorID: req.body.donorID,
         rating: req.body.rating

@@ -5,6 +5,7 @@ export default React.createClass({
 
   // TODO - refactor to one function
   handleClick1: function(e){
+    console.log("handleClick1", e.target)
     this.props.updateRecipientRating(1)
   },
   handleClick2: function(e){
@@ -28,7 +29,7 @@ export default React.createClass({
     return (
       <div className="rateMe">
         <div>
-          <span className='currentRating'>Current Rating - {this.props.rating}</span>
+          <span className='currentRating'>Current Rating : {this.props.rating}</span>
         </div>
         Rate me now!
         <div className='clickableTeeth'>

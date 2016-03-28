@@ -77,126 +77,52 @@ export default React.createClass({
     })
   },
 
-  // updateRecipientRating: function (newRate){
-  //   // post a new rating record to the ratings table
-  //   let ratingData = {
-  //     recipientID: this.props.params.recipientID,
-  //     donorID: 2222,
-  //     rating: newRate
-  //   }
-  //   console.log('ratingData', ratingData)
-  //   // first check whether there is already a rating for this recipient by this donor
-  //   // if not, perform a post, otherwise perform a put
-  //   getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID}`, (err, resp) => {
-  //     console.log("in callback")
-  //     if (err) { console.log("ERROR!", err); return }
-  //     let cnt = 0
-  //     resp.map(function (x){
-  //       if (x.donorId === '2222'){
-  //         // a record exists, so perform a put, so there is only ever one record per recipient-donor
-  //           putRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
-  //             if (err) { console.log("ERROR!", err); return }
-  //             // now getting all the ratings for this recipient
-  //             getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
-  //               if (err) { console.log("ERROR!", err); return }
-  //               console.log('recipient ratings', resp)
-  //               // get a total value , get the count
-  //               var totalValue = 0
-  //               var count = 0
-  //               resp.map(function (x){
-  //                 totalValue += x.rating
-  //                 count++
-  //               })
-  //               // find the average by dividing by count then round
-  //               var rating = Math.floor(totalValue / count)   // should be at least one as this is in the callback from the post
-  //               // update the recipients record in the database
-  //               let recipientData = {rating : rating }
-  //               console.log("recipeint data", recipientData)
-  //               putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
-  //                 if (err) { console.log("ERROR!", err); return }
-  //                   console.log("no error", res)
-  //                   // update the state
-  //                   console.log(this.state.rating)
-  //                   this.setState({rating: rating})
-  //                   console.log(this.state.rating)
-  //               })
-  //             })
-  //           })
-  //
-  //       } else {
-  //         // do a post to create a new record
-  //           postRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
-  //
-  //             if (err) { console.log("ERROR!", err); return }
-  //             // now getting all the ratings for this recipient
-  //             getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
-  //               if (err) { console.log("ERROR!", err); return }
-  //               console.log('recipient ratings', resp)
-  //               // get a total value , get the count
-  //               var totalValue = 0
-  //               var count = 0
-  //               resp.map(function (x){
-  //                 totalValue += x.rating
-  //                 count++
-  //               })
-  //               // find the average by dividing by count then round
-  //               var rating = Math.floor(totalValue / count)   // should be at least one as this is in the callback from the post
-  //               // update the recipients record in the database
-  //               let recipientData = {rating : rating }
-  //               console.log("recipeint data", recipientData)
-  //               putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
-  //                 if (err) { console.log("ERROR!", err); return }
-  //                   console.log("no error", res)
-  //                   // update the state
-  //                   console.log(this.state.rating)
-  //                   this.setState({rating: rating})
-  //                   console.log(this.state.rating)
-  //               })
-  //             })
-  //           })
-  //       }
-  //     })
-  //   })
-  // },
-
   updateRecipientRating: function (newRate){
+    var donor = cookie.load('donorID')
     // post a new rating record to the ratings table
     let ratingData = {
       recipientID: this.props.params.recipientID,
-      donorID: cookie.load('donorID'),
+      donorID: donor,
       rating: newRate
     }
-    // do a post to create a new record
-    postRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
+    getRequest(`http://localhost:3000/ratings/${donor}/recipient/${this.props.params.recipientID}`, (err, resp) => {
+      console.log("in callback after get request", resp)
       if (err) { console.log("ERROR!", err); return }
-      // now getting all the ratings for this recipient
-      getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
-        if (err) { console.log("ERROR!", err); return }
-        console.log('recipient ratings', resp)
-        // get a total value , get the count
-        var totalValue = 0
-        var count = 0
-        resp.map(function (x){
-          totalValue += x.rating
-          count++
-        })
-        // find the average by dividing by count then round
-        var rating = Math.floor(totalValue / count)   // should be at least one as this is in the callback from the post
-        // update the recipients record in the database
-        let recipientData = {rating : rating }
-        console.log("recipeint data", recipientData)
-        putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+      let cnt = 0
+      if (resp.length > 0) {
+         alert("You have already rated this recipient -Thank you!")
+      } else {
+        //  do a post to create a new record
+        postRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
           if (err) { console.log("ERROR!", err); return }
-            console.log("no error", res)
+          //now getting all the ratings for this recipient
+          getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
+            if (err) { console.log("ERROR!", err); return }
+            // get a total value , get the count
+            var totalValue = 0
+            var count = 0
+            resp.map(function (x){
+              totalValue += x.rating
+              count++
+            })
+            // find the average by dividing by count then round
+            var avrating = Math.floor(totalValue / count)   // should be at least one as this is in the callback from the post
             // update the state
-            console.log(this.state.rating)
-            this.setState({rating: rating})
-            console.log(this.state.rating)
+            this.setState({rating: avrating})
+            // update the recipients record in the database
+            let recipientData =
+            {
+              rating: avrating
+            }
+            putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+              if (err) { console.log("ERROR!", err); return }
+                console.log("no error", res)
+            })
+          })
         })
-      })
+      }
     })
   },
-
 
   donationSetState: function (donations, recipientID) {
     getRequest(`http://localhost:3000/recipients/${this.props.params.recipientID} `, (err, resp) => {
@@ -236,9 +162,7 @@ export default React.createClass({
             <div className="row">
               <div className="twelve columns">
                 <SobStory sobstory={this.state.sobStory} />
-
                 <SocialSharing url="http://google.com" title="A Title!" media="https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png" />
-
               </div>
             </div>
           </div>

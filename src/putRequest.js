@@ -5,6 +5,6 @@ module.exports = function (url, data, callback){
   request.put(url)
   .send(data)
   .end(function(err, res){
-    //callback(err, res)
+    callback(err, res)
   })
 }

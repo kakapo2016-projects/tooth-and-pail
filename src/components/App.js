@@ -28,7 +28,7 @@ export default React.createClass({
     };
   },
 
-    getInitialState: function () {
+  getInitialState: function () {
     return {
       amountDonated: 0,
       gallery: []
@@ -53,6 +53,8 @@ export default React.createClass({
   // },
 
   render () {
+    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
+
     return (
       <div className='app'>
         <NavBar/>
