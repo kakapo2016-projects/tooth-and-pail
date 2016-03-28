@@ -137,26 +137,27 @@ export default React.createClass({
 
   render: function () {
     return (
-        <div className='profile'>
-          <div>
-            <NavBar/>
-            <Header />
-            <div className="row">
-              <div className="six columns">
-                <ProfilePhoto imgurl={this.state.imgURL} />
-                <br />
-                <HBar target={this.state.target} received={this.state.received}/>
-              </div>
-              <div className="six columns">
-                <ProfileName name={this.state.name}/>
-                <ProgressBar target={this.state.target} received={this.state.received}/>
-                <br />
-                <DonateForm handleDonation={this.handleDonation} recipientID={this.props.params.recipientID} target={this.state.target} received={this.state.received} />
-                <br />
-              </div>
-              <div className="six columns">
-                <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
-              </div>
+      <div className='profile'>
+        <div>
+          <NavBar/>
+          <Header/>
+          <div className="row">
+            <div className="six columns">
+              <ProfilePhoto imgurl={this.state.imgURL}/>
+              <br />
+              <HBar target={this.state.target} received={this.state.received} barColor='#b71c1c'/>
+            </div>
+            <div className="six columns">
+              <ProfileName name={this.state.name}/>
+              <ProgressBar target={this.state.target} received={this.state.received}/>
+              <br/>
+              <DonateForm
+                handleDonation={this.handleDonation}
+                recipientID={this.props.params.recipientID}
+                target={this.state.target}
+                received={this.state.received}/>
+              <br/>
+              
             </div>
             <div className="six columns">
               <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
