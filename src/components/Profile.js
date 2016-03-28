@@ -144,6 +144,10 @@ export default React.createClass({
           <div className="row">
             <div className="six columns">
               <ProfilePhoto imgurl={this.state.imgURL}/>
+              <br />
+              <br />
+              <br />
+              <HBar target={this.state.target} received={this.state.received} barColor='#b71c1c'/>
             </div>
             <div className="six columns">
               <ProfileName name={this.state.name}/>
@@ -154,11 +158,12 @@ export default React.createClass({
                 recipientID={this.props.params.recipientID}
                 target={this.state.target}
                 received={this.state.received}/>
-              <br/>
-              <HBar target={this.state.target} received={this.state.received} barColor='#b71c1c'/>
+              <br />
+              <br />
+              <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
+              <br />
             </div>
             <div className="six columns">
-              <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
             </div>
           </div>
           <div className="row">
