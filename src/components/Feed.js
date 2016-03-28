@@ -42,16 +42,17 @@ export default React.createClass({
     var textArr = []
     for (var i = 0; i < donationArray.length; i++){
       var donation = donationArray[0]
-      var donationText = donation.name + "just received a $"+ donation.amount " towards their goal! Just "+ donation.target-donation.received + "to go!"
+      var donationText = donation.name + "just received a $"+ donation.amount + " towards their goal! Just "+ donation.target-donation.received + "to go!"
       textArr.push(donationText)
     }
-    this.setState({'textArr': textArr}),
+    this.setState({'textArr': textArr})
   },
 
   render: function () {
     var texts = this.state.textArr
     var textsList = texts.map(function(text){
       return <ListItem primaryText={text} leftIcon={<People />} />
+    })
     return (
       <div className='about'>
         <NavBar/>

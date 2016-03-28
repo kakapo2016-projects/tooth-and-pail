@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Trends from './components/Trends'
 import RecipientSignup from './components/RecipientSignup'
 import About from './components/About'
+import Feed from './components/Feed'
 
 module.exports = (
   <Router history={browserHistory}>

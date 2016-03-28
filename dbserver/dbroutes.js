@@ -4,7 +4,7 @@ var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var bcrypt = require('bcryptjs')
 
-import moment from 'moment'
+var moment = require ('moment')
 
 var knex = require('knex')({
   client: 'pg',
@@ -120,12 +120,11 @@ module.exports = function routes(app) {
     .leftJoin('recipients'), function() {
       this.on('recipients.id', '=', 'donations.recipientID')
     }
-    .where ({
-      ('donations.createdAt', '>', moment().subtract(14, 'days')) 
-    })
+    .where ('donations.createdAt', '>', moment().subtract(14, 'days')
     .then(function(resp) {
       res.send(resp)
     })
+  )
   })
 
   // app.get('/ratings/:recipientID/:donorID', function(req, res) {
