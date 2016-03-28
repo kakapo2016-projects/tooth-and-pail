@@ -196,7 +196,7 @@ module.exports = function routes(app) {
     knex('recipients')
       .insert({
         recipientID: newId ,
-        name: req.body.Name,
+        name: req.body.name,
         imgURL: req.body.imgURL,
         received: req.body.received,
         target: req.body.target,
@@ -204,7 +204,7 @@ module.exports = function routes(app) {
         donorID: req.body.donorID
       })
       .then(function(resp) {
-          res.send(resp)
+        res.send(resp)
       })
     })
 
