@@ -1,9 +1,10 @@
+// CLEANED
+
 import React from 'react'
 import cookie from 'react-cookie'
 import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
-import GalleryPhoto from './GalleryPhoto'
 import Sort from './Sort'
 
 // database functions
@@ -27,7 +28,7 @@ export default React.createClass({
     };
   },
 
-    getInitialState: function () {
+  getInitialState: function () {
     return {
       amountDonated: 0,
       gallery: []
@@ -51,9 +52,9 @@ export default React.createClass({
   //   this.setState({gallery: newGallery})
   // },
 
-  // setgallery state function takes in a gallery and sets the state to equal new gallery passed in
-
   render () {
+    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
+
     return (
       <div className='app'>
         <NavBar/>
