@@ -16,9 +16,7 @@ let Bar = React.createClass({
       width: 0,
       height: 0,
       offset: 0,
-      fillColor: "red",
-      
-
+      fillColor: "red"
     }
   },
 
@@ -29,6 +27,11 @@ let Bar = React.createClass({
   },
 
   render: function () {
+    console.log('HBAR width: ', this.props.width)
+    if (!this.props.width) {
+      // console.log('It is nan')
+      // return
+    }
     let style = this.props.fillColor ?
       { fill: shadeColor(this.props.fillColor, this.state.shade) } : {}
     return (

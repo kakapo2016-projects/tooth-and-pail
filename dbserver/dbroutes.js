@@ -40,9 +40,9 @@ module.exports = function routes(app) {
     })
   })
 
-  app.get('/recipients/:donorID', function(req, res) {
+  app.get('/recipientsbydonor/:donorID', function(req, res) {
     knex('recipients')
-    .where('recipients.donorID', req.params.recipientID)
+    .where('recipients.donorID', req.params.donorID)
     .then(function(resp) {
       res.send(resp[0])
     })
@@ -125,15 +125,16 @@ module.exports = function routes(app) {
 
 
   app.get('/feed', function(req, res) {
-    knex('donation')
-    .leftJoin('recipients'), function() {
-      this.on('recipients.id', '=', 'donations.recipientID')
-    }
-    .where ('donations.createdAt', '>', moment().subtract(14, 'days')
+    knex('donations')
+    .leftJoin('recipients', function() {
+      this.on('donations.recipientID', '=', 'recipients.recipientID')
+    })
+
+    // .where ('donations.createdAt', '>', moment().subtract(14, 'days')
     .then(function(resp) {
       res.send(resp)
     })
-  )
+  // )
   })
 
   // app.get('/ratings/:recipientID/:donorID', function(req, res) {
