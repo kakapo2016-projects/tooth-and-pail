@@ -14,19 +14,19 @@ export default React.createClass({
     return (
       <AppBar
         title="TOOTH & PAIL"
-        iconElementLeft={<Link to={'gallery'}><ToothIcon/></Link>}
+        iconElementLeft={<Link to={'/gallery'}><ToothIcon/></Link>}
         iconElementRight={
           <IconMenu
             iconButtonElement={<IconButton><MoreVertIcon/></IconButton>}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
           <Link to={'/'}><MenuItem primaryText="Log In"/></Link>
-          <Link to={'about'}><MenuItem primaryText="About Us"/></Link>
-          <Link to={'gallery'}><MenuItem primaryText="Gallery"/></Link>
-          <Link to={'submitteeth'}><MenuItem primaryText="Submit Teeth"/></Link>
-          <Link to={'feed'}><MenuItem primaryText="Recent Activity"/></Link>
-          <Link to={'trends'}><MenuItem primaryText="Trends"/></Link>
-          <Link to={'logout'}><MenuItem primaryText="Log Out"/></Link>
+          <Link to={'/about'}><MenuItem primaryText="About Us"/></Link>
+          <Link to={'/gallery'}><MenuItem primaryText="Gallery"/></Link>
+          <Link to={'/submitteeth'}><MenuItem primaryText="Submit Teeth"/></Link>
+          <Link to={'/feed'}><MenuItem primaryText="Recent Activity"/></Link>
+          <Link to={'/trends'}><MenuItem primaryText="Trends"/></Link>
+          <Link to={'/logout'}><MenuItem primaryText="Log Out"/></Link>
           </IconMenu>
         }
       />

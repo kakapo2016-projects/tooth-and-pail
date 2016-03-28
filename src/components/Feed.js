@@ -60,8 +60,8 @@ export default React.createClass({
 
   render: function () {
     var texts = this.state.textArr
-    var textsList = texts.map(function(text){
-      return <ListItem primaryText={text} leftIcon={<PeopleIcon/>} />
+    var textsList = texts.map(function(text, index){
+      return <ListItem key={index} primaryText={text} leftIcon={<PeopleIcon/>} />
     })
     return (
       <div className='about'>
