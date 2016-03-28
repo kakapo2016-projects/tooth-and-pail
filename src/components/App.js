@@ -27,7 +27,7 @@ export default React.createClass({
     };
   },
 
-    getInitialState: function () {
+  getInitialState: function () {
     return {
       amountDonated: 0,
       gallery: []
@@ -54,6 +54,8 @@ export default React.createClass({
   // setgallery state function takes in a gallery and sets the state to equal new gallery passed in
 
   render () {
+    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
+
     return (
       <div className='app'>
         <NavBar/>

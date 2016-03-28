@@ -12,7 +12,7 @@ describe('RateMe', () => {
   })
   it('renders a current rating as per the rating props passed in', () => {
     const wrapper = shallow(React.createElement(RateMe, props))
-    expect(wrapper.find('.currentRating').first()).to.have.text('Current Rating - 3')
+    expect(wrapper.find('.currentRating').first()).to.have.text('Current Rating : 3')
   })
   it('renders the rating teeth', () => {
     const wrapper = shallow(React.createElement(RateMe, props))
