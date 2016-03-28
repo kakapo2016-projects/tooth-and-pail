@@ -41,4 +41,16 @@ describe('SocialSharing', () => {
     const wrapper = shallow(React.createElement(SocialSharing))
     expect(wrapper.find('PinterestIcon')).to.have.length(1)
   })
+  it('has a url prop', () => {
+    const wrapper = shallow(React.createElement(SocialSharing))
+    expect(wrapper.props().received).to.be.defined
+  })
+  it('has a title prop', () => {
+    const wrapper = shallow(React.createElement(SocialSharing))
+    expect(wrapper.props().target).to.be.defined
+  })
+  it('has a media prop', () => {
+    const wrapper = shallow(React.createElement(SocialSharing))
+    expect(wrapper.props().received).to.be.defined
+  })
 })
