@@ -6,7 +6,8 @@ import NavBar from './NavBar'
 import Header from './Header'
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
-import SvgIcon from 'material-ui/lib/svg-icon'
+import PeopleIcon from 'material-ui/lib/svg-icons/social/people'
+
 import getRequest from '../getRequest.js'
 
 export default React.createClass({
@@ -40,29 +41,27 @@ export default React.createClass({
 
   componentDidMount: function () {
     var _this = this
-    getRequest('http://localhost:3000/donations', (err, resp) => {
+    getRequest('http://localhost:3000/feed', (err, resp) => {
       if (err) { console.log("ERROR!", err); return }
       _this.createFeed(resp)})
   },
 
   createFeed: function (data) {
-    console.log(data, "data")
     var originalData = data
     originalData = originalData.sort(this.dynamicSort("Date"));
     var textArr = []
     for (var i = 0; i < originalData.length; i++){
       var donation = originalData[i]
-      var donationText = donation.name + "just received a $" + donation.amount + " donation towards their goal!"
+      var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal!"
       textArr.push(donationText)
     }
-    console.log("textArr", textArr)
     this.setState({'textArr': textArr})
   },
 
   render: function () {
     var texts = this.state.textArr
-    var textsList = texts.map(function(text){
-      return <ListItem primaryText={text} />
+    var textsList = texts.map(function(text, index){
+      return <ListItem key={index} primaryText={text} leftIcon={<PeopleIcon/>} />
     })
     return (
       <div className='about'>

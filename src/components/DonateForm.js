@@ -36,6 +36,7 @@ export default React.createClass ({
       return (
         <span id="DonateForm">
           $<TextField
+            id='1'
             type="number"
             className="donateInput"
             onChange={this.handleChange}
