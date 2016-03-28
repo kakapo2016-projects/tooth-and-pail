@@ -50,5 +50,3 @@ describe('GalleryPhoto', () => {
     expect(wrapper.props().name).to.be.defined
   })
 })
-
-

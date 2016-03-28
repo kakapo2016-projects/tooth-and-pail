@@ -1,6 +1,7 @@
 import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
+
 import HBar from '../../src/components/HBar'
 
 describe('HBar', () => {
@@ -14,6 +15,10 @@ describe('HBar', () => {
     expect(wrapper.find('HBar')).to.be.instanceof(this.props.received)
   });
 
+  it('should display correct number of bars', () => {
+    expect(this.prop.data).to.be(true)
+  })
+
   it('should display a bar showing how much has been received', () => {
     const wrapper = shallow(React.createElement(<HBar />))
     expect(wrapper).to.have.state(this.props)
@@ -23,9 +28,8 @@ describe('HBar', () => {
     expect(this.props.data[1].v).to.have.ref('TARGET')
   });
 
-  xit('should find the data', () => {
-    expect(Bar).to.equal(2)
-  });
-
-});
+  it('should find the data', () => {
+    expect(data.length).to.equal(2)
+  })
+})
 

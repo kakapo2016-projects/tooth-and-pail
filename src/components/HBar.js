@@ -15,7 +15,10 @@ let Bar = React.createClass({
     return {
       width: 0,
       height: 0,
-      offset: 0
+      offset: 0,
+      fillColor: "red",
+      
+
     }
   },
 
@@ -71,6 +74,7 @@ let HBar = React.createClass({
 
     if (this.props.sort === 'ascending') data.sort(function (p, q) {return p.v - q.v} )
     if (this.props.sort === 'descending') data.sort(function (p, q) {return q.v - p.v} )
+
 
     // { this.props.data.map(x => console.log( 'key', x.v, x.label )) }
     this.props.data[0].v = this.props.received

@@ -1,10 +1,11 @@
-var request = require('superagent')
+// CLEANED
 
-module.exports = function getRequest(geturl, callback) {
-	console.log("geturl", geturl)
+import request from 'superagent'
+
+export default function (geturl, callback) {
 	request
 		.get(geturl)
 		.end(function(err, res){
 			callback(err, res.body)
-		})
+	})
 }

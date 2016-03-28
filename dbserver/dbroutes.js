@@ -40,6 +40,14 @@ module.exports = function routes(app) {
     })
   })
 
+  app.get('/recipients/:donorID', function(req, res) {
+    knex('recipients')
+    .where('recipients.donorID', req.params.recipientID)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+  })
+
   app.get('/donations', function(req, res) {
     knex('donations')
     .select('*')
