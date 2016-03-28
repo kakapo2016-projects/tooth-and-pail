@@ -46,7 +46,7 @@ var Bar = React.createClass({
 var HBar = React.createClass({
 
   getDefaultProps: function() {
-    
+
     return {
       width: 900,
       height: 100,
@@ -64,7 +64,7 @@ var HBar = React.createClass({
   },
 
   render: function() {
-    
+
     var props = this.props;
     var hbar = this
 
@@ -78,11 +78,11 @@ var HBar = React.createClass({
     if (this.props.sort === 'ascending') data.sort(function(p, q){return p.v - q.v});
     if (this.props.sort === 'descending') data.sort(function(p, q){return q.v - p.v});
 
-    {this.props.data.map(x => console.log( 'key', x.v, x.label ))}
+    // {this.props.data.map(x => console.log( 'key', x.v, x.label ))}
     this.props.data[0].v = this.props.received
     this.props.data[1].v = this.props.target
    // needs if else function for reaching target then stops the donations
-    
+
     return (
       <svg className="HBar" width={this.props.width} height={this.props.height}>
         <g>
