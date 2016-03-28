@@ -11,7 +11,7 @@ export default React.createClass({
   render () {
     let rows = []
     for (let i=0; i < 5; i++) { rows.push(
-      <span className='toothMed' onClick={() => {this.handleClick(i + 1)}}>
+      <span key={i} className='toothMed' onClick={() => {this.handleClick(i + 1)}}>
       <ToothIcon />
       </span>
     )}

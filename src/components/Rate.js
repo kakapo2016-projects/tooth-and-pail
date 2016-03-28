@@ -7,7 +7,7 @@ export default React.createClass({
   render () {
     let rating = this.props.rating
     let rows = []
-    for (let i=0; i < rating; i++) { rows.push(<ToothIcon />) }
+    for (let i=0; i < rating; i++) { rows.push(<ToothIcon key={i}/>) }
     return <div className='rate'>{rows}</div>
   }
 })
