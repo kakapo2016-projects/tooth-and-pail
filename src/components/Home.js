@@ -34,7 +34,7 @@ export default React.createClass({
         password: password, passwordHash: res.passwordHash}, (err, resp) => {
         if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); return }
         if (resp.body) {
-          alert('Sucessfully logged in!')
+          alert('Welcome back!')
           cookie.save('donorID', res.donorID, { path: '/'})
           this.props.history.push('/gallery')
         } else {

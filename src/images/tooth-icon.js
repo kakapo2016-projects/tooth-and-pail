@@ -1,5 +1,5 @@
-import React from 'react';
-import IconButton from 'material-ui/lib/icon-button';
+import React from 'react'
+import IconButton from 'material-ui/lib/icon-button'
 
 const styles = {
   button: {
