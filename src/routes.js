@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Trends from './components/Trends'
 import RecipientSignup from './components/RecipientSignup'
 import About from './components/About'
+import Feed from './components/Feed'
 
 module.exports = (
   <Router history={browserHistory}>
@@ -15,5 +16,6 @@ module.exports = (
     <Route path="trends" component={Trends}></Route>
     <Route path="submitteeth" component={RecipientSignup}></Route>
     <Route path="about" component={About}></Route>
+    <Route path="feed" component={Feed}></Route>
   </Router>
 )
