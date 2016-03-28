@@ -42,6 +42,7 @@ export default React.createClass({
 
   dbSetState: function (err, data) {
     this.setState({gallery: data})
+    this.setState({originalGallery: data})
   },
 
   sortHandleChange: function(event, index, value) {
@@ -53,11 +54,12 @@ export default React.createClass({
   },
 
   render () {
+
     return (
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
-        <Sort gallery={this.state.gallery} setGalleryState={this.setGalleryState}/>
+        <Sort gallery={this.state.originalGallery} setGalleryState={this.setGalleryState}/>
         <Gallery gallery={this.state.gallery}/>
       </div>
     )
