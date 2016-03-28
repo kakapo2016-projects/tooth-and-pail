@@ -15,4 +15,10 @@ To CREATE database  - install KNEX globally
                     -                 run knex seed:run    
 
 To run the db server - in /dbserver
+<<<<<<< HEAD
+                        nodemon dbserver.js      - will run on localhost:3000
+
+To run NightWatch test:  npm run test:integration
+=======
   nodemon dbserver.js // will run on localhost:3000
+>>>>>>> 47f7535dbdd04e236b792201aa8429a5105637b7
