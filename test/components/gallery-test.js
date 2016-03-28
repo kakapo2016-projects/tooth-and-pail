@@ -2,7 +2,6 @@ import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
 
-
 import Gallery from '../../src/components/Gallery'
 import GalleryPhoto from '../../src/components/GalleryPhoto'
 
@@ -27,13 +26,14 @@ describe('Gallery', () => {
       recipientid : 3333
     }
   ]}
+  
   it('renders a gallery', () => {
      const wrapper = mount(React.createElement(Gallery, props))
      expect(wrapper.find('div.gallery')).to.be.length(1)
   })
+
   it('renders the correct number of loaded galleryPhotos', () => {
      const wrapper = mount(React.createElement(Gallery, props) )
      expect(wrapper.find('div.galleryPhoto')).to.be.length(3)
   })
-
 })

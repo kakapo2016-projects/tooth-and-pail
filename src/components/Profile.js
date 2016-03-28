@@ -171,7 +171,7 @@ export default React.createClass({
           <div className="row">
             <div className="twelve columns">
               <SobStory sobstory={this.state.sobStory} />
-              <SocialSharing url={this.state.pageURL} title={this.state.title} media={this.state.imgURL} />
+              <SocialSharing url={this.state.pageURL} title={this.state.title} media={this.state.imgURL}/>
             </div>
           </div>
         </div>

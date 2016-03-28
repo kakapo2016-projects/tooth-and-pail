@@ -10,6 +10,7 @@ describe('Trends', () => {
     const wrapper = shallow(React.createElement(Trends))
     expect(wrapper.find('#Trends')).to.have.length(1)
   })
+  
   it ('should show three raised buttons for switching between graphs', () => {
     const wrapper = shallow(React.createElement(Trends))
     expect(Wrapper.find('RaisedButton')).to.have.length(3)
