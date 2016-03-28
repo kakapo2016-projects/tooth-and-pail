@@ -7,8 +7,7 @@ import Header from './Header'
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
 import SvgIcon from 'material-ui/lib/svg-icon'
-
-// {"donationID":"d25","donorID":"2222","recipientID":"10","amount":50,"createdAt":"2016-03-26 01:22:30"}
+import getRequest from '../getRequest.js'
 
 export default React.createClass({
   childContextTypes: {
@@ -21,20 +20,39 @@ export default React.createClass({
     }
   },
 
-  //sort the array
-  var textArr = []
-  for (var i = 0; i < donationArray.length; i++){
-    var donation = donationArray[0]
-    var donationText = donation.name + "just received a $"+ donation.amount " towards their goal! Just "+ donation.target-donation.received + "to go!"
-    textArr.push(donationText)
-  }
-  this.setState({'textArr': textArr})
+  dynamicSort: function (property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+  },
 
+  componentDidMount: function () {
+    getRequest('http://localhost:3000/donations', this.createFeed)
+  },
+
+  createFeed: function (data) {
+    var originalData = data
+    originalData = originalData.sort(dynamicSort("Date"));
+    var textArr = []
+    for (var i = 0; i < donationArray.length; i++){
+      var donation = donationArray[0]
+      var donationText = donation.name + "just received a $"+ donation.amount + " towards their goal! Just "+ donation.target-donation.received + "to go!"
+      textArr.push(donationText)
+    }
+    this.setState({'textArr': textArr})
+  },
 
   render: function () {
     var texts = this.state.textArr
     var textsList = texts.map(function(text){
       return <ListItem primaryText={text} leftIcon={<People />} />
+    })
     return (
       <div className='about'>
         <NavBar/>
@@ -43,7 +61,7 @@ export default React.createClass({
           <h2>Recent Activity</h2>
           <List>
             {textsList}
-          </List
+          </List>
         </div>
       </div>
     )

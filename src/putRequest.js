@@ -1,10 +1,11 @@
-var request = require('superagent')
+// CLEANED
 
-module.exports = function (url, data, callback){
-  console.log('in PUT', url, data)
+import request from 'superagent'
+
+export default function (url, data, callback){
   request.put(url)
   .send(data)
-  .end(function(err, res){
-    //callback(err, res)
+  .end(function(err, res) {
+    callback(err, res)
   })
 }

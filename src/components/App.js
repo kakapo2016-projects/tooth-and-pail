@@ -1,9 +1,10 @@
+// CLEANED
+
 import React from 'react'
 import cookie from 'react-cookie'
 import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
-import GalleryPhoto from './GalleryPhoto'
 import Sort from './Sort'
 
 // database functions
@@ -27,7 +28,7 @@ export default React.createClass({
     };
   },
 
-    getInitialState: function () {
+  getInitialState: function () {
     return {
       amountDonated: 0,
       gallery: []
@@ -52,8 +53,13 @@ export default React.createClass({
   },
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66be3898102ec21a69ba38c3ce7ce55ac4bb385b
   render () {
+    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
+
     return (
       <div className='app'>
         <NavBar/>
