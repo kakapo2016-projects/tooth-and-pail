@@ -17,4 +17,4 @@ describe('Sort', () => {
 //compare with actual  apply filter function
 // use mocha and chai
 
-var dummyData = 
+// var dummyData = 
