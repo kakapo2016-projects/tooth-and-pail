@@ -31,7 +31,7 @@ export default React.createClass ({
 
   render: function () {
     if (this.props.received >= this.props.target){
-      return(<div>Fully Funded</div>)
+      return(<div className='fullyFunded'>Fully Funded</div>)
     } else {
       return (
         <span id="DonateForm">

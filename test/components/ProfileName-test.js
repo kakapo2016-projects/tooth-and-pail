@@ -10,8 +10,5 @@ describe('ProfileName', () => {
     const wrapper = shallow(React.createElement(ProfileName, props))
     expect(wrapper.find('h2')).to.have.length(1)
     expect(wrapper.find('h2').text()).to.equal('Richard')
-    // expect(beverages).to.have.property('tea').with.length(3);
-
-    // add in future tests re pulling name from DB etc...
   })
 })

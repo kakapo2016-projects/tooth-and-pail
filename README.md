@@ -25,3 +25,5 @@ To CREATE database  - install KNEX globally
 
 To run the db server - in /dbserver
                         nodemon dbserver.js      - will run on localhost:3000
+
+To run the selenium server manually     java -jar selenium-server-standalone-2.45.0.jar -port 4444 -host 127.0.0.1

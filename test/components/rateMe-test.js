@@ -20,6 +20,6 @@ describe('RateMe', () => {
   })
   it('renders 5 teeth', () => {
     const wrapper = shallow(React.createElement(RateMe, props))
-    expect(wrapper.find('.toothMed').to.have.length(5))
+    expect(wrapper.find('div.clickableTeeth').childnodes.to.have.length(5))
   })
 })

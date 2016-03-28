@@ -39,7 +39,7 @@ export default React.createClass ({
 
   render() {
     return (
-        <form role='form'>
+        <form role='form' id='signupForm'>
         <div className='signup'>
           <br/>
           <h2> SIGN UP </h2>
