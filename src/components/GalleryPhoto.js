@@ -1,3 +1,5 @@
+// CLEANED
+
 import React from 'react'
 import PhotoFooter from './PhotoFooter.js'
 import { Link } from 'react-router'

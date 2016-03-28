@@ -6,10 +6,7 @@ import {
   generateShareIcon
 } from 'react-share';
 
-
-
 export default React.createClass ({
-
   render: function () {
     // const {
     //   FacebookShareButton,
