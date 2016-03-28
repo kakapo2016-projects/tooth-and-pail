@@ -20,6 +20,12 @@ export default React.createClass({
     }
   },
 
+  getInitialState: function () {
+    return {
+      textArr: [],
+    }
+  },
+
   dynamicSort: function (property) {
     var sortOrder = 1;
     if(property[0] === "-") {
@@ -33,25 +39,30 @@ export default React.createClass({
   },
 
   componentDidMount: function () {
-    getRequest('http://localhost:3000/donations', this.createFeed)
+    var _this = this
+    getRequest('http://localhost:3000/donations', (err, resp) => {
+      if (err) { console.log("ERROR!", err); return }
+      _this.createFeed(resp)})
   },
 
   createFeed: function (data) {
+    console.log(data, "data")
     var originalData = data
-    originalData = originalData.sort(dynamicSort("Date"));
+    originalData = originalData.sort(this.dynamicSort("Date"));
     var textArr = []
-    for (var i = 0; i < donationArray.length; i++){
-      var donation = donationArray[0]
-      var donationText = donation.name + "just received a $"+ donation.amount + " towards their goal! Just "+ donation.target-donation.received + "to go!"
+    for (var i = 0; i < originalData.length; i++){
+      var donation = originalData[i]
+      var donationText = donation.name + "just received a $" + donation.amount + " donation towards their goal!"
       textArr.push(donationText)
     }
+    console.log("textArr", textArr)
     this.setState({'textArr': textArr})
   },
 
   render: function () {
     var texts = this.state.textArr
     var textsList = texts.map(function(text){
-      return <ListItem primaryText={text} leftIcon={<People />} />
+      return <ListItem primaryText={text} />
     })
     return (
       <div className='about'>
