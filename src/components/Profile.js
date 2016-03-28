@@ -68,6 +68,8 @@ export default React.createClass({
         imgURL: resp.imgURL,
         sobStory: resp.sobStory,
         rating: resp.rating
+        title: "Help fund dental care for" + resp.name
+        pageURL: "https://toothandpail.herokuapp.com" + {this.props.params.recipientID}
       })
       getRequest(`http://localhost:3000/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR GETTING SPECFIC PROFILE!", err); return }
@@ -169,7 +171,7 @@ export default React.createClass({
           <div className="row">
             <div className="twelve columns">
               <SobStory sobstory={this.state.sobStory} />
-              <SocialSharing url="http://google.com" title="LOOK AT THESE TEETH!" media="https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png" />
+              <SocialSharing url={this.state.pageURL} title={this.state.title} media={this.state.imgURL} />
             </div>
           </div>
         </div>
