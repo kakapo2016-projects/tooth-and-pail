@@ -1,3 +1,5 @@
+// CLEANED
+
 import React from 'react'
 import ProgressBar from './ProgressBar'
 import Rate from './Rate'

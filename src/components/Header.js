@@ -1,3 +1,5 @@
+// CLEANED
+
 import React from 'react'
 
 export default React.createClass ({
@@ -5,7 +7,7 @@ export default React.createClass ({
     return (
       <div>
         <header>
-          <h1>{this.props.header}</h1>
+          <h1> {this.props.header} </h1>
         </header>
       </div>
     )
