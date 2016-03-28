@@ -11,7 +11,8 @@
     "build:server": "webpack --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
-    "runme": "nodemon ./dbserver/dbserver.js "
+    "runme": "nodemon ./dbserver/dbserver.js ",
+    "test:integration": "nightwatch -g test/integration"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "lomega": "^1.0.0",
     "material-ui": "^0.15.0-alpha.2",
     "moment": "^2.12.0",
+    "nightwatch": "^0.8.18",
     "nodemon": "^1.9.1",
     "pg": "^4.5.1",
     "progresso": "^0.3.2",
