@@ -1,10 +1,11 @@
+// CLEANED
+
 import React from 'react'
-import cookie from 'react-cookie'
-import ReactDOM from 'react-dom'
 import Header from './Header'
 import NavBar from './NavBar'
 import Login from './Login'
 import SignUp from './SignUp'
+import cookie from 'react-cookie'
 
 // database helpers
 import getRequest from '../getRequest.js'
@@ -28,28 +29,26 @@ export default React.createClass({
   attemptLogIn: function (email, password) {
     getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
-      if (res === null) { alert('you call that a valid email address, idiot?'); return }
-
+      if (res === null) { alert(`Oops! We don't have that email address on file. Maybe try signing up?`); return }
       postRequest(`http://localhost:3000/unencrypt`, {
         password: password, passwordHash: res.passwordHash}, (err, resp) => {
         if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); return }
         if (resp.body) {
-          alert('sucessfully logged in!')
+          alert('Sucessfully logged in!')
           cookie.save('donorID', res.donorID, { path: '/'})
           this.props.history.push('/gallery')
         } else {
-          alert('incorrect password!')
+          alert('Incorrect password!')
         }
       })
     })
   },
 
   attemptSignUp: function (username, email, password, confirm) {
-    if (password !== confirm) { alert("those passwords don't match, idiot!"); return }
+    if (password !== confirm) { alert("Those passwords don't match, you fool!"); return }
     getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res !== null) { alert('you already have an account, idiot!'); return }
-
       postRequest(`http://localhost:3000/encrypt`, {password: password}, (err, res) => {
         if (err) { console.log("ERROR RETRIVING ENCRIPTION!: ", err); return }
         let data = {
