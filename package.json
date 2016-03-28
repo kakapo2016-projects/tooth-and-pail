@@ -12,6 +12,7 @@
     "build": "npm run build:client && npm run build:server",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
     "runme": "nodemon ./dbserver/dbserver.js ",
+    "testme": "node ./test/tap-test.js | tap-spec",
     "test:integration": "nightwatch -g test/integration"
   },
   "repository": {
@@ -73,6 +74,7 @@
     "mocha-clean": "^1.0.0",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^1.17.3",
+    "tap-spec": "^4.1.1",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   }
