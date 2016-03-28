@@ -55,12 +55,6 @@ export default React.createClass({
 
   render () {
 
-    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
-    var gallery = this.state.gallery
-
-
-
-
     return (
       <div className='app'>
         <NavBar/>

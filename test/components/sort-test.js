@@ -17,6 +17,7 @@ describe('Sort', () => {
 //compare with actual apply filter function
 // use mocha and chai
 
+<<<<<<< HEAD
 var dummyData = [{received:4900, target:5000},
                 {received:10, target:5000},
                 {received:500, target:5000},
@@ -33,3 +34,6 @@ var realData = dummyData.filter(function(x) {
   var percentageFunded = ((x.received/x.target)*100)
   return percentageFunded >= 90
   });
+=======
+// var dummyData = 
+>>>>>>> dcdfadfb1e54165010a8af891290b806ce9cc302

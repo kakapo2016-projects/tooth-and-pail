@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
 
-import NavLink from '../../src/components/NavLink'
+// import NavLink from '../../src/components/NavLink'
 
 describe('NavLink', () => {
   it('should render a link', () => {

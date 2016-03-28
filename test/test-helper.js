@@ -1,5 +1,3 @@
-global.Ω = require('lomega')
-
 import jsdom from 'jsdom'
 import chai from 'chai'
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
