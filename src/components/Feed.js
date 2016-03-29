@@ -7,6 +7,7 @@ import Header from './Header'
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
 import PeopleIcon from 'material-ui/lib/svg-icons/social/people'
+import _ from 'lodash'
 
 import getRequest from '../getRequest.js'
 
@@ -27,18 +28,6 @@ export default React.createClass({
     }
   },
 
-  dynamicSort: function (property) {
-    var sortOrder = 1;
-    if(property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-    return function (a,b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-        return result * sortOrder;
-    }
-  },
-
   componentDidMount: function () {
     var _this = this
     getRequest('http://localhost:3000/feed', (err, resp) => {
@@ -46,14 +35,19 @@ export default React.createClass({
       _this.createFeed(resp)})
   },
 
+
+  createDonationText: function (donation, left) {
+    var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal! Only $" + left + " left to go until they reach their target of $" + donation.target + "."
+    return donationText
+  },
+
   createFeed: function (data) {
-    var originalData = data
-    originalData = originalData.sort(this.dynamicSort("Date"));
+    var originalData = _.orderBy(data, 'Date', 'desc')
     var textArr = []
     for (var i = 0; i < originalData.length; i++){
       var left = originalData[i].target - originalData[i].received
       var donation = originalData[i]
-      var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal! Only $" + left + " left to go until they reach their target of $" + donation.target + "."
+      var donationText = this.createDonationText(donation, left)
       textArr.push(donationText)
     }
     this.setState({'textArr': textArr})
