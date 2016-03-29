@@ -7,11 +7,6 @@ import {
 } from 'react-share'
 
 export default React.createClass ({
-  // displayIfReady: function () {
-  //   if (this.props.title && this.props.) {
-  //
-  //   }
-  // }
 
   render: function () {
     const {

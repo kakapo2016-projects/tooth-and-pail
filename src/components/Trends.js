@@ -68,13 +68,13 @@ export default React.createClass ({
             We'll just leave you to imagine the profits we've been able to make from our cut of this funding.
           </p>
           <span className="TrendButtons">
-            <RaisedButton label="Donations over time" onClick={this.handleTime} />
+            <RaisedButton label="Donations over time" id="button1" onClick={this.handleTime} />
           </span>
           <span className="TrendButtons">
-            <RaisedButton label="Size of Donations" onClick={this.handleSize} />
+            <RaisedButton label="Size of Donations" id="button2" onClick={this.handleSize} />
           </span>
           <span className="TrendButtons">
-            <RaisedButton label="Treatments Funded" onClick={this.handleFunded} />
+            <RaisedButton label="Treatments Funded" id="button3" onClick={this.handleFunded} />
           </span>
           <ToggleDisplay show={this.state.isFunded}>
             <TrendTeethFunded/>

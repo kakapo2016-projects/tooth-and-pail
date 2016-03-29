@@ -26,14 +26,48 @@ describe('Gallery', () => {
       recipientid : 3333
     }
   ]}
-  
+
   it('renders a gallery', () => {
-     const wrapper = mount(React.createElement(Gallery, props))
+     const wrapper = shallow(React.createElement(Gallery, props))
      expect(wrapper.find('div.gallery')).to.be.length(1)
   })
 
   it('renders the correct number of loaded galleryPhotos', () => {
      const wrapper = mount(React.createElement(Gallery, props) )
      expect(wrapper.find('div.galleryPhoto')).to.be.length(3)
+  })
+
+  it('renders three <Foo /> components', () => {
+   const wrapper = shallow(<MyComponent />);
+   expect(wrapper.find(Foo)).to.have.length(3);
+ });
+
+  var dummyData = [
+    {received:4900, target:5000},
+    {received:10, target:5000},
+    {received:500, target:5000},
+    {received:4000, target:5000},
+    {received:6500, target:6700},
+    {received:300, target:10000},
+  ]
+
+  var expectedData = [
+    {received:4900, target:5000},
+    {received:6500, target:6700}
+  ]
+
+  var realData = dummyData.filter(function(x) {
+    var percentageFunded = ((x.received/x.target)*100)
+    return percentageFunded >= 90
+  })
+
+  let props2 = {
+    gallery: dummyData,
+    galleryFilter: {value: 2, primaryText: "Almost There"}
+  }
+
+  it('actual percentage is equal to expected percentage', () => {
+     const wrapper = mount(React.createElement(Gallery, props2))
+     expect(wrapper.find(GalleryPhoto)).to.have.length(2)
   })
 })

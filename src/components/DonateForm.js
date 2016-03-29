@@ -42,7 +42,7 @@ export default React.createClass ({
             onChange={this.handleChange}
             value={this.state.inputValue}/>
           <br/>
-          <RaisedButton label="Donate!" onClick={this.handleDonate}/>
+          <RaisedButton label="Donate!" className="donate-button" onClick={this.handleDonate}/>
         </span>
       )
     }

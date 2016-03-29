@@ -4,16 +4,16 @@
             tests="1">
 
   <testsuite name="hbar-integ-test"
-    errors="0" failures="0" hostname="" id="" package="hbar-integ-test" skipped="1"
-    tests="1" time="0.000" timestamp="Tue, 29 Mar 2016 02:08:33 GMT">
+    errors="0" failures="0" hostname="" id="" package="hbar-integ-test" skipped="0"
+    tests="1" time="5.581" timestamp="Tue, 29 Mar 2016 05:10:53 GMT">
   
-  
+    <testcase name="test horizontal bar" time="5.581" assertions="2">
+
     
-    <testcase
-      name="test horizontal bar">
-      <skipped />
+
+    
     </testcase>
-    
+  
   
   </testsuite>
 </testsuites>

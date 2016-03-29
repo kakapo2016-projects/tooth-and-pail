@@ -4,16 +4,14 @@
             tests="1">
 
   <testsuite name="gallery-integ-test"
-    errors="0" failures="0" hostname="" id="" package="gallery-integ-test" skipped="1"
-    tests="1" time="0.000" timestamp="Tue, 29 Mar 2016 02:08:33 GMT">
+    errors="0" failures="0" hostname="" id="" package="gallery-integ-test" skipped="0"
+    tests="1" time="7.455" timestamp="Tue, 29 Mar 2016 05:10:40 GMT">
   
-  
+    <testcase name="test gallery page" time="7.455" assertions="1">
+
     
-    <testcase
-      name="test gallery page">
-      <skipped />
     </testcase>
-    
+  
   
   </testsuite>
 </testsuites>
