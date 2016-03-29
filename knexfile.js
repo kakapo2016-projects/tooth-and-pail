@@ -9,31 +9,31 @@ module.exports = {
     useNullAsDefault: true
   },
 
-  production: {
-    client: 'pg',
-    connection: {
-      url: process.env.DATABASE_URL,
-      host: process.env.DBHOST,
-      database: process.env.DBNAME,
-      user:     process.env.DBUSER,
-      password: process.env.DBPASSWORD
-    },
-    directory: __dirname + '/migrations',
-    tableName: 'migrations'
-  }
+  // production: {
+  //   client: 'pg',
+  //   connection: {
+  //     url: process.env.DATABASE_URL,
+  //     host: process.env.DBHOST,
+  //     database: process.env.DBNAME,
+  //     user:     process.env.DBUSER,
+  //     password: process.env.DBPASSWORD
+  //   },
+  //   directory: __dirname + '/migrations',
+  //   tableName: 'migrations'
+  // }
 
 
-//     development: {
-//        client: 'sqlite3',
-//        connection: {
-//          filename: './datastore/tandp.sqlite3'
+    development: {
+       client: 'sqlite3',
+       connection: {
+         filename: './datastore/tandp.sqlite3'
     
-//        },
-//        useNullAsDefault: true
-//      },
-//      directory: __dirname + '/migrations',
-//      tableName: 'migrations'
+       },
+       useNullAsDefault: true
+     },
+     directory: __dirname + '/migrations',
+     tableName: 'migrations'
 
 
-// }
+}
 
