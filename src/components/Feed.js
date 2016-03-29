@@ -53,7 +53,7 @@ export default React.createClass({
     for (var i = 0; i < originalData.length; i++){
       var left = originalData[i].target - originalData[i].received
       var donation = originalData[i]
-      var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal! Only $" + left + " left to go until they reach their target of $" + target + "."
+      var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal! Only $" + left + " left to go until they reach their target of $" + donation.target + "."
       textArr.push(donationText)
     }
     this.setState({'textArr': textArr})
