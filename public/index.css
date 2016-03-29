@@ -32,7 +32,8 @@ h3 {
 }
 
 .about-header {
-  margin-bottom: 35px;
+  margin-bottom: 45px;
+  text-align: left;
 }
 
 /* Social & Trend */
@@ -115,7 +116,6 @@ a:link {
 }
 
 a:hover {
-  color: white;
   text-decoration: none;
 }
 
@@ -197,6 +197,17 @@ a:active {
 
 .profile-link {
   color: #b71c1c;
+}
+
+.before-and-afters {
+  margin-top: 30px;
+}
+
+.about-image {
+  max-width: 60%;
+  min-width: 60%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
 }
 
 #fullyFunded {

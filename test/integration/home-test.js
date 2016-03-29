@@ -1,5 +1,5 @@
 module.exports = {
-  'test Home' : function (browser) {
+  'test Home page' : function (browser) {
     browser
       .url('http://localhost:8080/')
       .waitForElementPresent('body', 1000)

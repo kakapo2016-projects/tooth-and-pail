@@ -8,5 +8,6 @@ export default function (url, data, callback){
   .send(data)
   .end(function(err, res) {
     callback(err, res)
+
   })
 }
