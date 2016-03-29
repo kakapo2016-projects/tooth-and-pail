@@ -1,4 +1,5 @@
 module.exports = {
+	'@disabled': true,
   'photo footer and rate teeth loads on the gallery page' : function (browser) {
     browser
       .url('http://localhost:8080/gallery')

@@ -1,4 +1,5 @@
 module.exports = {
+	'@disabled': true,
   'header loads on the page' : function (browser) {
     browser
       .url('http://localhost:8080/gallery')

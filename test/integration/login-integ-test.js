@@ -1,4 +1,5 @@
 module.exports = {
+  '@disabled': true,
   'test tooth and pail login page loads' : function (browser) {
     browser
       .url('http://localhost:8080/')

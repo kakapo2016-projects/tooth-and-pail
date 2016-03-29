@@ -1,4 +1,5 @@
 module.exports = {
+  '@disabled': true,
   'profile test' : function (browser) {
     browser
       .url('http://localhost:8080/recipient/2')

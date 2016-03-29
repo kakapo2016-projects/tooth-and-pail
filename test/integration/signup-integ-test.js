@@ -1,4 +1,5 @@
 module.exports = {
+  '@disabled': true,
   'test signup form on the login page' : function (browser) {
     browser
       .url('http://localhost:8080/')

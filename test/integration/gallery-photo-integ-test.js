@@ -1,4 +1,5 @@
 module.exports = {
+  '@disabled': true,
   'gallery photo page' : function (browser) {
     browser
       .url('http://localhost:8080/recipient/2')

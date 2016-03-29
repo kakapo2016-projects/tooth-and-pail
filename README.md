@@ -25,20 +25,5 @@ To run the selenium server manually:
 	java -jar selenium-server-standalone-2.52.0.jar -port 4444 -host 127.0.0.1
 
 
-Google test for nightwatch:
-module.exports = {
-  'demo test google' : function (client) {
-    client
-      .url('http://google.com')
-      .waitForElementPresent('body', 1000);
-  },
-
-  'part two' : function(client) {
-    client
-      .setValue('input[type=text]', ['nightwatch', client.Keys.ENTER])
-      .pause(1000)
-      .assert.containsText('#main', 'Night Watch')
-      .end();
-  }
-};
+To disable a nightwatch test from running:  '@disabled': true,
 

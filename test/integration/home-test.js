@@ -1,4 +1,5 @@
 module.exports = {
+  '@disabled': true,
   'test Home' : function (browser) {
     browser
       .url('http://localhost:8080/')
