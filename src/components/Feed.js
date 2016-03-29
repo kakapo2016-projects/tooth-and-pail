@@ -29,11 +29,15 @@ export default React.createClass({
 
   dynamicSort: function (property) {
     var sortOrder = 1;
+    // nice custom sort function
+    // but consider using lodash orderBy which has ascending and descending capabilities
+    // https://lodash.com/docs#orderBy
     if(property[0] === "-") {
         sortOrder = -1;
         property = property.substr(1);
     }
     return function (a,b) {
+      //indenttation
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
@@ -48,11 +52,13 @@ export default React.createClass({
 
   createFeed: function (data) {
     var originalData = data
+    // = data.sort ?
     originalData = originalData.sort(this.dynamicSort("Date"));
     var textArr = []
     for (var i = 0; i < originalData.length; i++){
       var left = originalData[i].target - originalData[i].received
       var donation = originalData[i]
+      // pull out into a donationText function
       var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal! Only $" + left + " left to go until they reach their target of $" + donation.target + "."
       textArr.push(donationText)
     }

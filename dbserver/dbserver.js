@@ -18,3 +18,8 @@ var PORT = process.env.PORT || 3000
 app.listen(PORT, function() {
   console.log('Production Teeth server running at localhost:' + PORT)
 })
+
+
+// wrap the app.listen in the Charles magic which prevents it 
+// being called if required into the test folder
+// then module.exports = app

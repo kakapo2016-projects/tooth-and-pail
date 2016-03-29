@@ -15,6 +15,14 @@ import postRequest from '../postRequest.js'
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 import MyTheme from '../theme.js'
 
+// pull out the url hostname into a config file and check for process.env.NODE_ENV
+// if dev
+//  localhost
+// else
+//  deployed hostname
+
+
+
 export default React.createClass({
   childContextTypes : {
     muiTheme: React.PropTypes.object
@@ -51,12 +59,14 @@ export default React.createClass({
       if (res !== null) { alert('you already have an account, idiot!'); return }
       postRequest(`http://localhost:3000/encrypt`, {password: password}, (err, res) => {
         if (err) { console.log("ERROR RETRIVING ENCRIPTION!: ", err); return }
+        // keep the password hash on the server!
         let data = {
           donorName: username,
           passwordHash: res.text,
           email: email
         }
 
+        // no need to come back to the client to create a user
         postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
           cookie.save('donorID', resp.text, { path: '/'})
           this.props.history.push('/gallery')

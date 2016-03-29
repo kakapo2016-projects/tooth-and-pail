@@ -19,6 +19,8 @@ module.exports = {
       .click('input[name="login"]')
       .pause(1000)
       .end();
+
+      // what happens after login?
   }   
 };
 // Error while running setValue command: Provided locating strategy is not supported: input[name="#email-field"]. It must be one of the following:

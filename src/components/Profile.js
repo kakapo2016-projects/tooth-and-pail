@@ -77,6 +77,7 @@ export default React.createClass({
       })
       getRequest(`http://localhost:3000/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR GETTING SPECFIC PROFILE!", err); return }
+        // what is this ? V
         this.donationSetState(resp, this.props.params.recipientID)
       })
     })
@@ -106,6 +107,8 @@ export default React.createClass({
       //  do a post to create a new record
       postRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
         if (err) { console.log("ERROR!", err); return }
+        // put this logic on the server
+        // a post to /ratings responds with the new rating
         // now getting all the ratings for this recipient
         getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
           if (err) { console.log("ERROR!", err); return }

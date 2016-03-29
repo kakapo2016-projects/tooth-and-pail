@@ -11,6 +11,7 @@ app.use(compression())
 app.use(express.static(path.join(__dirname, 'public')))
 routes(app)
 
+// nice server side rendering!
 // send all requests to index.html so browserHistory works
 app.get('*', (req, res) => {
   match({ routes, location: req.url }, (err, redirect, props) => {

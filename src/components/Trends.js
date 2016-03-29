@@ -18,6 +18,8 @@ import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 import MyTheme from '../theme.js'
 
 export default React.createClass ({
+
+  // possible that these aren't needed in a component where the theme object is not used
   childContextTypes : {
     muiTheme: React.PropTypes.object
   },

@@ -21,6 +21,9 @@ export default React.createClass ({
   },
 
   dbSetState: function (err, data) {
+    // another really big dbSetState function
+    // pull out to small function
+    // maybe try and genuinely TDD these small functions
     this.setState({sizedata: data})
     let originalData = this.state.sizedata
     let ChartData =  {

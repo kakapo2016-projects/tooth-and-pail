@@ -12,6 +12,10 @@ describe('Sort', () => {
   })
 })
 
+// use sinon spy to test to see if the sort function fires the changeFilter 
+// function passed doen from App.js
+
+
 // Test for 'Almost there'
 // dummy data for expected: 90% and above
 //compare with actual apply filter function

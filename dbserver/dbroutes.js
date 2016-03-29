@@ -1,4 +1,7 @@
 // CLEANED //
+// nice routes 
+// possible that some of the frontend logic (async function followed by async function
+// can be handled here
 
 var bodyparser = require('body-parser')
 var uuid = require('uuid')
@@ -6,6 +9,7 @@ var bcrypt = require('bcryptjs')
 
 var moment = require ('moment')
 
+// require knex config from knexfile
 var knex = require('knex')({
   client: 'pg',
   connection: {

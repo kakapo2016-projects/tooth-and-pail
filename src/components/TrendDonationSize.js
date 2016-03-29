@@ -20,6 +20,10 @@ export default React.createClass ({
   },
 
   dbSetState: function (err, data) {
+    // what does this do? 
+    // it is very mysterious 
+    // and long...
+    // refactor into small functions
     this.setState({sizedata: data})
     let originalData = this.state.sizedata
     let u10 = 0

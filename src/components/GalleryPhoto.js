@@ -5,6 +5,8 @@ import PhotoFooter from './PhotoFooter.js'
 import { Link } from 'react-router'
 
 export default React.createClass({
+  // the below is fine but 
+  // const { imgUrl, etc } this.props  destructuring is a good practice
   render () {
     return (
       <Link to={`/recipient/${this.props.recipientID}`}>

@@ -67,6 +67,9 @@ let HBar = React.createClass({
   },
 
   render: function () {
+    // try destructing 
+    // const { data, sort  } = this.props
+    // etc
     let props = this.props
     let hbar = this
 
@@ -76,6 +79,7 @@ let HBar = React.createClass({
     hbar.scales()
     let data = this.props.data
 
+    // try https://lodash.com/docs#orderBy
     if (this.props.sort === 'ascending') data.sort(function (p, q) {return p.v - q.v} )
     if (this.props.sort === 'descending') data.sort(function (p, q) {return q.v - p.v} )
 

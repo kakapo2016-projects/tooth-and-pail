@@ -7,6 +7,7 @@ module.exports = {
       .verify.visible('.target')
       .click('button[name=upload_widget_opener]')
       .end();
+      // what is supposed to happen after you click the button?
   }
 };
 

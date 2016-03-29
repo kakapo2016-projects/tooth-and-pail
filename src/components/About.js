@@ -6,6 +6,10 @@ import MyTheme from '../theme.js'
 import NavBar from './NavBar'
 import Header from './Header'
 
+// stretch feature -> internationalize tooth and pail with react-intl 
+// https://alicoding.com/localizing-react-app-using-react-router-with-react-intl/
+// good practice to pull text content out of components
+
 export default React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object

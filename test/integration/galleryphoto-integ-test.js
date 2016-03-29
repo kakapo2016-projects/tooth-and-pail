@@ -1,3 +1,5 @@
+// nice
+
 module.exports = {
   '@disabled': true,
   'gallery photo page' : function (browser) {

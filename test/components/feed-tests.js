@@ -20,9 +20,13 @@ describe('Feed', () => {
   })
   it('should show a List components', () => {
   const wrapper = shallow(React.createElement(Feed))
+  // pass these as components and use mount 
+  // example https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha
   expect(wrapper.find('List')).to.have.length(1)
   })
   it('should show multiple list item components', () => {
+  // see above
+  // see above
   const wrapper = shallow(React.createElement(Feed))
   expect(wrapper.find('ListItem')).to.have.length.of.at.least(2)
   })

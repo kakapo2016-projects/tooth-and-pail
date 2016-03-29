@@ -21,6 +21,7 @@ export default React.createClass ({
   },
 
   dbSetState: function(err, data) {
+    // see notes on TrendDonationSize dbSetState
     this.setState({timedata: data})
     let originalData = this.state.timedata
     let DonationData = {

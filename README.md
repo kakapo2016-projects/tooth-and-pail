@@ -42,3 +42,10 @@ module.exports = {
       .end();
   }
 };
+
+## Review Notes 
+
+ * when writing tests that check to see if a child component renders use mount and pass in the required component directly rather than using a string https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha
+
+ * API tests reccommended and are easy to write
+
