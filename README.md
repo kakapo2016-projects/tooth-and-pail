@@ -24,6 +24,7 @@ To run NightWatch test:  npm run test:integration
 To run the selenium server manually:
 	java -jar selenium-server-standalone-2.52.0.jar -port 4444 -host 127.0.0.1
 
+
 Google test for nightwatch:
 module.exports = {
   'demo test google' : function (client) {
@@ -40,4 +41,4 @@ module.exports = {
       .end();
   }
 };
->>>>>>> 938d5e95e0ebfde7144b3111e050b6a6e94b436c
+
