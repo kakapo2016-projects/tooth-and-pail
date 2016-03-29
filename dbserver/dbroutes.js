@@ -3,16 +3,8 @@
 var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var bcrypt = require('bcryptjs')
-
 var moment = require ('moment')
-
-var knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host     : '127.0.0.1',
-    database : 'tooth_and_pail'
-  }
-})
+var knex = require('knex')(require('../knexfile.js'))
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
