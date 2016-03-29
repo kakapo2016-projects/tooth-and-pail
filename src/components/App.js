@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import cookie from 'react-cookie'
 import Header from './Header'

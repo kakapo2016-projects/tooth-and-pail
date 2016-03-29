@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import Header from './Header'
 import NavBar from './NavBar'
@@ -66,7 +64,7 @@ export default React.createClass({
         password: password,
         email: email
       }
-      
+
       postRequest(`http://localhost:3000/donors`, userObject, (err, res) => {
         if (err) { console.log("ERROR ENCRIPTING!: ", err); return }
         console.log('RES from db: ', res.text)

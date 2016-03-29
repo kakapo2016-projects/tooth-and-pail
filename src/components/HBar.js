@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import ProgressBar from './ProgressBar'
 import ReactCSS from 'reactcss'
