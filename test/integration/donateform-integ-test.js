@@ -1,5 +1,5 @@
 module.exports = {
-	'@disabled': true,
+'@disabled': true,
   'donate form test' : function (browser) {
     browser
       .url('http://localhost:8080/submitteeth')
