@@ -38,7 +38,7 @@ export default React.createClass ({
       photo: "",
       isUploaded: false,
       alreadyHasTeeth: false,
-      isLoggedIn: false
+      isLoggedIn: false,
       profileURL: ""
     }
   },

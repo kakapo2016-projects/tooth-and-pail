@@ -77,11 +77,8 @@
     "nightwatch": "^0.8.18",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^1.17.3",
-<<<<<<< HEAD
     "supertest": "^1.2.0",
-=======
     "tap-spec": "^4.1.1",
->>>>>>> 938d5e95e0ebfde7144b3111e050b6a6e94b436c
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   }
