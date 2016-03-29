@@ -4,6 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
+import _ from 'lodash'
 
 export default React.createClass ({
   getInitialState: function () {
@@ -23,13 +24,6 @@ export default React.createClass ({
   dbSetState: function(err, data) {
     this.setState({timedata: data})
     let originalData = this.state.timedata
-    let DonationData = {
-      columns : [
-        { label : "Date of Donation", type: "date" },
-        { label : "Cumulative Donations", type: "number" }
-      ],
-      rows : []
-    }
     let allRows = []
     for (let i = 0; i < originalData.length; i++) {
       let date = originalData[i].createdAt
@@ -48,7 +42,19 @@ export default React.createClass ({
     for (let j = 1; j < allRows.length; j++) {
       allRows[j][1] = allRows[j][1] + allRows[j-1][1]
     }
-    DonationData.rows = allRows
+    this.setState({'allRows': allRows})
+    this.createChart()
+  },
+
+  createChart: function () {
+    let DonationData = {
+      columns : [
+        { label : "Date of Donation", type: "date" },
+        { label : "Cumulative Donations", type: "number" }
+      ],
+      rows : []
+    }
+    DonationData.rows = this.state.allRows
     let DonationsChart =  {
       rows : DonationData.rows,
       columns : DonationData.columns,
