@@ -54,8 +54,8 @@ export default React.createClass({
       amount: amount
     }
 
-  postRequest('http://localhost:3000/donations', data, (err, res) => {
-    if (err) { console.log("ERROR!", err); return }
+    postRequest('http://localhost:3000/donations', data, (err, res) => {
+      if (err) { console.log("ERROR!", err); return }
       getRequest(`http://localhost:3000/donations/recipient/${recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR!", err); return }
         this.donationSetState(resp, recipientID)
@@ -106,6 +106,7 @@ export default React.createClass({
       //  do a post to create a new record
       postRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
         if (err) { console.log("ERROR!", err); return }
+        alert("Thank you for rating these teeth!")
         // now getting all the ratings for this recipient
         getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
           if (err) { console.log("ERROR!", err); return }
