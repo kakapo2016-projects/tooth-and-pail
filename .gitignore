@@ -39,3 +39,6 @@ node_modules
 .DS_Store
 
 tandp.sqlite3
+
+/nightwatch.json
+/reports/data

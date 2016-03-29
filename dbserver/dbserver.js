@@ -13,8 +13,11 @@ app.use(cors({
 }))
 
 routes(app)
+if (require.main === module) {
+  var PORT = process.env.PORT || 3000
+  app.listen(PORT, function() {
+    console.log('Production Teeth server running at localhost:' + PORT)
+  })
+}
 
-var PORT = process.env.PORT || 3000
-app.listen(PORT, function() {
-  console.log('Production Teeth server running at localhost:' + PORT)
-})
+module.exports = app
