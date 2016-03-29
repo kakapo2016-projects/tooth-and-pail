@@ -101,7 +101,7 @@ export default React.createClass ({
       <div>
         <NavBar/>
         <Header header={this.props.recipientID}/>
-        <div className="RecipientForm twelve columns">
+        <div className="twelve columns" id="RecipientForm ">
           <ToggleDisplay show={this.state.isLoggedIn}>
             <ToggleDisplay hide={this.state.alreadyHasTeeth}>
               <h2>Submit Your Teeth</h2>
