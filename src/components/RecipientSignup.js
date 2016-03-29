@@ -131,7 +131,9 @@ export default React.createClass ({
             </ToggleDisplay>
           </ToggleDisplay>
           <ToggleDisplay hide={this.state.isLoggedIn}>
-            <p>You need to log in before you can request funding.</p>
+            <h2>Oops!</h2>
+            <p>You need to log in before you can request funding!</p>
+            <RaisedButton label="Login / Signup" onClick={() => {this.props.history.push('/')}}/>
           </ToggleDisplay>
         </div>
       </div>
