@@ -133,7 +133,7 @@ export default React.createClass ({
             </ToggleDisplay>
             <ToggleDisplay show={this.state.alreadyHasTeeth}>
               <p>Thank you for requesting funding for your teeth. Check out your profile!</p>
-              <RaisedButton label="Show me my teeth" onClick={() => {this.props.history.push(this.state.profileURL)}}/>
+              <RaisedButton label="Show me my teeth" className="showmyteeth" onClick={() => {this.props.history.push(this.state.profileURL)}}/>
             </ToggleDisplay>
           </ToggleDisplay>
           <ToggleDisplay hide={this.state.isLoggedIn}>

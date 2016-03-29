@@ -1,5 +1,5 @@
 module.exports = {
-  'profile test' : function (browser) {
+  'profile page test' : function (browser) {
     browser
       .url('http://localhost:8080/recipient/2')
       .waitForElementVisible('body', 1000)
