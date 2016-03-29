@@ -2,6 +2,7 @@
 
 import React from 'react'
 import RaisedButton from 'material-ui/lib/raised-button';
+import CircularProgress from 'material-ui/lib/circular-progress'
 import TextField from 'material-ui/lib/text-field'
 
 export default React.createClass ({
@@ -22,6 +23,24 @@ export default React.createClass ({
     this.setState({
       password: e.target.value
     })
+  },
+
+  handleButtonIcon: function () {
+    if (!this.props.loading) {
+      return (
+        <RaisedButton
+          label='Submit'
+          className='login'
+          onTouchTap={() => {
+            this.props.attemptLogIn(
+            this.state.email,
+            this.state.password
+          )}}
+        />
+      )
+    } else {
+      return (<CircularProgress/>)
+    }
   },
 
   render() {
@@ -47,15 +66,7 @@ export default React.createClass ({
           placeholder='Password' />
         <br/>
         <br/>
-        <RaisedButton
-          label='Submit'
-          className='login-button'
-          onTouchTap={() => {
-            this.props.attemptLogIn(
-            this.state.email,
-            this.state.password
-          )}}
-        />
+        {this.handleButtonIcon()}
       </div>
     </form>
   )}

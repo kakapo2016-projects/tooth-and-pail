@@ -1,14 +1,16 @@
 import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
+import DropDownMenu from 'material-ui/lib/DropDownMenu'
 
 import Sort from '../../src/components/Sort'
 
 describe('Sort', () => {
   it('should render a Sort component', () => {
-    const wrapper = shallow(React.createElement(Sort))
-    expect(wrapper.find('.sort')).to.have.length(1)
-    expect(wrapper.find('DropDownMenu')).to.have.length(1)
+    const wrapper = mount(React.createElement(Sort))
+    const span = wrapper.find('.sort')
+    expect(span).to.have.length(1)
+    // expect(wrapper.contains(<DropDownMenu/>)).to.have.length(1)
   })
 })
 
@@ -17,13 +19,14 @@ describe('Sort', () => {
 //compare with actual apply filter function
 // use mocha and chai
 
-var dummyData = [{received:4900, target:5000},
-                {received:10, target:5000},
-                {received:500, target:5000},
-                {received:4000, target:5000},
-                {received:6500, target:6700},
-                {received:300, target:10000},
-                ]
+var dummyData = [
+  {received:4900, target:5000},
+  {received:10, target:5000},
+  {received:500, target:5000},
+  {received:4000, target:5000},
+  {received:6500, target:6700},
+  {received:300, target:10000},
+]
 
 var expectedData = [{received:4900, target:5000},
                     {received:6500, target:6700}

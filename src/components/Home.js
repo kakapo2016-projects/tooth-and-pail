@@ -26,18 +26,29 @@ export default React.createClass({
     }
   },
 
+  getInitialState: function () {
+    return {
+      loading: false
+    }
+  },
+
   attemptLogIn: function (email, password) {
+    this.setState({loading: true})
     getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
-      if (err) { console.log('ERROR: ', err); return }
-      if (res === null) { alert(`Oops! We don't have that email address on file. Maybe try signing up?`); return }
+      if (err) { console.log('ERROR: ', err); this.setState({loading: false}); return }
+      if (res === null) {
+        alert(`Oops! We don't have that email address on file. Maybe try signing up?`)
+        this.setState({loading: false})
+        return
+      }
       postRequest(`http://localhost:3000/unencrypt`, {
         password: password, passwordHash: res.passwordHash}, (err, resp) => {
-        if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); return }
+        if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); this.setState({loading: false}); return }
         if (resp.body) {
-          alert('Welcome back!')
           cookie.save('donorID', res.donorID, { path: '/'})
           this.props.history.push('/gallery')
         } else {
+          this.setState({loading: false})
           alert('Incorrect password!')
         }
       })
@@ -70,7 +81,7 @@ export default React.createClass({
       <div className='home'>
         <NavBar />
         <Header header='TOOTH & PAIL'/>
-        <Login attemptLogIn={this.attemptLogIn}/>
+        <Login attemptLogIn={this.attemptLogIn} loading={this.state.loading}/>
         <SignUp attemptSignUp={this.attemptSignUp}/>
       </div>
     )
