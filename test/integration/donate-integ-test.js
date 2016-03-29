@@ -1,5 +1,5 @@
 module.exports = {
-  'donate money form test' : function (browser) {
+  'donate money form test - inserts into input form' : function (browser) {
   	var data = {
   		donateInput: 1
   	}
