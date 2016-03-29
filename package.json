@@ -11,6 +11,7 @@
     "build:server": "webpack --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
+    "test:server": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/server/**/*.@(js|jsx)\"",
     "runme": "nodemon ./dbserver/dbserver.js ",
     "test:integration": "nightwatch -g test/integration"
   },
@@ -64,6 +65,7 @@
     "babel-preset-react": "^6.3.13",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.4.1",
+    "chai-shallow-deep-equal": "^1.4.0",
     "enzyme": "^2.0.0",
     "http-server": "^0.8.5",
     "jsdom": "^8.0.2",
