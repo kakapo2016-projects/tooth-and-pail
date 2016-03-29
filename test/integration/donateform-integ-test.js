@@ -4,10 +4,10 @@ module.exports = {
     browser
       .url('http://localhost:8080/submitteeth')
       .waitForElementVisible('body', 1000)
-      .verify.visible('.target')
-      .click('button[name=upload_widget_opener]')
+      .verify.visible('#ProgressBar')
+      .verify.visible('#DonateForm')
+      .click('.donate-button')
       .end();
   }
 };
 
-// keeps asking to be logged even in Chrome

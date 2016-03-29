@@ -4,16 +4,24 @@
             tests="1">
 
   <testsuite name="login-integ-test"
-    errors="0" failures="0" hostname="" id="" package="login-integ-test" skipped="1"
-    tests="1" time="0.000" timestamp="Tue, 29 Mar 2016 02:08:33 GMT">
+    errors="0" failures="0" hostname="" id="" package="login-integ-test" skipped="0"
+    tests="1" time="4.319" timestamp="Tue, 29 Mar 2016 03:02:32 GMT">
   
-  
+    <testcase name="test tooth and pail login page loads" time="4.319" assertions="6">
+
     
-    <testcase
-      name="test tooth and pail login page loads">
-      <skipped />
+
+    
+
+    
+
+    
+
+    
+
+    
     </testcase>
-    
+  
   
   </testsuite>
 </testsuites>
