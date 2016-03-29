@@ -1,7 +1,7 @@
 // SEMI CLEANED
-
 import React from 'react'
 import cookie from 'react-cookie'
+
 
 // components
 import NavBar from './NavBar'
