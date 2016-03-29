@@ -13,6 +13,7 @@
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
     "test:server": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/server/**/*.@(js|jsx)\"",
     "runme": "nodemon ./dbserver/dbserver.js ",
+    "testme": "node ./test/tap-test.js | tap-spec",
     "test:integration": "nightwatch -g test/integration"
   },
   "repository": {
@@ -39,9 +40,11 @@
     "lodash": "^4.6.1",
     "lomega": "^1.0.0",
     "material-ui": "^0.15.0-alpha.2",
+    "moment": "^2.12.0",
+    "nightwatch": "^0.8.18",
     "nodemon": "^1.9.1",
-    "progresso": "^0.3.2",
     "pg": "^4.5.1",
+    "progresso": "^0.3.2",
     "react": "^0.14.7",
     "react-addons": "^0.9.1-deprecated",
     "react-cookie": "^0.4.5",
@@ -74,7 +77,11 @@
     "nightwatch": "^0.8.18",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^1.17.3",
+<<<<<<< HEAD
     "supertest": "^1.2.0",
+=======
+    "tap-spec": "^4.1.1",
+>>>>>>> 938d5e95e0ebfde7144b3111e050b6a6e94b436c
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   }

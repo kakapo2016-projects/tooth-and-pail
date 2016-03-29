@@ -1,27 +1,36 @@
 import { expect } from 'chai'
 import { shallow, render, mount } from 'enzyme'
 import React from 'react'
+
 import HBar from '../../src/components/HBar'
-import D3 from 'd3'
 
 describe('HBar', () => {
   it('renders into document without blowing up', () => {
-    expect(true).to.equal(true);
-    expect(HBar).to.be.ok;
-	})
+    const wrapper = mount(<HBar />);
+    expect(wrapper.find('HBar')).to.be.length(1)
+	});
 
-  it('should display data', () => {
-    const wrapper = shallow(React.createElement(HBar))
-    var data = this.props.data
-    expect(wrapper.props.data).to.be.equal
+  it('should display 1st bar', () => {
+    const wrapper = mount(React.createElement(<HBar />))
+    expect(wrapper.find('HBar')).to.be.instanceof(this.props.received)
+  });
+
+  it('should display correct number of bars', () => {
+    expect(this.prop.data).to.be(true)
   })
 
-  xit('should display labeled target donations', () => {
-    const wrapper = shallow(React.createElement(HBar))
-    console.log('target', this.props)
-    expect(wrapper.props.data).to.be.equal
-  })
-});
+  it('should display a bar showing how much has been received', () => {
+    const wrapper = shallow(React.createElement(<HBar />))
+    expect(wrapper).to.have.state(this.props)
+  });
 
-// this.props.data[0].v = this.props.received
-//     this.props.data[1].v = this.props.target
+  xit('should display a bar showing target amount', () => {
+    expect(this.props.data[1].v).to.have.ref('TARGET')
+  });
+
+  it('should find the data', () => {
+    expect(data.length).to.equal(2)
+  })
+})
+
+ // { this.props.data.map(x => console.log( 'key', x.v, x.label )) }

@@ -15,7 +15,8 @@ let Bar = React.createClass({
     return {
       width: 0,
       height: 0,
-      offset: 0
+      offset: 0,
+      fillColor: "red"
     }
   },
 
@@ -26,13 +27,19 @@ let Bar = React.createClass({
   },
 
   render: function () {
+    let width = this.props.width, x = this.props.x
+    if (!width || !x) {
+      width = 0
+      x = 0
+    }
+
     let style = this.props.fillColor ?
       { fill: shadeColor(this.props.fillColor, this.state.shade) } : {}
     return (
       <rect
         className={this.props.focused ? 'focused' : ''}
-        width={this.props.width} height={this.props.height}
-        y={this.props.offset} x={this.props.x}
+        width={width} height={this.props.height}
+        y={this.props.offset} x={x}
         onMouseOver={this.props.over}
         onMouseOut={this.props.out}
         style={style}
@@ -65,17 +72,15 @@ let HBar = React.createClass({
 
     //Save space for labels before the chart
     this.xBase = this.props.textPosition === 'fitted' ? 0 : this.props.width / 8
+
     hbar.scales()
     let data = this.props.data
 
     if (this.props.sort === 'ascending') data.sort(function (p, q) {return p.v - q.v} )
     if (this.props.sort === 'descending') data.sort(function (p, q) {return q.v - p.v} )
 
-    { this.props.data.map(x => console.log( 'key', x.v, x.label )) }
     this.props.data[0].v = this.props.received
     this.props.data[1].v = this.props.target
-
-   // needs if else function for reaching target then stops the donations
 
     return (
       <svg className="HBar" width={this.props.width} height={this.props.height}>
@@ -140,8 +145,10 @@ let HBar = React.createClass({
         margin = this.props.width * 0.03,
         className = `texts ${type || ''}`
 
-    if (this.props.textPosition === 'fitted'){
-      let wide = x > this.props.width / 2
+        if (!x) { x = 1 }
+
+        if (this.props.textPosition === 'fitted'){
+          let wide = x > this.props.width / 2
 
       return (
         <g key={point.label + i} className={className} style={style}>

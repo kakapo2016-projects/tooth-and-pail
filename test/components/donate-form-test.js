@@ -5,12 +5,9 @@ import { spy } from 'sinon'
 import React from 'react'
 import sinonChai from 'sinon-chai'
 
-
 import DonateForm from '../../src/components/DonateForm'
 
-chai.should();
-chai.use(sinonChai);
-
+chai.use(sinonChai)
 
 // describe('DonateForm', () => {
 //   const props = { getValue: spy() }

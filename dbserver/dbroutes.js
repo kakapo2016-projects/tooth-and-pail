@@ -4,6 +4,8 @@ var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var bcrypt = require('bcryptjs')
 
+var moment = require ('moment')
+
 var knex = require('knex')({
   client: 'pg',
   connection: {
@@ -41,6 +43,14 @@ module.exports = function routes(app) {
   app.get('/recipients/:recipientID', function(req, res) {
     knex('recipients')
     .where('recipients.recipientID', req.params.recipientID)
+    .then(function(resp) {
+      res.send(resp[0])
+    })
+  })
+
+  app.get('/recipientsbydonor/:donorID', function(req, res) {
+    knex('recipients')
+    .where('recipients.donorID', req.params.donorID)
     .then(function(resp) {
       res.send(resp[0])
     })
@@ -121,6 +131,34 @@ module.exports = function routes(app) {
     })
   })
 
+
+  app.get('/feed', function(req, res) {
+    knex('donations')
+    .leftJoin('recipients', function() {
+      this.on('donations.recipientID', '=', 'recipients.recipientID')
+    })
+
+    // .where ('donations.createdAt', '>', moment().subtract(14, 'days')
+    .then(function(resp) {
+      res.send(resp)
+    })
+  // )
+  })
+
+  // app.get('/ratings/:recipientID/:donorID', function(req, res) {
+  //   console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
+  //   knex('ratings')
+  //   .where({
+  //     ratings.recipientID: req.params.recipientID,
+  //     ratings.donorID:  req.params.donorID
+  //   })
+  //   .select('*')
+  //   .then(function(resp) {
+  //     console.log(resp)
+  //     res.send(resp)
+  //   })
+  // })
+
   app.get('/ratings/:donorID/recipient/:recipientID', function(req, res) {
     console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
     knex('ratings')
@@ -134,6 +172,7 @@ module.exports = function routes(app) {
       res.send(resp)
     })
   })
+
 
   app.get('/ratings/:recipientID', function(req, res) {
     console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)

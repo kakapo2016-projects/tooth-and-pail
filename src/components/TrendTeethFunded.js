@@ -1,10 +1,11 @@
+// CLEANED
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Chart} from 'react-google-charts'
+import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
 
 export default React.createClass ({
-
   getInitialState: function() {
     return {
       PieChart: {
@@ -12,22 +13,20 @@ export default React.createClass ({
         chartType: "",
         options : {}
       }
-    };
+    }
   },
 
-  componentDidMount: function() {
-    console.log("Is this the originalData?", this.props)
+  componentDidMount: function () {
     getRequest('http://localhost:3000/recipients', this.dbSetState)
   },
 
-
-  dbSetState: function(err, data) {
+  dbSetState: function (err, data) {
     this.setState({sizedata: data})
-    var originalData = this.state.sizedata
-    var ChartData =  {
+    let originalData = this.state.sizedata
+    let ChartData =  {
       dataArray : [
         ['Treatment Status', 'Number'],
-        ['Fully Funded', 0],            // RGB value
+        ['Fully Funded', 0],
         ['In Progress', 0]
       ],
       options : {
@@ -39,17 +38,17 @@ export default React.createClass ({
         }
       }
     }
-    var total = originalData.length
-    var completed = 0
-    for (var i = 0; i < originalData.length; i++){
-      if (originalData[i].received >= originalData[i].target){
+    let total = originalData.length
+    let completed = 0
+    for (let i = 0; i < originalData.length; i++){
+      if (originalData[i].received >= originalData[i].target) {
         completed++
       }
     }
-    var inProgress = total - completed
+    let inProgress = total - completed
     ChartData.dataArray[1][1] = completed
     ChartData.dataArray[2][1] = inProgress
-    var PieChart = {
+    let PieChart = {
       data : ChartData.dataArray,
       options: ChartData.options,
       chartType: "PieChart",
@@ -57,13 +56,19 @@ export default React.createClass ({
     }
     this.setState({
       'PieChart': PieChart
-    });
+    })
   },
 
-  render: function() {
+  render: function () {
     return (
-      <div className="Examples">
-        <Chart chartType={this.state.PieChart.chartType} width={"450px"} height={"450px"} data={this.state.PieChart.data} options = {this.state.PieChart.options} graph_id={this.state.PieChart.div_id} />
+      <div className="Funded">
+        <Chart
+          chartType={this.state.PieChart.chartType}
+          width={"450px"}
+          height={"450px"}
+          data={this.state.PieChart.data}
+          options = {this.state.PieChart.options}
+          graph_id={this.state.PieChart.div_id}/>
       </div>
     )
   }

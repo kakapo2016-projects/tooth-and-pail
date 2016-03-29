@@ -42,23 +42,24 @@ export default React.createClass({
 
   dbSetState: function (err, data) {
     this.setState({gallery: data})
+    this.setState({originalGallery: data})
   },
 
-  // sortHandleChange: function(event, index, value) {
-  //   this.setState({valueSort:sortName})
-  // },
-  //
-  // setGalleryState: function (newGallery) {
-  //   this.setState({gallery: newGallery})
-  // },
+  sortHandleChange: function(event, index, value) {
+    this.setState({valueSort:sortName})
+  },
+
+  setGalleryState: function (newGallery) {
+    this.setState({gallery: newGallery})
+  },
 
   render () {
-    console.log("DONOR ID COOKIE: ", cookie.load('donorID'))
 
     return (
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
+        <Sort gallery={this.state.originalGallery} setGalleryState={this.setGalleryState}/>
         <Gallery gallery={this.state.gallery}/>
       </div>
     )

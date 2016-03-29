@@ -1,7 +1,9 @@
-var Colors = require('material-ui/lib/styles/colors');
-var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
-var Spacing = require('material-ui/lib/styles/spacing');
-var zIndex = require('material-ui/lib/styles/zIndex');
+// CLEANED
+
+let Colors = require('material-ui/lib/styles/colors')
+let ColorManipulator = require('material-ui/lib/utils/color-manipulator')
+let Spacing = require('material-ui/lib/styles/spacing')
+let zIndex = require('material-ui/lib/styles/zIndex')
 
 module.exports =  {
   spacing: Spacing,
@@ -18,7 +20,6 @@ module.exports =  {
     alternateTextColor: Colors.grey200,
     canvasColor: Colors.grey300,
     borderColor: Colors.grey500,
-    // disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
     pickerHeaderColor: Colors.purple700,
   }
 };

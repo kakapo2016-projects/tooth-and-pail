@@ -39,7 +39,11 @@ export default React.createClass({
   getInitialState: function () {
     return {
       amountDonated: 0,
-      name: ""
+      name: 'Mr. Tooth',
+      title: 'Fun Teeth!',
+      imgURL: 'https://image.freepik.com/free-icon/tooth-outline_318-46885.png',
+      pageURL: 'https://toothandpail.herokuapp.com',
+      sobStory: `Hello, I'm Mr. Tooth! I keep the peace around here. Try donating a little money to somebody in need.`
     }
   },
 
@@ -67,7 +71,9 @@ export default React.createClass({
         name: resp.name,
         imgURL: resp.imgURL,
         sobStory: resp.sobStory,
-        rating: resp.rating
+        rating: resp.rating,
+        title: `Help fund dental care for ${resp.name}`,
+        pageURL: `https://toothandpail.herokuapp.com/${this.props.params.recipientID}`
       })
       getRequest(`http://localhost:3000/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR GETTING SPECFIC PROFILE!", err); return }
@@ -144,6 +150,10 @@ export default React.createClass({
           <div className="row">
             <div className="six columns">
               <ProfilePhoto imgurl={this.state.imgURL}/>
+              <br />
+              <br />
+              <br />
+              <HBar target={this.state.target} received={this.state.received} barColor='#b71c1c'/>
             </div>
             <div className="six columns">
               <ProfileName name={this.state.name}/>
@@ -154,17 +164,18 @@ export default React.createClass({
                 recipientID={this.props.params.recipientID}
                 target={this.state.target}
                 received={this.state.received}/>
-              <br/>
-              <HBar target={this.state.target} received={this.state.received} barColor='#b71c1c'/>
+              <br />
+              <br />
+              <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
+              <br />
             </div>
             <div className="six columns">
-              <RateMe rating={this.state.rating} updateRecipientRating={this.updateRecipientRating}/>
             </div>
           </div>
           <div className="row">
             <div className="twelve columns">
               <SobStory sobstory={this.state.sobStory} />
-              <SocialSharing url="http://google.com" title="LOOK AT THESE TEETH!" media="https://40.media.tumblr.com/c10a90bda3576ab2e51f5d42ee3b0006/tumblr_n1sgn0Kc6s1shf8zxo6_1280.png" />
+              <SocialSharing url={this.state.pageURL} title={this.state.title} media={this.state.imgURL}/>
             </div>
           </div>
         </div>

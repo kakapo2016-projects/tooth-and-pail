@@ -3,9 +3,8 @@ import { shallow, render, mount } from 'enzyme'
 import React from 'react'
 import chaiEnzyme from 'chai-enzyme'
 
-chai.use(chaiEnzyme())
-
 import ProfilePhoto from '../../src/components/ProfilePhoto'
+chai.use(chaiEnzyme())
 
 describe('ProfilePhoto', () => {
   it('renders a profile photo', () => {

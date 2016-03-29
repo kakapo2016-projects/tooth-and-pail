@@ -6,9 +6,9 @@ import NavBar from './NavBar'
 import Header from './Header'
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
-import SvgIcon from 'material-ui/lib/svg-icon'
+import PeopleIcon from 'material-ui/lib/svg-icons/social/people'
 
-// {"donationID":"d25","donorID":"2222","recipientID":"10","amount":50,"createdAt":"2016-03-26 01:22:30"}
+import getRequest from '../getRequest.js'
 
 export default React.createClass({
   childContextTypes: {
@@ -21,25 +21,54 @@ export default React.createClass({
     }
   },
 
-  //sort the array
-  var textArr = []
-  for (var i = 0; i < donationArray.length; i++){
-    var donation = donationArray[0]
-    var donationText = donation.name + "just received a $"+ donation.amount " towards their goal! Just "+ donation.target-donation.received + "to go!"
-    textArr.push(donationText)
-  }
-  this.setState({'textArr': textArr})
+  getInitialState: function () {
+    return {
+      textArr: [],
+    }
+  },
 
+  dynamicSort: function (property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+  },
+
+  componentDidMount: function () {
+    var _this = this
+    getRequest('http://localhost:3000/feed', (err, resp) => {
+      if (err) { console.log("ERROR!", err); return }
+      _this.createFeed(resp)})
+  },
+
+  createFeed: function (data) {
+    var originalData = data
+    originalData = originalData.sort(this.dynamicSort("Date"));
+    var textArr = []
+    for (var i = 0; i < originalData.length; i++){
+      var left = originalData[i].target - originalData[i].received
+      var donation = originalData[i]
+      var donationText = donation.name + " just received a $" + donation.amount + " donation towards their goal! Only $" + left + " left to go until they reach their target of $" + donation.target + "."
+      textArr.push(donationText)
+    }
+    this.setState({'textArr': textArr})
+  },
 
   render: function () {
     var texts = this.state.textArr
-    var textsList = texts.map(function(text){
-      return <ListItem primaryText={text} leftIcon={<People />} />
+    var textsList = texts.map(function(text, index){
+      return <ListItem key={index} primaryText={text} leftIcon={<PeopleIcon/>} />
+    })
     return (
       <div className='about'>
         <NavBar/>
         <Header />
-        <div className='twelve columns feed'>
+        <div className='twelve columns' id='feed'>
           <h2>Recent Activity</h2>
           <List>
             {textsList}

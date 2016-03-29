@@ -7,12 +7,8 @@ import { match, RouterContext } from 'react-router'
 import routes from './src/routes'
 
 var app = express()
-
 app.use(compression())
-
-// serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
-
 routes(app)
 
 // send all requests to index.html so browserHistory works
