@@ -31,6 +31,10 @@ h3 {
   text-align: center;
 }
 
+.about-header {
+  margin-bottom: 35px;
+}
+
 /* Social & Trend */
 
 .columns {
@@ -84,6 +88,10 @@ div.photoFooter {
 
 .photo-footer-name {
   margin-bottom: 0;
+}
+
+.recent-activity-header {
+  margin-bottom: 35px;
 }
 
 /* Profile */
@@ -184,7 +192,11 @@ a:active {
 }
 
 #profilelink {
-  color: #b71c1c
+  color: #b71c1c;
+}
+
+.profile-link {
+  color: #b71c1c;
 }
 
 #fullyFunded {
