@@ -66,7 +66,7 @@ export default React.createClass({
   },
 
   render () {
-    console.log("LOG WITH AN APP", this.state)
+    // console.log("LOG WITH AN APP", this.state)
 
     return (
       <div className='app'>

@@ -9,6 +9,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu'
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import { Link } from 'react-router'
+import HappyTeeth from './HappyTeeth.js'
 
 export default React.createClass({
 
@@ -39,10 +40,13 @@ export default React.createClass({
           <Link to={'/submitteeth'}><MenuItem primaryText="Submit Teeth"/></Link>
           <Link to={'/feed'}><MenuItem primaryText="Recent Activity"/></Link>
           <Link to={'/trends'}><MenuItem primaryText="Trends"/></Link>
+          <Link to={'/success'}><MenuItem primaryText="Success Stories"/></Link>
           {this.toggledLoginDisplay()}
           </IconMenu>
         }
-      />
+        />
+
+
     )
   }
 })

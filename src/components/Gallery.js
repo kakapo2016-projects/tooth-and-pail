@@ -12,11 +12,11 @@ const filterfuncMap = {
   },
   "Latest Profiles": function(x) {
     var profileDate = x.createdAt
-    console.log("PROFILE DATE", profileDate)
+    // console.log("PROFILE DATE", profileDate)
     var unixTime = Date.parse(profileDate)
-    console.log("UNIXTIME", unixTime)
+    // console.log("UNIXTIME", unixTime)
     var currentDate = Date.now()  // unix time
-    console.log("CURRENT DATE", currentDate)
+    // console.log("CURRENT DATE", currentDate)
     var residualTime = currentDate - unixTime
     console.log("RESIDUAL TIME", residualTime)
     console.log("LATEST RESULTS 48 HOURS", residualTime <= 172800)
