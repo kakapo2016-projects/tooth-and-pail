@@ -32,7 +32,8 @@
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true
-      }
+      },
+      "globals": "require(../test/integration/data/dev)"
     },
 
     "chrome" : {
