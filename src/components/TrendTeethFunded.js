@@ -23,11 +23,25 @@ export default React.createClass ({
   dbSetState: function (err, data) {
     this.setState({sizedata: data})
     let originalData = this.state.sizedata
+    let total = originalData.length
+    let completed = 0
+    for (let i = 0; i < originalData.length; i++){
+      if (originalData[i].received >= originalData[i].target) {
+        completed++
+      }
+    }
+    this.setState({'total': total})
+    this.setState({'completed': completed})
+    this.createChart()
+  },
+
+  createChart: function (){
+    console.log("createChart")
     let ChartData =  {
       dataArray : [
-        ['Treatment Status', 'Number'],
-        ['Fully Funded', 0],
-        ['In Progress', 0]
+      ['Treatment Status', 'Number'],
+      ['Fully Funded', 0],
+      ['In Progress', 0]
       ],
       options : {
         title: "Treatment Statuses",
@@ -38,15 +52,8 @@ export default React.createClass ({
         }
       }
     }
-    let total = originalData.length
-    let completed = 0
-    for (let i = 0; i < originalData.length; i++){
-      if (originalData[i].received >= originalData[i].target) {
-        completed++
-      }
-    }
-    let inProgress = total - completed
-    ChartData.dataArray[1][1] = completed
+    let inProgress = this.state.total - this.state.completed
+    ChartData.dataArray[1][1] = this.state.completed
     ChartData.dataArray[2][1] = inProgress
     let PieChart = {
       data : ChartData.dataArray,
