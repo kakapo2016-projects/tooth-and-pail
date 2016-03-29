@@ -4,6 +4,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
+import config from '../../config'
+import url from 'url'
 
 export default React.createClass ({
   getInitialState: function() {
@@ -17,7 +19,7 @@ export default React.createClass ({
   },
 
   componentDidMount: function () {
-    getRequest('http://localhost:3000/recipients', this.dbSetState)
+    getRequest(url.format(config) + '/recipients', this.dbSetState)
   },
 
   dbSetState: function (err, data) {

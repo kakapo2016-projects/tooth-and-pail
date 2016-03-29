@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
 import _ from 'lodash'
+import url from 'url'
 
 export default React.createClass ({
   getInitialState: function () {
@@ -18,7 +19,7 @@ export default React.createClass ({
   },
 
   componentDidMount: function () {
-    getRequest('http://localhost:3000/donations', this.dbSetState)
+    getRequest(url.format(config) + '/donations', this.dbSetState)
   },
 
   dbSetState: function(err, data) {

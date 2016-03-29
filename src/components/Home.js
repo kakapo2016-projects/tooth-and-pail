@@ -6,6 +6,7 @@ import NavBar from './NavBar'
 import Login from './Login'
 import SignUp from './SignUp'
 import cookie from 'react-cookie'
+import url from 'url'
 
 // database helpers
 import getRequest from '../getRequest.js'
@@ -34,14 +35,14 @@ export default React.createClass({
 
   attemptLogIn: function (email, password) {
     this.setState({loading: true})
-    getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
+    getRequest(url.format(config) + '/donors/email/${email}', (err, res) => {
       if (err) { console.log('ERROR: ', err); this.setState({loading: false}); return }
       if (res === null) {
         alert(`Oops! We don't have that email address on file. Maybe try signing up?`)
         this.setState({loading: false})
         return
       }
-      postRequest(`http://localhost:3000/unencrypt`, {
+      postRequest('url.format(config) + '/unencrypt', {
         password: password, passwordHash: res.passwordHash}, (err, resp) => {
         if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); this.setState({loading: false}); return }
         if (resp.body) {
@@ -57,10 +58,10 @@ export default React.createClass({
 
   attemptSignUp: function (username, email, password, confirm) {
     if (password !== confirm) { alert("Those passwords don't match, you fool!"); return }
-    getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
+    getRequest(`http://url.format(config) + ':3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res !== null) { alert('you already have an account, idiot!'); return }
-      postRequest(`http://localhost:3000/encrypt`, {password: password}, (err, res) => {
+      postRequest(`http://url.format(config) + ':3000/encrypt`, {password: password}, (err, res) => {
         if (err) { console.log("ERROR RETRIVING ENCRIPTION!: ", err); return }
         let data = {
           donorName: username,
@@ -68,7 +69,7 @@ export default React.createClass({
           email: email
         }
 
-        postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
+        postRequest(`http://url.format(config) + ':3000/donors`, data, (err, resp) => {
           cookie.save('donorID', resp.text, { path: '/'})
           this.props.history.push('/gallery')
         })

@@ -6,6 +6,7 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import Sort from './Sort'
+import url from 'url'
 
 // database functions
 import getRequest from '../getRequest.js'
@@ -45,7 +46,7 @@ export default React.createClass({
 
   componentDidMount: function() {
     // get all the recipients from the database
-    getRequest('http://localhost:3000/recipients', this.dbSetState)
+    getRequest(url.format(config) + '/recipients', this.dbSetState)
   },
 
   dbSetState: function (err, data) {
