@@ -100,31 +100,28 @@ export default React.createClass({
   getRequest(`http://localhost:3000/ratings/${donor}/recipient/${this.props.params.recipientID}`, (err, resp) => {
     if (err) { console.log("ERROR GETTING RATINGS!", err); return }
     let cnt = 0
-    if (resp.length > 0) {
+    if (resp.length > 1) {
       alert("You have already rated these teeth - Thank you!")
     } else {
-      //  do a post to create a new record
+      //  create a new rating record
       postRequest('http://localhost:3000/ratings', ratingData, (err, respo) => {
-        if (err) { console.log("ERROR!", err); return }
+        if (err) { console.log("ERROR.......!", err); return }
         alert("Thank you for rating these teeth!")
-        // now getting all the ratings for this recipient
-        getRequest(`http://localhost:3000/ratings/${this.props.params.recipientID} `, (err, resp) => {
-          if (err) { console.log("ERROR!", err); return }
-          // get a total value, get the count
-          let totalValue = 0, count = 0
-          resp.map(function (x) {
-            totalValue += x.rating
-            count++
-          })
-          // find the average by dividing by count then round
-          var avrating = Math.floor(totalValue / count)
-          // update the state
-          this.setState({rating: avrating})
-          // update the recipients record in the database
-          let recipientData = { rating: avrating }
-          putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
-            if (err) { console.log("ERROR!", err); return }
-          })
+        // all the ratings for this recipient are returned
+        // use then to calculate a new average rating
+        let totalValue = 0, count = 0
+        resp.map(function (x) {
+          totalValue += x.rating
+          count++
+        })
+        // find the average by dividing by count then round
+        var avrating = Math.floor(totalValue / count)
+        // update the state
+        this.setState({rating: avrating})
+        // update the recipients record in the database
+        let recipientData = { rating: avrating }
+        putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+            if (err) { console.log("ERROR in put!", err); return }
         })
       })}
     })
