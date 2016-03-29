@@ -71,13 +71,18 @@ export default React.createClass ({
           _this.photoUploaded(error, result)
         })
     }, false)
-    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), this.handleExistingUser())
+    this.handleIsUser()
+  },
+
+  handleIsUser: function () {
+    var _this = this
+    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
   },
 
   handleExistingUser: function (err, data) {
+    console.log("data", data)
     if (data !== undefined) {
-      // var profileURL = "http://toothandpail.herokuapp.com/recipient/" + data.recipientID
-      var profileURL = "http://localhost:8080/recipient/" + data.recipientID
+      var profileURL = "/recipient/" + data.recipientID 
       this.setState({'profileURL': profileURL})
       this.setState({'alreadyHasTeeth': true})
     }
@@ -93,11 +98,7 @@ export default React.createClass ({
       sobStory: this.state.sobstory,
       donorID: cookie.load('donorID')
     }
-
-    postRequest('http://localhost:3000/recipients', dataObject, (err, res) => {
-      if (err) { console.log("ERROR POSTING NEW TEETH!", err); return }
-      _this.setState({'alreadyHasTeeth': true})
-    })
+    postRequest('http://localhost:3000/recipients', dataObject, _this.handleIsUser)
   },
 
   render: function () {
@@ -105,7 +106,7 @@ export default React.createClass ({
       <div>
         <NavBar/>
         <Header header={this.props.recipientID}/>
-        <div className="twelve columns" id="RecipientForm ">
+        <div className="twelve columns" id="RecipientForm">
           <ToggleDisplay show={this.state.isLoggedIn}>
             <ToggleDisplay hide={this.state.alreadyHasTeeth}>
               <h2>Submit Your Teeth</h2>
@@ -131,7 +132,7 @@ export default React.createClass ({
               <RaisedButton label="Submit your teeth!" onClick={this.handleSubmit} />
             </ToggleDisplay>
             <ToggleDisplay show={this.state.alreadyHasTeeth}>
-              <p>Thank you for requesting funding for your teeth. Please see your profile <a href={this.state.profileURL}>here</a>.</p>
+              <p>Thank you for requesting funding for your teeth. Please see your profile <a href={this.state.profileURL} id="profilelink">here</a>.</p>
             </ToggleDisplay>
           </ToggleDisplay>
           <ToggleDisplay hide={this.state.isLoggedIn}>

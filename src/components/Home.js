@@ -81,6 +81,9 @@ export default React.createClass({
       <div className='home'>
         <NavBar />
         <Header header='TOOTH & PAIL'/>
+        <h2>WHAT GOES AROUND GUMS AROUND</h2>
+        <br/>
+        <br/>
         <Login attemptLogIn={this.attemptLogIn} loading={this.state.loading}/>
         <SignUp attemptSignUp={this.attemptSignUp}/>
       </div>

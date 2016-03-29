@@ -44,7 +44,7 @@ export default React.createClass ({
         <form role='form' id='signupForm'>
         <div className='signup'>
           <br/>
-          <h2> SIGN UP </h2>
+          <h3> SIGN UP </h3>
           <TextField
             id='username-field'
             multiline={false}
