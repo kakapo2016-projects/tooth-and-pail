@@ -1,7 +1,7 @@
 // SEMI CLEANED
-
 import React from 'react'
 import cookie from 'react-cookie'
+
 
 // components
 import NavBar from './NavBar'
@@ -38,7 +38,7 @@ export default React.createClass ({
       photo: "",
       isUploaded: false,
       alreadyHasTeeth: false,
-      isLoggedIn: false
+      isLoggedIn: false,
       profileURL: ""
     }
   },
@@ -76,7 +76,8 @@ export default React.createClass ({
 
   handleExistingUser: function (err, data) {
     if (data !== undefined) {
-      var profileURL = "http://toothandpail.herokuapp.com/recipient/" + data.recipientID 
+      // var profileURL = "http://toothandpail.herokuapp.com/recipient/" + data.recipientID
+      var profileURL = "http://localhost:8080/recipient/" + data.recipientID
       this.setState({'profileURL': profileURL})
       this.setState({'alreadyHasTeeth': true})
     }
