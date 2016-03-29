@@ -83,9 +83,21 @@ export default React.createClass({
         <Header header='TOOTH & PAIL'/>
         <h2>WHAT GOES AROUND GUMS AROUND</h2>
         <br/>
-        <br/>
-        <Login attemptLogIn={this.attemptLogIn} loading={this.state.loading}/>
-        <SignUp attemptSignUp={this.attemptSignUp}/>
+        <p className='landing-text'>
+          Dental care is unrealistically expensive for most people. <br/>
+          Tooth & Pail offers a crowd sourced alternative to the conventional,
+          “bankrupt yourself for a nice smile” approach. <br/>
+          Wanna donate to teeth in need? Have teeth in need of donation?
+          You're in the right place.
+        </p>
+        <div className='row'>
+          <div className='six columns'>
+            <Login attemptLogIn={this.attemptLogIn} loading={this.state.loading}/>
+          </div>
+          <div className='six columns'>
+            <SignUp attemptSignUp={this.attemptSignUp}/>
+          </div>
+        </div>
       </div>
     )
   }

@@ -46,7 +46,7 @@ export default React.createClass ({
   render() {
     return (
       <form role='form' id='loginForm'>
-      <div className='signup'>
+      <div className='login'>
         <h3> LOG IN </h3>
         <TextField
           id='email-field'

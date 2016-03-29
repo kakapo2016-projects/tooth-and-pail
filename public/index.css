@@ -18,6 +18,17 @@ h1 {
 
 h2 {
   text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #b71c1c;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.landing-text {
+  text-align: center;
 }
 
 /* Social & Trend */
@@ -118,7 +129,13 @@ a:active {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 25px;
+}
+
+.login {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
 
 /* HBAR */
