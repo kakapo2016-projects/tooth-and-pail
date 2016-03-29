@@ -1,16 +1,17 @@
 module.exports = {
-  'test tooth and pail login page loads' : function (browser) {
+  'test signup form on the login page' : function (browser) {
     browser
       .url('http://localhost:8080/')
       .waitForElementVisible('body', 1000)
       .assert.title('TOOTH & PAIL')
-      .verify.visible('.home')
       .verify.visible('.signup')
+      .verify.visible('.username')
       .verify.visible('.email')
       .verify.visible('.password')
+      .verify.visible('.confirm-password')
       .pause(500)
+      .click('.signup-button')
       .url('http://localhost:8080/gallery')
       .end();
   }
 };
-

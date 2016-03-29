@@ -14,7 +14,9 @@ module.exports = {
       .verify.visible('.email')
       .setValue('input[type="text"]', data.email)
       .setValue('input[type="password"]', data.password)
+      .pause(1000)
       .click('.login-button')
+      .url('http://localhost:8080/gallery')
       .end()
   }
 };

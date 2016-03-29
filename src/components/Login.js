@@ -30,7 +30,7 @@ export default React.createClass ({
       return (
         <RaisedButton
           label='Submit'
-          className='login'
+          className='login-button'
           onTouchTap={() => {
             this.props.attemptLogIn(
             this.state.email,
