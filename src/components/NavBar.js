@@ -28,7 +28,7 @@ export default React.createClass({
     return (
       <AppBar
         title={<Link to={'/about'}>TOOTH & PAIL</Link>}
-        iconElementLeft={<Link to={'/gallery'}><ToothIcon/></Link>}
+        iconElementLeft={<Link to={'/happyteeth'}><ToothIcon/></Link>}
         iconElementRight={
           <IconMenu
             iconButtonElement={<IconButton><MoreVertIcon/></IconButton>}
