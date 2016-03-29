@@ -16,18 +16,14 @@ export default React.createClass({
     }
   },
 
-  getInitialState: function () {
-    return {happyimg : "../images/happyteeth.jpg" }
-
-  },
-
   render: function () {
     return (
-      <div className='happyteeth'>
+      <div className='about'>
         <NavBar/>
+        <Header />
         <div className='twelve columns'>
           <h2>Tooth & Pail Success Stories</h2>
-          <img src={this.state.happyimg} />
+
         </div>
       </div>
     )

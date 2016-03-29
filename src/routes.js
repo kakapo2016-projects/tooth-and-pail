@@ -20,6 +20,6 @@ module.exports = (
     <Route path="submitteeth" component={RecipientSignup}></Route>
     <Route path="about" component={About}></Route>
     <Route path="feed" component={Feed}></Route>
-    <Route path="happyteeth" component={HappyTeeth}></Route>
+    <Route path="success" component={HappyTeeth}></Route>
   </Router>
 )
