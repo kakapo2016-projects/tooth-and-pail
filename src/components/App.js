@@ -72,7 +72,7 @@ export default React.createClass({
       <div className='app'>
         <NavBar/>
         <Header header='TOOTH & PAIL'/>
-        <Sort
+        <Sort/>
           filterMap = {filterMap}
           galleryFilter={this.state.galleryFilter}
           changeFilter={this.changeFilter}/>
