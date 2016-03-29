@@ -161,3 +161,12 @@ a:active {
 .hover.barTransition-enter {
   transition: fill 0.01s;
 }
+
+#profilelink {
+  color: #b71c1c
+}
+
+#fullyFunded {
+  color: #b71c1c;
+  font-size: 2em;
+}
