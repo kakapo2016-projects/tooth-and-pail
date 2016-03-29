@@ -5,9 +5,9 @@
 
   <testsuite name="gallery-integ-test"
     errors="0" failures="0" hostname="" id="" package="gallery-integ-test" skipped="0"
-    tests="1" time="6.041" timestamp="Tue, 29 Mar 2016 05:43:46 GMT">
+    tests="1" time="6.119" timestamp="Tue, 29 Mar 2016 19:35:59 GMT">
   
-    <testcase name="test gallery page" time="6.041" assertions="1">
+    <testcase name="test gallery page" time="6.119" assertions="1">
 
     
     </testcase>
