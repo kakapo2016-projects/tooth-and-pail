@@ -20,7 +20,7 @@ const filterfuncMap = {
     var residualTime = currentDate - unixTime
     console.log("RESIDUAL TIME", residualTime)
     console.log("LATEST RESULTS 48 HOURS", residualTime <= 172800)
-    return residualTime <= 172800
+    return residualTime <= 172800 //go back and check accuracy of this return
   },
   "Popular Now": function(x) {
     var popularProfiles = x.rating
