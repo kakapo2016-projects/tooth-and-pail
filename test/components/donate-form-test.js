@@ -27,6 +27,16 @@ describe('DonateForm', () => {
     const wrapper = shallow(React.createElement(DonateForm))
     expect(wrapper.find('#DonateForm')).to.have.length(1)
   })
+  const props = {
+    received : 300,
+    target : 300
+  }
+  it('should display Fully Funded when received >= target', () => {
+    const wrapper = shallow(React.createElement(DonateForm), props)
+    expect(wrapper.find('div.fullyFunded')).to.have.length(1)
+    expect(wrapper.find('div.fullyFunded')).to.have.text('Fully Funded')
+  })
+
 })
 
 describe('DonateButton', () => {
@@ -41,7 +51,9 @@ describe('InputField', () => {
     const wrapper = shallow(React.createElement(DonateForm))
     expect(wrapper.find('TextField')).to.have.length(1)
   })
+
 })
+
 
 // describe('InputField', () => {
 //   it('should render an input field with the type of number', () => {

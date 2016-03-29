@@ -14,6 +14,14 @@ var knex = require('knex')({
   }
 })
 
+// var knex = require('knex')({
+//   client: 'sqlite3',
+//   connection: {
+//     filename: __dirname + '/../datastore/tandp.sqlite3'
+//   },
+//   useNullAsDefault: true
+// })
+
 module.exports = function routes(app) {
   var urlencodedParser = bodyparser.urlencoded({ extended: false })
   app.use(bodyparser.json())
