@@ -19,9 +19,7 @@ export default React.createClass ({
     getRequest('http://localhost:3000/donations', this.dbSetState)
   },
 
-  dbSetState: function (err, data) {
-    this.setState({sizedata: data})
-    let originalData = this.state.sizedata
+  createBins: function (originalData) {
     let u10 = 0
     let ten = 0
     let twentyfive = 0
@@ -50,7 +48,6 @@ export default React.createClass ({
     let hundredarr = ['$100-250', hundred, '#b71c1c']
     let twofiftyarr = ['more than $250', twofifty, '#b71c1c']
     let allData = []
-
     allData.push([
       'Amount',
       'Number of Donations',
@@ -62,9 +59,12 @@ export default React.createClass ({
       hundredarr,
       twofiftyarr
     )
+    return allData
+  },
 
+  createChartData: function (bins) {
     let ChartData = {}
-    ChartData.dataArray = allData
+    ChartData.dataArray = bins
     ChartData.options = {title: "Donations", legend: { position: "none" }}
     let ColumnChart = {
       data : ChartData.dataArray,
@@ -72,6 +72,14 @@ export default React.createClass ({
       chartType: "ColumnChart",
       div_id: "ColumnChart"
     }
+    return ColumnChart
+  },
+
+  dbSetState: function (err, data) {
+    this.setState({sizedata: data})
+    let originalData = this.state.sizedata
+    var bins = this.createBins(originalData)
+    var ColumnChart = this.createChartData(bins)
     this.setState({
       'ColumnChart': ColumnChart
     })
