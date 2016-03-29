@@ -39,6 +39,7 @@ export default React.createClass ({
       isUploaded: false,
       alreadyHasTeeth: false,
       isLoggedIn: false
+      profileURL: ""
     }
   },
 
@@ -75,6 +76,8 @@ export default React.createClass ({
 
   handleExistingUser: function (err, data) {
     if (data !== undefined) {
+      var profileURL = "http://toothandpail.herokuapp.com/recipient/" + data.recipientID 
+      this.setState({'profileURL': profileURL})
       this.setState({'alreadyHasTeeth': true})
     }
   },
@@ -127,7 +130,7 @@ export default React.createClass ({
               <RaisedButton label="Submit your teeth!" onClick={this.handleSubmit} />
             </ToggleDisplay>
             <ToggleDisplay show={this.state.alreadyHasTeeth}>
-              <p>Thank you for requesting funding for your teeth. Please see your profile here.</p>
+              <p>Thank you for requesting funding for your teeth. Please see your profile <a href={this.state.profileURL}>here</a>.</p>
             </ToggleDisplay>
           </ToggleDisplay>
           <ToggleDisplay hide={this.state.isLoggedIn}>
