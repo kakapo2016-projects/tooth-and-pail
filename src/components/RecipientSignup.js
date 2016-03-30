@@ -1,7 +1,7 @@
-// SEMI CLEANED
 import React from 'react'
 import cookie from 'react-cookie'
-
+import { Link } from 'react-router'
+import url from 'url'
 
 // components
 import NavBar from './NavBar'
@@ -76,13 +76,13 @@ export default React.createClass ({
 
   handleIsUser: function () {
     var _this = this
-    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
+    getRequest(url + '/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
   },
 
   handleExistingUser: function (err, data) {
     console.log("data", data)
     if (data !== undefined) {
-      var profileURL = "/recipient/" + data.recipientID 
+      var profileURL = "/recipient/" + data.recipientID
       this.setState({'profileURL': profileURL})
       this.setState({'alreadyHasTeeth': true})
     }
@@ -98,7 +98,7 @@ export default React.createClass ({
       sobStory: this.state.sobstory,
       donorID: cookie.load('donorID')
     }
-    postRequest('http://localhost:3000/recipients', dataObject, _this.handleIsUser)
+    postRequest(url + '/recipients', dataObject, _this.handleIsUser)
   },
 
   render: function () {
@@ -132,7 +132,8 @@ export default React.createClass ({
               <RaisedButton label="Submit your teeth!" onClick={this.handleSubmit} />
             </ToggleDisplay>
             <ToggleDisplay show={this.state.alreadyHasTeeth}>
-              <p>Thank you for requesting funding for your teeth. Please see your profile <a href={this.state.profileURL} id="profilelink">here</a>.</p>
+              <p>Thank you for requesting funding for your teeth. Check out your profile!</p>
+              <RaisedButton label="Show me my teeth" className="showmyteeth" onClick={() => {this.props.history.push(this.state.profileURL)}}/>
             </ToggleDisplay>
           </ToggleDisplay>
           <ToggleDisplay hide={this.state.isLoggedIn}>

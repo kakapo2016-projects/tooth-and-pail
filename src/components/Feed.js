@@ -8,6 +8,7 @@ import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
 import PeopleIcon from 'material-ui/lib/svg-icons/social/people'
 import _ from 'lodash'
+import { url } from '../../config'
 
 import getRequest from '../getRequest.js'
 
@@ -30,7 +31,7 @@ export default React.createClass({
 
   componentDidMount: function () {
     var _this = this
-    getRequest('http://localhost:3000/feed', (err, resp) => {
+    getRequest(url + '/feed', (err, resp) => {
       if (err) { console.log("ERROR!", err); return }
       _this.createFeed(resp)})
   },
@@ -63,7 +64,7 @@ export default React.createClass({
         <NavBar/>
         <Header />
         <div className='twelve columns' id='feed'>
-          <h2>Recent Activity</h2>
+          <h2 className='recent-activity-header'>Recent Activity</h2>
           <List>
             {textsList}
           </List>

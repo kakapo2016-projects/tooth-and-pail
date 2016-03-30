@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import ToggleDisplay from 'react-toggle-display'
 import { Chart } from 'react-google-charts'

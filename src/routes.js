@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import App from './components/App'
@@ -9,7 +7,6 @@ import Trends from './components/Trends'
 import RecipientSignup from './components/RecipientSignup'
 import About from './components/About'
 import Feed from './components/Feed'
-import HappyTeeth from './components/HappyTeeth'
 
 module.exports = (
   <Router history={browserHistory}>
@@ -20,6 +17,5 @@ module.exports = (
     <Route path="submitteeth" component={RecipientSignup}></Route>
     <Route path="about" component={About}></Route>
     <Route path="feed" component={Feed}></Route>
-    <Route path="success" component={HappyTeeth}></Route>
   </Router>
 )
