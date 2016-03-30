@@ -71,6 +71,7 @@ export default React.createClass ({
       chartType: "ColumnChart",
       div_id: "ColumnChart"
     }
+    console.log("chart data", ChartData)
     return ColumnChart
   },
 
