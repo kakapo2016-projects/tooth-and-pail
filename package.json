@@ -13,7 +13,8 @@
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
     "test:server": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/server/**/*.@(js|jsx)\"",
     "runme": "nodemon ./dbserver/dbserver.js ",
-    "test:integration": "nightwatch -g test/integration"
+    "test:integration": "nightwatch -g test/integration", 
+    "postinstall" : "npm run build"
   },
   "repository": {
     "type": "git",
