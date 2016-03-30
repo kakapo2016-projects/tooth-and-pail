@@ -8,12 +8,31 @@ import app from '../../dbserver/dbserver.js'
 import bodyparser from 'body-parser'
 
 
+var config = {
+  development: {
+     client: 'sqlite3',
+     connection: {
+       filename: __dirname + '/../../datastore/tandp.sqlite3'
+
+     },
+     useNullAsDefault: true
+   },
+   directory: __dirname + '/../../migrations-test',
+   tableName: 'migrations'
+
+}
+
+// console.log(config)
+var Knex = require('knex')
+var knex = Knex(config.development)
+
+// uses the data from the seed database
+// before - run the mirgration script
+// after - drop the tables
+
 describe('post requests', () => {
 
-  //app.post('/donors', function(req, res) {
-  //  app.post('/donations', function(req, res) {
-
-  it('it can accept a new donation', function (done) {
+  it('can accept a new donation', function (done) {
     let donationData = {
       donorID: '1111',
       recipientID: '2AAA',
@@ -66,4 +85,79 @@ describe('post requests', () => {
       })
   })
 
+
+  it('it can accept a new recipient', function (done) {
+    let recipientData = {
+      name: 'Sharon',
+      imgURL: 'http://i64.photobucket.com/albums/h182/thetwiggydance/Teeth/34681.jpg',
+      received: 0,
+      target: 200,
+      sobStory: 'This is a sob story',
+      donorID: '1111'
+    }
+    request(app)
+      .post('/recipients')
+      .send(recipientData)
+      .end(function(err, res){
+        // now bring back the recipients - there should be one additional record
+        request(app)
+          .get('/recipients')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function (err, res) {
+            var actual = res.body.length
+            expect(err).to.be.null
+            expect(actual).to.equal(11)
+            done()
+          })
+      })
+  })
+
+  it('it can accept a new donor', function (done) {
+    let donorData = {
+      donorName: 'Alison',
+      password: 'Ally',
+      email: 'ally@xtra.co.nz'
+    }
+    request(app)
+      .post('/donors')
+      .send(donorData)
+      .end(function(err, res){
+        // now check that we can bring back the donor from the db
+        request(app)
+          .get('/donors/name/Alison')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function (err, res) {
+            var actual = res.body.donorName
+            expect(err).to.be.null
+            expect(actual).to.equal('Alison')
+            done()
+          })
+      })
+  })
+
+  /// and finally a PUT to update a recipients
+  it('it can update a recipient rating', function (done) {
+    let recipientData = {
+      rating: 5
+    }
+    request(app)
+      .put('/recipients/2')
+      .send(recipientData)
+      .end(function(err, res){
+        // now check that we can bring back the recipient from the db
+        request(app)
+          .get('/recipients/2')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function (err, res) {
+            console.log("returned rating", res.body.rating)
+            var actual = res.body.rating
+            expect(err).to.be.null
+            expect(actual).to.equal(5)
+            done()
+          })
+      })
+  })
 })

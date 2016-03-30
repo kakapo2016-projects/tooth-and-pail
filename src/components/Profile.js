@@ -106,7 +106,7 @@ export default React.createClass({
         if (err) { console.log("ERROR.......!", err); return }
         alert("Thank you for rating these teeth!")
         // all the ratings for this recipient are returned
-        // use then to calculate a new average rating
+        // use them to calculate a new average rating
         let totalValue = 0, count = 0
         respo.body.map(function (x) {
           totalValue += x.rating
