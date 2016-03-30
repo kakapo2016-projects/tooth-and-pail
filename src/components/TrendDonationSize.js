@@ -84,6 +84,7 @@ export default React.createClass ({
     this.setState({
       'ColumnChart': ColumnChart
     })
+    console.log("COLUMN", this.state.ColumnChart)
   },
 
   render: function () {
