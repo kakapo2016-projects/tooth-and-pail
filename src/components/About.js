@@ -32,7 +32,7 @@ export default React.createClass({
             Since then, the community of oral surgery donors and receivers has
             grown at a staggering rate. This is in large part due to Tooth & Pail’s
             accountability infrastructure.
-            <br/><br/>
+            </p><p className='about-paragraph'>
             Benefactors of our donation service must
             first provide documentation proving the legitimacy of their
             financing request. Usually in the form of a dental quote, we vet these
@@ -43,7 +43,7 @@ export default React.createClass({
             then pays the money directly to the oral surgeon nominated by the
             candidate. This ensures that all donations on Tooth & Pail really
             do go where they belong. Safety and security have always been our top priority.
-            <br/><br/>
+            </p><p className='about-paragraph'>
             The changes that even a small amount of dental work can make in
             somebody’s life are mind-blowing. For more inforation of this project,
             or to get involved in the funding of further campaigns, visit the links below.
