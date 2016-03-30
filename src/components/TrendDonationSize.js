@@ -77,6 +77,7 @@ export default React.createClass ({
   dbSetState: function (err, data) {
     this.setState({sizedata: data})
     let originalData = this.state.sizedata
+        console.log(originalData)
     var bins = this.createBins(originalData)
     var ColumnChart = this.createChartData(bins)
     this.setState({
