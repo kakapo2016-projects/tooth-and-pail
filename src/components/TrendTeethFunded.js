@@ -61,6 +61,7 @@ export default React.createClass ({
       chartType: "PieChart",
       div_id: "PieChart"
     }
+    (console.log("pie chart", PieChart))
     this.setState({
       'PieChart': PieChart
     })

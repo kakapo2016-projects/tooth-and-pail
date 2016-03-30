@@ -88,10 +88,11 @@ export default React.createClass ({
   },
 
   render: function () {
+    var ColumnChartFinal = this.state.ColumnChart
     return (
       <div className="Size">
         <Chart
-          chartType={this.state.ColumnChart.chartType}
+          chartType={ColumnChartFinal.chartType}
           width={"1000px"}
           height={"500px"}
           data={this.state.ColumnChart.data}
