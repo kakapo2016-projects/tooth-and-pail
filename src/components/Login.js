@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import RaisedButton from 'material-ui/lib/raised-button';
 import CircularProgress from 'material-ui/lib/circular-progress'
