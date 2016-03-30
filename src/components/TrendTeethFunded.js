@@ -57,12 +57,14 @@ export default React.createClass ({
     ChartData.dataArray[1][1] = this.state.completed
     ChartData.dataArray[2][1] = inProgress
     console.log("pie chart data", inProgress, ChartData)
-    let PieChart = {
-      data : ChartData.dataArray,
-      options: ChartData.options,
+    var PieChart = {
+      // data : ChartData.dataArray,
+      // options: ChartData.options,
       chartType: "PieChart",
       div_id: "PieChart"
     }
+    PieChart.data = ChartData.dataArray
+    PieChart.options = ChartData.options
     (console.log("pie chart", PieChart))
     this.setState({
       'PieChart': PieChart
