@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
 import _ from 'lodash'
-import url from 'url'
+import url from '../../config.js'
 
 export default React.createClass ({
   getInitialState: function () {
