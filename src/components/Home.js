@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 import Login from './Login'
 import SignUp from './SignUp'
 import cookie from 'react-cookie'
-import url from 'url'
+import url from '../../config.js'
 
 // database helpers
 import getRequest from '../getRequest.js'

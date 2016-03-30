@@ -1,7 +1,7 @@
 import React from 'react'
 import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
-import url from 'url'
+import url from '../../config.js'
 
 export default React.createClass ({
   getInitialState: function () {

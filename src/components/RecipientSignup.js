@@ -1,7 +1,7 @@
 import React from 'react'
 import cookie from 'react-cookie'
 import { Link } from 'react-router'
-import url from 'url'
+import url from '../../config.js'
 
 // components
 import NavBar from './NavBar'
