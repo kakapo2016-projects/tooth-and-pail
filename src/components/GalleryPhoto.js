@@ -9,7 +9,7 @@ export default React.createClass({
     return (
       <Link to={`/recipient/${this.props.recipientID}`}>
         <div className='galleryPhoto'>
-          <img src={this.props.imgURL} />
+          <img src={this.props.imgURL} className="galleryImg" />
           <PhotoFooter
             name={this.props.name}
             target={this.props.target}
