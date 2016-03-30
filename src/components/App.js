@@ -4,7 +4,7 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import Sort from './Sort'
-import url from 'url'
+import url from './url'
 
 // database functions
 import getRequest from '../getRequest.js'

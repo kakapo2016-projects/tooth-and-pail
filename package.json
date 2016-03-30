@@ -2,6 +2,10 @@
   "name": "tooth-and-pail",
   "version": "1.0.0",
   "description": "t&p",
+  "engines": {
+    "node": "5.8.0",
+    "npm": "3.7.3"
+  },
   "main": "index.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -9,7 +13,7 @@
     "start:prod": "npm run build && node server.bundle.js",
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:client",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
     "test:server": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/server/**/*.@(js|jsx)\"",
     "runme": "nodemon ./dbserver/dbserver.js ",
