@@ -5,9 +5,9 @@
 
   <testsuite name="hbar-integ-test"
     errors="0" failures="0" hostname="" id="" package="hbar-integ-test" skipped="0"
-    tests="1" time="4.008" timestamp="Wed, 30 Mar 2016 04:30:35 GMT">
+    tests="1" time="5.547" timestamp="Wed, 30 Mar 2016 06:37:46 GMT">
   
-    <testcase name="test horizontal bar of money received and target" time="4.008" assertions="2">
+    <testcase name="test horizontal bar of money received and target" time="5.547" assertions="2">
 
     
 

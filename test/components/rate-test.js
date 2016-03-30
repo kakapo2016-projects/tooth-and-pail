@@ -19,7 +19,7 @@ describe('Rate', () => {
     expect(wrapper.find('ToothIcon')).to.have.length(3)
   })
 
-  xit('updates the current rate correctly when a tooth is clicked', () => {
+  it('updates the current rate correctly when a tooth is clicked', () => {
     const wrapper = mount(React.createElement(Rate, props))
     expect()
   })

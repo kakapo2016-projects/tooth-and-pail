@@ -5,9 +5,9 @@
 
   <testsuite name="login-integ-test"
     errors="0" failures="0" hostname="" id="" package="login-integ-test" skipped="0"
-    tests="1" time="4.463" timestamp="Wed, 30 Mar 2016 04:30:49 GMT">
+    tests="1" time="4.397" timestamp="Wed, 30 Mar 2016 06:39:28 GMT">
   
-    <testcase name="test tooth and pail login page loads" time="4.463" assertions="6">
+    <testcase name="test tooth and pail login page loads" time="4.397" assertions="6">
 
     
 
