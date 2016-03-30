@@ -11,7 +11,7 @@ var config ={
   production : {
     protocol: 'http:',
     slashes: true,
-    host: 'toothandpail.herokuapp.com',
+    host: 'toothandpaildb.herokuapp.com',
     port: process.env.PORT
   }
 }
