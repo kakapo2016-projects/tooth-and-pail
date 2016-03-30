@@ -56,7 +56,7 @@ export default React.createClass({
 
   attemptSignUp: function (username, email, password, confirm) {
     if (password !== confirm) { alert("Those passwords don't match, you fool!"); return }
-    getRequest(url + '/donors/email/${email}`, (err, res) => {
+    getRequest(url + '/donors/email/' + email, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res !== null) { alert('you already have an account, idiot!'); return }
 
