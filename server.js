@@ -43,6 +43,8 @@ function renderPage(appHtml) {
     <!doctype html public="storage">
     <html>
     <meta charset=utf-8/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/ico" href="images/favicon.ico">
     <title>TOOTH AND NAIL</title>
