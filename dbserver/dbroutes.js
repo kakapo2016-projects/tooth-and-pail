@@ -3,16 +3,8 @@
 var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var bcrypt = require('bcryptjs')
-
 var moment = require ('moment')
-
-var knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host     : '127.0.0.1',
-    database : 'tooth_and_pail'
-  }
-})
+var knex = require('knex')(require('../knexfile.js'))
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -137,27 +129,10 @@ module.exports = function routes(app) {
     .leftJoin('recipients', function() {
       this.on('donations.recipientID', '=', 'recipients.recipientID')
     })
-
-    // .where ('donations.createdAt', '>', moment().subtract(14, 'days')
     .then(function(resp) {
       res.send(resp)
     })
-  // )
   })
-
-  // app.get('/ratings/:recipientID/:donorID', function(req, res) {
-  //   console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
-  //   knex('ratings')
-  //   .where({
-  //     ratings.recipientID: req.params.recipientID,
-  //     ratings.donorID:  req.params.donorID
-  //   })
-  //   .select('*')
-  //   .then(function(resp) {
-  //     console.log(resp)
-  //     res.send(resp)
-  //   })
-  // })
 
   app.get('/ratings/:donorID/recipient/:recipientID', function(req, res) {
     console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
@@ -186,12 +161,22 @@ module.exports = function routes(app) {
 
   // ENCRYPTION
 
-  app.post('/encrypt', function(req, res) {
+  app.post('/donors', function(req, res) {
     bcrypt.genSalt(10, function(err, salt) {
       if (err) { console.log("ERROR GENERATING SALT: ", err); return }
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         if (err) { console.log("ERROR ENCRYPTING: ", err); return }
-        res.send(hash)
+        var newId = uuid.v4()
+        knex('donors')
+        .insert({
+          donorID: newId ,
+          donorName: req.body.donorName,
+          passwordHash: hash,
+          email: req.body.email
+        })
+        .then(function(resp) {
+          res.send(newId)
+        })
       })
     })
   })
@@ -209,20 +194,6 @@ module.exports = function routes(app) {
   })
 
   // POST REQUESTS //
-
-  app.post('/donors', function(req, res) {
-    var newId = uuid.v4()
-    knex('donors')
-    .insert({
-      donorID: newId ,
-      donorName: req.body.donorName,
-      passwordHash: req.body.passwordHash,
-      email: req.body.email
-    })
-    .then(function(resp) {
-      res.send(newId)
-    })
-  })
 
   app.post('/donations', function(req, res) {
     var newId = uuid.v4()

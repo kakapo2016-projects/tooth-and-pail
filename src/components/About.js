@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 import RaisedButton from 'material-ui/lib/raised-button'

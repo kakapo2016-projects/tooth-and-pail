@@ -1,5 +1,3 @@
-// CLEANED
-
 import request from 'superagent'
 
 export default function (url, data, callback){

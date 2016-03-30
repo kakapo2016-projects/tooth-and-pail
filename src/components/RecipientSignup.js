@@ -1,4 +1,3 @@
-// SEMI CLEANED
 import React from 'react'
 import cookie from 'react-cookie'
 import { Link } from 'react-router'
