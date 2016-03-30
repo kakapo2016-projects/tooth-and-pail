@@ -17,7 +17,7 @@ var config = {
      },
      useNullAsDefault: true
    },
-   directory: __dirname + '/../../migrations',
+   directory: __dirname + '/../../migrations-test',
    tableName: 'migrations'
 
 }
@@ -84,6 +84,8 @@ describe('post requests', () => {
           })
       })
   })
+
+
   it('it can accept a new recipient', function (done) {
     let recipientData = {
       name: 'Sharon',
@@ -97,8 +99,7 @@ describe('post requests', () => {
       .post('/recipients')
       .send(recipientData)
       .end(function(err, res){
-         console.log("post completed", res.body[0])
-        // now bring the recipients - there should be one additional record
+        // now bring back the recipients - there should be one additional record
         request(app)
           .get('/recipients')
           .expect(200)
@@ -111,5 +112,75 @@ describe('post requests', () => {
           })
       })
   })
+
+  it('it can accept a new donor', function (done) {
+    let donorData = {
+      donorName: 'Alison',
+      password: 'Ally',
+      email: 'ally@xtra.co.nz'
+    }
+    request(app)
+      .post('/donors')
+      .send(donorData)
+      .end(function(err, res){
+        // now check that we can bring back the donor from the db
+        request(app)
+          .get('/donors/name/Alison')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function (err, res) {
+            var actual = res.body.donorName
+            expect(err).to.be.null
+            expect(actual).to.equal('Alison')
+            done()
+          })
+      })
+  })
+
+  /// and finally a PUT to update a recipients
+  it('it can update a recipient rating', function (done) {
+    let recipientData = {
+      rating: 5
+    }
+    request(app)
+      .post('/donors')
+      .send(donorData)
+      .end(function(err, res){
+        // now check that we can bring back the donor from the db
+        request(app)
+          .get('/donors/name/Alison')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function (err, res) {
+            var actual = res.body.donorName
+            expect(err).to.be.null
+            expect(actual).to.equal('Alison')
+            done()
+          })
+      })
+  })
+
+
+
+  app.put('/recipients/:recipientID', function(req, res) {
+    knex('recipients')
+      .where('recipients.recipientID', req.params.recipientID)
+      .update({
+        name: req.body.Name,
+        imgURL: req.body.imgURL,
+        received: req.body.received,
+        target: req.body.target,
+        sobStory: req.body.sobStory,
+        rating: req.body.rating,
+        donorID: req.body.donorID
+      })
+
+      .then(function(resp) {
+
+        // console.log("in routes", resp)
+        res.send(resp)
+    })
+  })
+
 
 })

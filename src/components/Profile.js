@@ -98,7 +98,7 @@ export default React.createClass({
   getRequest(`http://localhost:3000/ratings/${donor}/recipient/${this.props.params.recipientID}`, (err, resp) => {
     if (err) { console.log("ERROR GETTING RATINGS!", err); return }
     let cnt = 0
-    if (resp.length > 100) {
+    if (resp.length > 1) {
       alert("You have already rated these teeth - Thank you!")
     } else {
       //  create a new rating record

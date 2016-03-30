@@ -16,7 +16,7 @@ var config = {
      },
      useNullAsDefault: true
    },
-   directory: __dirname + '/../../migrations',
+   directory: __dirname + '/../../migrations-test',
    tableName: 'migrations'
 
 }
@@ -44,24 +44,6 @@ describe('get requests', () => {
         })
      })
   })
-
-  // after(function (done) {
-  //
-  //   knex.schema.dropTableIfExists('recipients')
-  //     .then(function (){
-  //       console.log('dropped recipients')
-  //       return knex.schema.dropTableIfExists('donors')
-  //     })
-  //     .then(function (){
-  //       return knex.schema.dropTableIfExists('donations')
-  //     })
-  //     .then(function (){
-  //       return knex.schema.dropTableIfExists('ratings')
-  //     })
-  //     .then(function () {
-  //         console.log('done dropping')
-  //     })
-  // })
 
   it('/ returns hello teeth', (done) => {
     request(app)
