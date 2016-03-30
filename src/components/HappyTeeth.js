@@ -18,12 +18,19 @@ export default React.createClass({
 
   render: function () {
     return (
-      <div className='about'>
+      <div className='success'>
         <NavBar/>
         <Header />
         <div className='twelve columns'>
           <h2>Tooth & Pail Success Stories</h2>
-
+        </div>
+        <div className='row'>
+          <div className='six columns'>
+            <img src="./images/happyteeth.jpg" className='happy'></img>
+          </div>
+          <div className='six columns'>
+          <p>Paragraph about how we love our teeth now</p>
+          </div>
         </div>
       </div>
     )

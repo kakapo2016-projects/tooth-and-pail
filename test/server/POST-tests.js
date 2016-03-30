@@ -8,10 +8,29 @@ import app from '../../dbserver/dbserver.js'
 import bodyparser from 'body-parser'
 
 
-describe('post requests', () => {
+var config = {
+  development: {
+     client: 'sqlite3',
+     connection: {
+       filename: __dirname + '/../../datastore/tandp.sqlite3'
 
-  //app.post('/donors', function(req, res) {
-  //  app.post('/donations', function(req, res) {
+     },
+     useNullAsDefault: true
+   },
+   directory: __dirname + '/../../migrations',
+   tableName: 'migrations'
+
+}
+
+// console.log(config)
+var Knex = require('knex')
+var knex = Knex(config.development)
+
+// uses the data from the seed database
+// before - run the mirgration script
+// after - drop the tables
+
+describe('post requests', () => {
 
   it('it can accept a new donation', function (done) {
     let donationData = {
@@ -61,6 +80,33 @@ describe('post requests', () => {
             expect(err).to.be.null
             expect(actual).to.equal(ratingData.recipientID)
             expect(resp.body[0]).to.shallowDeepEqual(ratingData)
+            done()
+          })
+      })
+  })
+  it('it can accept a new recipient', function (done) {
+    let recipientData = {
+      name: 'Sharon',
+      imgURL: 'http://i64.photobucket.com/albums/h182/thetwiggydance/Teeth/34681.jpg',
+      received: 0,
+      target: 200,
+      sobStory: 'This is a sob story',
+      donorID: '1111'
+    }
+    request(app)
+      .post('/recipients')
+      .send(recipientData)
+      .end(function(err, res){
+         console.log("post completed", res.body[0])
+        // now bring the recipients - there should be one additional record
+        request(app)
+          .get('/recipients')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function (err, res) {
+            var actual = res.body.length
+            expect(err).to.be.null
+            expect(actual).to.equal(11)
             done()
           })
       })
