@@ -5,7 +5,6 @@ module.exports = {
       .waitForElementVisible('body', 1000)
       .verify.visible('.galleryPhoto')
       .verify.visible('.galleryProgressBar')
-      .verify.visible('.rate')
       .end();
   }
 };

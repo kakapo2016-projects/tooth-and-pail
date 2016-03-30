@@ -23,7 +23,7 @@ export default React.createClass({
         <Header />
         <div className='twelve columns'>
           <h2 className='about-header'>About Tooth & Pail</h2>
-          <p>
+          <p className='about-paragraph'>
             Tooth & Pail is for those in need of dental care but unable to afford it,
             and those seeking to donate towards such care. <br/>
             The organisation was originally created by Andi Buchanan, Richard Joe,
@@ -49,10 +49,10 @@ export default React.createClass({
             or to get involved in the funding of further campaigns, visit the links below.
           </p>
           <span>
-            <RaisedButton label="Gallery" onClick={() => {this.props.history.push('/gallery')}}/>
-            <RaisedButton label="Apply for Funding" onClick={() => {this.props.history.push('/submitteeth')}}/>
-            <RaisedButton label="View Trends" onClick={() => {this.props.history.push('/trends')}}/>
-            <RaisedButton label="Recent Donations" onClick={() => {this.props.history.push('/feed')}}/>
+            <RaisedButton label="Gallery" className="about-gallery" onClick={() => {this.props.history.push('/gallery')}}/>
+            <RaisedButton label="Apply for Funding" className="about-funding" onClick={() => {this.props.history.push('/submitteeth')}}/>
+            <RaisedButton label="View Trends" className="about-trends" onClick={() => {this.props.history.push('/trends')}}/>
+            <RaisedButton label="Recent Donations" className="about-donations" onClick={() => {this.props.history.push('/feed')}}/>
           </span>
           <div className='before-and-afters'>
             <h3>Tom. Raised $11,000 in May 2016.</h3>

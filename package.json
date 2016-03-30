@@ -2,18 +2,23 @@
   "name": "tooth-and-pail",
   "version": "1.0.0",
   "description": "t&p",
+  "engines": {
+    "node": "5.8.0",
+    "npm": "3.7.3"
+  },
   "main": "index.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
+    "start:dev": "NODE_ENV=development webpack-dev-server --inline --content-base public/ --history-api-fallback",
     "start:prod": "npm run build && node server.bundle.js",
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:client",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
     "test:server": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/server/**/*.@(js|jsx)\"",
     "runme": "nodemon ./dbserver/dbserver.js ",
-    "test:integration": "nightwatch -g test/integration"
+    "test:integration": "nightwatch -g test/integration", 
+    "postinstall" : "npm run build"
   },
   "repository": {
     "type": "git",
@@ -34,6 +39,7 @@
     "compression": "^1.6.1",
     "cors": "^2.7.1",
     "d3": "^3.5.16",
+    "dotenv": "^2.0.0",
     "if-env": "^1.0.0",
     "knex": "^0.10.0",
     "lodash": "^4.6.1",
@@ -58,6 +64,7 @@
     "sinon-chai": "^2.8.0",
     "sqlite3": "^3.1.2",
     "superagent": "^1.8.3",
+    "url": "^0.11.0",
     "uuid": "^2.0.1"
   },
   "devDependencies": {

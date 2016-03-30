@@ -13,14 +13,6 @@ describe('RecipientSignup', () => {
     const wrapper = shallow(React.createElement(RecipientSignup))
     expect(wrapper.find('h2')).to.have.length(2)
   })
-  it('should show the text Submit Your Teeth in the heading', () => {
-  const wrapper = shallow(React.createElement(RecipientSignup))
-  expect(wrapper.closest('h2')).to.have.text("Submit Your Teeth")
-  })
-  it('should show a raised button to submit the form and a different one for login if appropriate', () => {
-  const wrapper = shallow(React.createElement(RecipientSignup))
-  expect(wrapper.find('RaisedButton')).to.have.length(2)
-  })
   it('should show a flat button to upload photos', () => {
   const wrapper = shallow(React.createElement(RecipientSignup))
   expect(wrapper.find('FlatButton')).to.have.length(1)

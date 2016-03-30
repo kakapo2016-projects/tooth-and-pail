@@ -27,21 +27,6 @@ describe('Gallery', () => {
     }
   ]}
 
-  it('renders a gallery', () => {
-     const wrapper = shallow(React.createElement(Gallery, props))
-     expect(wrapper.find('div.gallery')).to.be.length(1)
-  })
-
-  it('renders the correct number of loaded galleryPhotos', () => {
-     const wrapper = mount(React.createElement(Gallery, props) )
-     expect(wrapper.find('div.galleryPhoto')).to.be.length(3)
-  })
-
-  it('renders three <Foo /> components', () => {
-   const wrapper = shallow(<MyComponent />);
-   expect(wrapper.find(Foo)).to.have.length(3);
- });
-
   var dummyData = [
     {received:4900, target:5000},
     {received:10, target:5000},

@@ -22,8 +22,4 @@ describe('Feed', () => {
   const wrapper = shallow(React.createElement(Feed))
   expect(wrapper.find('List')).to.have.length(1)
   })
-  it('should show multiple list item components', () => {
-  const wrapper = shallow(React.createElement(Feed))
-  expect(wrapper.find('ListItem')).to.have.length.of.at.least(2)
-  })
 })

@@ -8,6 +8,7 @@ import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
 import PeopleIcon from 'material-ui/lib/svg-icons/social/people'
 import _ from 'lodash'
+import { url } from '../../config'
 
 import getRequest from '../getRequest.js'
 
@@ -30,7 +31,7 @@ export default React.createClass({
 
   componentDidMount: function () {
     var _this = this
-    getRequest('http://localhost:3000/feed', (err, resp) => {
+    getRequest(url + '/feed', (err, resp) => {
       if (err) { console.log("ERROR!", err); return }
       _this.createFeed(resp)})
   },

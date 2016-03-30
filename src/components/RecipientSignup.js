@@ -1,6 +1,7 @@
 import React from 'react'
 import cookie from 'react-cookie'
 import { Link } from 'react-router'
+import url from 'url'
 
 // components
 import NavBar from './NavBar'
@@ -75,7 +76,7 @@ export default React.createClass ({
 
   handleIsUser: function () {
     var _this = this
-    getRequest('http://localhost:3000/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
+    getRequest(url + '/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
   },
 
   handleExistingUser: function (err, data) {
@@ -97,7 +98,7 @@ export default React.createClass ({
       sobStory: this.state.sobstory,
       donorID: cookie.load('donorID')
     }
-    postRequest('http://localhost:3000/recipients', dataObject, _this.handleIsUser)
+    postRequest(url + '/recipients', dataObject, _this.handleIsUser)
   },
 
   render: function () {
@@ -138,7 +139,7 @@ export default React.createClass ({
           <ToggleDisplay hide={this.state.isLoggedIn}>
             <h2>Oops!</h2>
             <p>You need to log in before you can request funding!</p>
-            <RaisedButton label="Login / Signup" onClick={() => {this.props.history.push('/')}}/>
+            <RaisedButton label="Login / Signup" className="login-signup" onClick={() => {this.props.history.push('/')}}/>
           </ToggleDisplay>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import Sort from './Sort'
+import url from './url'
 
 // database functions
 import getRequest from '../getRequest.js'
@@ -18,8 +19,7 @@ injectTapEventPlugin();
 const filterMap = {
   1: {value: 1, primaryText: "All Profiles"},
   2: {value: 2, primaryText: "Almost There"},
-  3: {value: 3, primaryText: "Latest Profiles"},
-  4: {value: 4, primaryText: "Popular Now"}
+  3: {value: 3, primaryText: "Popular Now"}
 }
 
 export default React.createClass({
@@ -43,7 +43,7 @@ export default React.createClass({
 
   componentDidMount: function() {
     // get all the recipients from the database
-    getRequest('http://localhost:3000/recipients', this.dbSetState)
+    getRequest(url + '/recipients', this.dbSetState)
   },
 
   dbSetState: function (err, data) {
