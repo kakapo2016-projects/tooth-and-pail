@@ -19,4 +19,4 @@
 //
 // export const url = Url.format(config[process.env.NODE_ENV])
 
-export const url = "http://toothandpaildb.herokuapp.com"
+export default 'http://toothandpaildb.herokuapp.com'
