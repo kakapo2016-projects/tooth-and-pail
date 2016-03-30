@@ -6,13 +6,22 @@ var bcrypt = require('bcryptjs')
 var moment = require ('moment')
 var knex = require('knex')(require('../knexfile.js'))
 
+
 // var knex = require('knex')({
-//   client: 'sqlite3',
+//   client: 'pg',
 //   connection: {
-//     filename: __dirname + '/../datastore/tandp.sqlite3'
-//   },
-//   useNullAsDefault: true
+//     host     : '127.0.0.1',
+//     database : 'tooth_and_pail'
+//   }
 // })
+
+var knex = require('knex')({
+  client: 'sqlite3',
+  connection: {
+    filename: __dirname + '/../datastore/tandp.sqlite3'
+  },
+  useNullAsDefault: true
+})
 
 module.exports = function routes(app) {
   var urlencodedParser = bodyparser.urlencoded({ extended: false })

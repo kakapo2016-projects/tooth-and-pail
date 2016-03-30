@@ -25,22 +25,6 @@ describe('SocialSharing', () => {
     const wrapper = shallow(React.createElement(SocialSharing))
     expect(wrapper.find('PinterestShareButton')).to.have.length(1)
   })
-  it('should show a Facebook share icon', () => {
-    const wrapper = shallow(React.createElement(SocialSharing))
-    expect(wrapper.find('FacebookIcon')).to.have.length(1)
-  })
-  it('should show a GooglePlus share icon', () => {
-    const wrapper = shallow(React.createElement(SocialSharing))
-    expect(wrapper.find('GooglePlusIcon')).to.have.length(1)
-  })
-  it('should show a Twitter share icon', () => {
-    const wrapper = shallow(React.createElement(SocialSharing))
-    expect(wrapper.find('TwitterIcon')).to.have.length(1)
-  })
-  it('should show a PinterestIcon share icon', () => {
-    const wrapper = shallow(React.createElement(SocialSharing))
-    expect(wrapper.find('PinterestIcon')).to.have.length(1)
-  })
   it('has a url prop', () => {
     const wrapper = shallow(React.createElement(SocialSharing))
     expect(wrapper.props().received).to.be.defined
