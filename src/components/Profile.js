@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import cookie from 'react-cookie'
 
@@ -54,9 +52,9 @@ export default React.createClass({
       amount: amount
     }
 
-    postRequest(url.format(config) + '/donations', data, (err, res) => {
+    postRequest(url + '/donations', data, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
-      getRequest(url.format(config) + '/donations/recipient/${recipientID}`, (err, resp) => {
+      getRequest(url + '/donations/recipient/${recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR!", err); return }
         this.donationSetState(resp, recipientID)
       })
@@ -64,7 +62,7 @@ export default React.createClass({
   },
 
   componentDidMount: function () {
-    getRequest(url.format(config) + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
+    getRequest(url + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
       if (err) { console.log("ERROR GETTING PROFILES!", err); return }
       this.setState({
         target: resp.target,
@@ -75,7 +73,7 @@ export default React.createClass({
         title: `Help fund dental care for ${resp.name}`,
         pageURL: `https://toothandpail.herokuapp.com/${this.props.params.recipientID}`
       })
-      getRequest(url.format(config) + '/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
+      getRequest(url + '/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
         if (err) { console.log("ERROR GETTING SPECFIC PROFILE!", err); return }
         this.donationSetState(resp, this.props.params.recipientID)
       })
@@ -84,7 +82,7 @@ export default React.createClass({
 
   updateRecipientReceived: function (totalReceived) {
     let recipientData = {received : totalReceived }
-    putRequest(url.format(config) + '/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+    putRequest(url + '/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
       if (err) { console.log("ERROR UPDATING RECIPIENT!", err); return }
     })
   },
@@ -97,14 +95,14 @@ export default React.createClass({
       rating: newRate
     }
 
-  getRequest(url.format(config) + '/ratings/${donor}/recipient/${this.props.params.recipientID}`, (err, resp) => {
+  getRequest(url + '/ratings/${donor}/recipient/${this.props.params.recipientID}`, (err, resp) => {
     if (err) { console.log("ERROR GETTING RATINGS!", err); return }
     let cnt = 0
     if (resp.length > 1) {
       alert("You have already rated these teeth - Thank you!")
     } else {
       //  create a new rating record
-      postRequest(url.format(config) + '/ratings', ratingData, (err, respo) => {
+      postRequest(url + '/ratings', ratingData, (err, respo) => {
         if (err) { console.log("ERROR.......!", err); return }
         alert("Thank you for rating these teeth!")
         // all the ratings for this recipient are returned
@@ -120,7 +118,7 @@ export default React.createClass({
         this.setState({rating: avrating})
         // update the recipients record in the database
         let recipientData = { rating: avrating }
-        putRequest(url.format(config) + '/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+        putRequest(url + '/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
             if (err) { console.log("ERROR in put!", err); return }
         })
       })}
@@ -128,7 +126,7 @@ export default React.createClass({
   },
 
   donationSetState: function (donations, recipientID) {
-    getRequest(url.format(config) + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
+    getRequest(url + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
       if (err) { console.log("ERROR!", err); return }
       var totalReceived = 0
       donations.map(function (x){

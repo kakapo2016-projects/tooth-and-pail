@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Chart } from 'react-google-charts'
@@ -19,7 +17,7 @@ export default React.createClass ({
   },
 
   componentDidMount: function () {
-    getRequest(url.format(config) + '/donations', this.dbSetState)
+    getRequest(url + '/donations', this.dbSetState)
   },
 
   dbSetState: function(err, data) {

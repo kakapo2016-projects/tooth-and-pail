@@ -1,4 +1,3 @@
-// SEMI CLEANED
 import React from 'react'
 import cookie from 'react-cookie'
 import { Link } from 'react-router'
@@ -77,7 +76,7 @@ export default React.createClass ({
 
   handleIsUser: function () {
     var _this = this
-    getRequest(url.format(config) + '/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
+    getRequest(url + '/recipientsbydonor/' + cookie.load('donorID'), _this.handleExistingUser)
   },
 
   handleExistingUser: function (err, data) {
@@ -99,7 +98,7 @@ export default React.createClass ({
       sobStory: this.state.sobstory,
       donorID: cookie.load('donorID')
     }
-    postRequest(url.format(config) + '/recipients', dataObject, _this.handleIsUser)
+    postRequest(url + '/recipients', dataObject, _this.handleIsUser)
   },
 
   render: function () {

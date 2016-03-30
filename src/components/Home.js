@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import Header from './Header'
 import NavBar from './NavBar'
@@ -35,14 +33,14 @@ export default React.createClass({
 
   attemptLogIn: function (email, password) {
     this.setState({loading: true})
-    getRequest(url.format(config) + '/donors/email/${email}', (err, res) => {
+    getRequest(url + '/donors/email/${email}', (err, res) => {
       if (err) { console.log('ERROR: ', err); this.setState({loading: false}); return }
       if (res === null) {
         alert(`Oops! We don't have that email address on file. Maybe try signing up?`)
         this.setState({loading: false})
         return
       }
-      postRequest('url.format(config) + '/unencrypt', {
+      postRequest('url + '/unencrypt', {
         password: password, passwordHash: res.passwordHash}, (err, resp) => {
         if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); this.setState({loading: false}); return }
         if (resp.body) {
@@ -58,21 +56,21 @@ export default React.createClass({
 
   attemptSignUp: function (username, email, password, confirm) {
     if (password !== confirm) { alert("Those passwords don't match, you fool!"); return }
-    getRequest(`http://url.format(config) + ':3000/donors/email/${email}`, (err, res) => {
+    getRequest(`http://url + ':3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res !== null) { alert('you already have an account, idiot!'); return }
-      postRequest(`http://url.format(config) + ':3000/encrypt`, {password: password}, (err, res) => {
-        if (err) { console.log("ERROR RETRIVING ENCRIPTION!: ", err); return }
-        let data = {
-          donorName: username,
-          passwordHash: res.text,
-          email: email
-        }
 
-        postRequest(`http://url.format(config) + ':3000/donors`, data, (err, resp) => {
-          cookie.save('donorID', resp.text, { path: '/'})
+      let userObject = {
+        donorName: username,
+        password: password,
+        email: email
+      }
+
+      postRequest(`url` + '/donors', userObject, (err, res) => {
+        if (err) { console.log("ERROR ENCRIPTING!: ", err); return }
+        console.log('RES from db: ', res.text)
+          cookie.save('donorID', res.text, { path: '/'})
           this.props.history.push('/gallery')
-        })
       })
     })
   },
