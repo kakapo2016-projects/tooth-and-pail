@@ -12,6 +12,7 @@ chai.use(sinonChai)
 // describe('DonateForm', () => {
 //   const props = { getValue: spy() }
 //   const expected = 'test.value'
+
 //   it('should pass the value of the input field to the donateFunction function when the button is clicked', () => {
 //     const wrapper = mount(React.createElement(DonateForm))
 //     let input = wrapper.find('TextField')
@@ -31,7 +32,7 @@ describe('DonateForm', () => {
     received : 300,
     target : 300
   }
-  it('should display Fully Funded when received >= target', () => {
+  xit('should display Fully Funded when received >= target', () => {
     const wrapper = shallow(React.createElement(DonateForm), props)
     expect(wrapper.find('div.fullyFunded')).to.have.length(1)
     expect(wrapper.find('div.fullyFunded')).to.have.text('Fully Funded')
@@ -62,7 +63,3 @@ describe('InputField', () => {
   })
 })
 
-
-
-//give props of donateFunction
-//pass down result of spy
