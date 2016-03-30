@@ -11,3 +11,4 @@ describe('Home', () => {
     expect(wrapper.find('SignUp')).to.have.length(1)
   })
 })
+ 

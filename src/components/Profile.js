@@ -54,7 +54,7 @@ export default React.createClass({
 
     postRequest(url + '/donations', data, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
-      getRequest(url + '/donations/recipient/${recipientID}`, (err, resp) => {
+      getRequest(url + '/donations/recipient/' + recipientID, (err, resp) => {
         if (err) { console.log("ERROR!", err); return }
         this.donationSetState(resp, recipientID)
       })
@@ -62,7 +62,7 @@ export default React.createClass({
   },
 
   componentDidMount: function () {
-    getRequest(url + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
+    getRequest(url + '/recipients/' + this.props.params.recipientID, (err, resp) => {
       if (err) { console.log("ERROR GETTING PROFILES!", err); return }
       this.setState({
         target: resp.target,
@@ -73,7 +73,7 @@ export default React.createClass({
         title: `Help fund dental care for ${resp.name}`,
         pageURL: `https://toothandpail.herokuapp.com/${this.props.params.recipientID}`
       })
-      getRequest(url + '/donations/recipient/${this.props.params.recipientID}`, (err, resp) => {
+      getRequest(url + '/donations/recipient/' + this.props.params.recipientID, (err, resp) => {
         if (err) { console.log("ERROR GETTING SPECFIC PROFILE!", err); return }
         this.donationSetState(resp, this.props.params.recipientID)
       })
@@ -82,7 +82,7 @@ export default React.createClass({
 
   updateRecipientReceived: function (totalReceived) {
     let recipientData = {received : totalReceived }
-    putRequest(url + '/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+    putRequest(url + '/recipients/' + this.props.params.recipientID, recipientData, (err, res) => {
       if (err) { console.log("ERROR UPDATING RECIPIENT!", err); return }
     })
   },
@@ -95,7 +95,7 @@ export default React.createClass({
       rating: newRate
     }
 
-  getRequest(url + '/ratings/${donor}/recipient/${this.props.params.recipientID}`, (err, resp) => {
+  getRequest(url + '/ratings/' + donor + '/recipient/' + this.props.params.recipientID, (err, resp) => {
     if (err) { console.log("ERROR GETTING RATINGS!", err); return }
     let cnt = 0
     if (resp.length > 0) {
@@ -119,7 +119,7 @@ export default React.createClass({
         console.log('ave rating', avrating)
         // update the recipients record in the database
         let recipientData = { rating: avrating }
-        putRequest(url + '/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
+        putRequest(url + '/recipients/' + this.props.params.recipientID, recipientData, (err, res) => {
             if (err) { console.log("ERROR in put!", err); return }
         })
       })}
@@ -127,7 +127,7 @@ export default React.createClass({
   },
 
   donationSetState: function (donations, recipientID) {
-    getRequest(url + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
+    getRequest(url + '/recipients/' + this.props.params.recipientID, (err, resp) => {
       if (err) { console.log("ERROR!", err); return }
       var totalReceived = 0
       donations.map(function (x){

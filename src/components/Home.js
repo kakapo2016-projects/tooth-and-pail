@@ -33,14 +33,14 @@ export default React.createClass({
 
   attemptLogIn: function (email, password) {
     this.setState({loading: true})
-    getRequest(url + '/donors/email/${email}', (err, res) => {
+    getRequest(url + '/donors/email/' + email, (err, res) => {
       if (err) { console.log('ERROR: ', err); this.setState({loading: false}); return }
       if (res === null) {
         alert(`Oops! We don't have that email address on file. Maybe try signing up?`)
         this.setState({loading: false})
         return
       }
-      postRequest('url + '/unencrypt', {
+      postRequest(url + '/unencrypt', {
         password: password, passwordHash: res.passwordHash}, (err, resp) => {
         if (err) { console.log("ERROR RETRIVING UNENCRIPTING!: ", err); this.setState({loading: false}); return }
         if (resp.body) {
@@ -66,7 +66,7 @@ export default React.createClass({
         email: email
       }
 
-      postRequest(`url` + '/donors', userObject, (err, res) => {
+      postRequest(url + '/donors', userObject, (err, res) => {
         if (err) { console.log("ERROR ENCRIPTING!: ", err); return }
         console.log('RES from db: ', res.text)
           cookie.save('donorID', res.text, { path: '/'})

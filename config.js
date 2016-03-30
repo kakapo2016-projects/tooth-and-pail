@@ -1,5 +1,4 @@
 import Url from 'url'
-import dotenv from 'dotenv'
 
 var config ={
   development: {
