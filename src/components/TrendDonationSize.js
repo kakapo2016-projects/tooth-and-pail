@@ -71,14 +71,12 @@ export default React.createClass ({
       chartType: "ColumnChart",
       div_id: "ColumnChart"
     }
-    console.log("chart data", ChartData)
     return ColumnChart
   },
 
   dbSetState: function (err, data) {
     this.setState({sizedata: data})
     let originalData = this.state.sizedata
-        console.log(originalData)
     var bins = this.createBins(originalData)
     var ColumnChart = this.createChartData(bins)
     this.setState({

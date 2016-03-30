@@ -37,21 +37,6 @@ export default React.createClass ({
 
   createChart: function (){
     console.log("createChart")
-    var ChartData =  {
-      dataArray : [
-      ['Treatment Status', 'Number'],
-      ['Fully Funded', 0],
-      ['In Progress', 0]
-      ],
-      options : {
-        title: "Treatment Statuses",
-        legend: { position: "none" },
-        slices: {
-          0: { color: 'grey' },
-          1: { color: '#b71c1c' }
-        }
-      }
-    }
     var inProgress = this.state.total - this.state.completed
     console.log("pie chart data", inProgress)
     ChartData.dataArray[1][1] = this.state.completed
@@ -63,8 +48,18 @@ export default React.createClass ({
       chartType: "PieChart",
       div_id: "PieChart"
     }
-    PieChart.data = ChartData.dataArray
-    PieChart.options = ChartData.options
+    PieChart.data = [
+    ['Treatment Status', 'Number'],
+    ['Fully Funded', 0],
+    ['In Progress', 0]
+    ],
+    PieChart.options = {
+      title: "Treatment Statuses",
+      legend: { position: "none" },
+      slices: {
+        0: { color: 'grey' },
+        1: { color: '#b71c1c' }
+      }
     (console.log("pie chart", PieChart))
     this.setState({
       'PieChart': PieChart
