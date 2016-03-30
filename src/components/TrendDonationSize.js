@@ -15,7 +15,7 @@ export default React.createClass ({
   },
 
   componentDidMount: function () {
-    getRequest('http://localhost:3000/donations', this.dbSetState)
+    getRequest(url + '/donations', this.dbSetState)
   },
 
   createBins: function (originalData) {

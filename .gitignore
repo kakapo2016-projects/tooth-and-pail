@@ -8,6 +8,9 @@ pids
 *.pid
 *.seed
 
+./public/bundle.js
+bundle.js
+
 /.DS_Store
 .DS_Store
 *DS_Store
