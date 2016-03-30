@@ -52,7 +52,7 @@ export default React.createClass ({
     ['Treatment Status', 'Number'],
     ['Fully Funded', 0],
     ['In Progress', 0]
-    ],
+    ]
     PieChart.options = {
       title: "Treatment Statuses",
       legend: { position: "none" },
