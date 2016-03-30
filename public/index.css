@@ -1,7 +1,7 @@
 /* General Styling */
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Passion One', cursive;
   padding 10px;
   background-color: white;
 }
@@ -59,16 +59,10 @@ div.gallery{
   background-color: red;
 }
 
-div.galleryPhoto:hover {
-    border: 3px solid #777;
-    padding: 1px;
-}
-
 div.galleryPhoto {
   padding: 3px;
-  border: 1px solid #ccc;
   float: left;
-  width: 30%;
+  width: 400px;
   margin: 1%;
 }
 
@@ -84,6 +78,8 @@ div.photoFooter {
   padding: 15px;
   text-align: center;
   background-color: #b71c1c;
+  font-size: 2vw;
+  color: black;
 }
 
 .photo-footer-name {
@@ -212,4 +208,19 @@ a:active {
 #fullyFunded {
   color: #b71c1c;
   font-size: 2em;
+}
+
+.galleryPhoto {
+  display: inline-block;
+  width:  400px;
+  height: 500px;
+}
+
+.galleryImg {
+  max-height: 300px
+}
+
+gallerydisplay {
+  margin: 0px;
+  padding: 0px;
 }

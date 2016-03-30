@@ -17,8 +17,7 @@ export default React.createClass ({
         <DropDownMenu value={this.props.galleryFilter.value} onChange={this.handleChange}>
           <MenuItem value={1} primaryText="All Profiles"/>
           <MenuItem value={2} primaryText="Almost There"/>
-          <MenuItem value={3} primaryText="Latest Profiles"/>
-          <MenuItem value={4} primaryText="Popular Now"/>
+          <MenuItem value={3} primaryText="Popular Now"/>
         </DropDownMenu>
       </span>
     )
