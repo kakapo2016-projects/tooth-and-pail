@@ -4,7 +4,7 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Gallery from './Gallery'
 import Sort from './Sort'
-import url from './url'
+import url from '../../config.js'
 
 // database functions
 import getRequest from '../getRequest.js'
@@ -64,8 +64,6 @@ export default React.createClass({
   },
 
   render () {
-    // console.log("LOG WITH AN APP", this.state)
-
     return (
       <div className='app'>
         <NavBar/>

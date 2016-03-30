@@ -6,10 +6,11 @@ import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import routes from './src/routes'
 
+require('babel-core/register')
+
 var app = express()
 app.use(compression())
 app.use(express.static(path.join(__dirname, 'public')))
-routes(app)
 
 // send all requests to index.html so browserHistory works
 app.get('*', (req, res) => {
