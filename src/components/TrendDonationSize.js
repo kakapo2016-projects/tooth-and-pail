@@ -95,9 +95,9 @@ export default React.createClass ({
           chartType={ColumnChartFinal.chartType}
           width={"1000px"}
           height={"500px"}
-          data={this.state.ColumnChart.data}
-          options = {this.state.ColumnChart.options}
-          graph_id={this.state.ColumnChart.div_id}/>
+          data={ColumnChartFinal.data}
+          options = {ColumnChartFinal.options}
+          graph_id={ColumnChartFinal.div_id}/>
       </div>
     )
   }
