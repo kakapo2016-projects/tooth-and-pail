@@ -69,6 +69,7 @@ div.galleryPhoto {
 div.galleryPhoto img {
   width: 100%;
   height: auto;
+  position: relative;
   float:left;
   padding-bottom: 30px;
 }
