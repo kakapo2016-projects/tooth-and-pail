@@ -2,6 +2,10 @@
   "name": "tooth-and-pail",
   "version": "1.0.0",
   "description": "t&p",
+  "engines": {
+    "node": "5.8.0",
+    "npm": "3.7.3"
+  },
   "main": "index.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
