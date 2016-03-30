@@ -152,7 +152,7 @@ describe('post requests', () => {
           .expect(200)
           .expect('Content-Type', /json/)
           .end(function (err, res) {
-            console.log("returned rating", res.body.rating)
+            // console.log("returned rating", res.body.rating)
             var actual = res.body.rating
             expect(err).to.be.null
             expect(actual).to.equal(5)
