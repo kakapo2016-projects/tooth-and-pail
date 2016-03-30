@@ -8,7 +8,7 @@ import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
 import PeopleIcon from 'material-ui/lib/svg-icons/social/people'
 import _ from 'lodash'
-import url from '../../config'
+import url from '../../config.js'
 
 import getRequest from '../getRequest.js'
 

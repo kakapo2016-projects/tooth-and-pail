@@ -13,6 +13,7 @@ import SobStory from './SobStory'
 import SocialSharing from './SocialSharing'
 import Paper from 'material-ui/lib/paper'
 import RateMe from './RateMe'
+import url from '../../config.js'
 
 // material-ui helpers
 import GetMuiTheme from 'material-ui/lib/styles/getMuiTheme'
