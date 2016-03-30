@@ -22,6 +22,7 @@ export default React.createClass ({
   dbSetState: function(err, data) {
     this.setState({timedata: data})
     let originalData = this.state.timedata
+
     let allRows = []
     for (let i = 0; i < originalData.length; i++) {
       let date = originalData[i].createdAt
@@ -31,6 +32,7 @@ export default React.createClass ({
       newArr.push(date, amount)
       allRows.push(newArr)
     }
+
     function Comparator(a,b){
       if (a[0] < b[0]) return -1
       if (a[0] > b[0]) return 1

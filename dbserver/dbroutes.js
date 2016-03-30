@@ -228,15 +228,20 @@ module.exports = function routes(app) {
 
   app.post('/ratings', function(req, res) {
     var newId = uuid.v4()
+    var recipientID = req.body.recipientID
     knex('ratings')
       .insert({
         ratingID: newId ,
-        recipientID: req.body.recipientID,
+        recipientID: recipientID,
         donorID: req.body.donorID,
         rating: req.body.rating
       })
-      .then(function(resp) {
-          res.send(resp)
+      .then(function(res1) {
+        knex('ratings')
+          .where('ratings.recipientID', recipientID)
+          .then(function(res2) {
+            res.send(res2)
+        })
       })
     })
 

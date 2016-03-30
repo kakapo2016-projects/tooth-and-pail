@@ -108,7 +108,7 @@ export default React.createClass({
         // all the ratings for this recipient are returned
         // use then to calculate a new average rating
         let totalValue = 0, count = 0
-        resp.map(function (x) {
+        respo.body.map(function (x) {
           totalValue += x.rating
           count++
         })
@@ -116,6 +116,7 @@ export default React.createClass({
         var avrating = Math.floor(totalValue / count)
         // update the state
         this.setState({rating: avrating})
+        console.log('ave rating', avrating)
         // update the recipients record in the database
         let recipientData = { rating: avrating }
         putRequest(`http://localhost:3000/recipients/${this.props.params.recipientID}`, recipientData, (err, res) => {
