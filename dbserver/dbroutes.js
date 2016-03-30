@@ -4,7 +4,8 @@ var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var bcrypt = require('bcryptjs')
 var moment = require ('moment')
-var knex = require('knex')(require('../knexfile.js'))
+
+// var knex = require('knex')(require('../knexfile.js'))
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -33,9 +34,11 @@ module.exports = function routes(app) {
   })
 
   app.get('/recipients/:recipientID', function(req, res) {
+    // console.log('recipients by rec id', req.params.recipientID)
     knex('recipients')
     .where('recipients.recipientID', req.params.recipientID)
     .then(function(resp) {
+      // console.log('recipients by rec id', req.params.recipientID, resp)
       res.send(resp[0])
     })
   })
@@ -115,7 +118,7 @@ module.exports = function routes(app) {
   })
 
   app.get('/ratings/:recipientID', function(req, res) {
-    console.log("in GET ratings for a recipient", req.params.recipientID)
+    // console.log("in GET ratings for a recipient", req.params.recipientID)
     knex('ratings')
     .where('ratings.recipientID', req.params.recipientID)
     .then(function(resp) {
@@ -135,7 +138,7 @@ module.exports = function routes(app) {
   })
 
   app.get('/ratings/:donorID/recipient/:recipientID', function(req, res) {
-    console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
+    // console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
     knex('ratings')
     .where({
       recipientID: req.params.recipientID,
@@ -143,18 +146,18 @@ module.exports = function routes(app) {
     })
     .select('*')
     .then(function(resp) {
-      console.log('resp for a recipient by donorid',resp)
+      // console.log('resp for a recipient by donorid',resp)
       res.send(resp)
     })
   })
 
 
   app.get('/ratings/:recipientID', function(req, res) {
-    console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)
+    // console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)
     knex('ratings')
     .where('ratings.recipientID', req.params.recipientID)
     .then(function(resp) {
-      console.log(resp)
+      // console.log(resp)
       res.send(resp)
     })
   })
@@ -162,6 +165,7 @@ module.exports = function routes(app) {
   // ENCRYPTION
 
   app.post('/donors', function(req, res) {
+    console.log('in post to donors')
     bcrypt.genSalt(10, function(err, salt) {
       if (err) { console.log("ERROR GENERATING SALT: ", err); return }
       bcrypt.hash(req.body.password, salt, (err, hash) => {
@@ -237,17 +241,21 @@ module.exports = function routes(app) {
         rating: req.body.rating
       })
       .then(function(res1) {
-        knex('ratings')
+        // now get all the ratings and send them back so that the average can be calculated
+          knex('ratings')
           .where('ratings.recipientID', recipientID)
           .then(function(res2) {
             res.send(res2)
-        })
+          })
       })
     })
 
   // PUT REQUESTS //
 
   app.put('/recipients/:recipientID', function(req, res) {
+    console.log("in put to recipients", req.body, req.params.recipientID)
+    // knex.raw('update [recipients] set [rating] = ' + req.body.rating + ' where recipientID = ' + req.params.recipientID)
+
     knex('recipients')
       .where('recipients.recipientID', req.params.recipientID)
       .update({
@@ -261,7 +269,11 @@ module.exports = function routes(app) {
       })
 
       .then(function(resp) {
+
+        console.log("in routes", resp)
         res.send(resp)
     })
   })
+
+
 }

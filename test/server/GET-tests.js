@@ -7,9 +7,43 @@ import request from 'supertest'
 import app from '../../dbserver/dbserver.js'
 import bodyparser from 'body-parser'
 
+var config = {
+  development: {
+     client: 'sqlite3',
+     connection: {
+       filename: __dirname + '/../../datastore/tandp.sqlite3'
+
+     },
+     useNullAsDefault: true
+   },
+   directory: __dirname + '/../../migrations-test',
+   tableName: 'migrations'
+
+}
+
+// console.log(config)
+var Knex = require('knex')
+var knex = Knex(config.development)
+
 // uses the data from the seed database
+// before - run the mirgration script
+// after - drop the tables
 
 describe('get requests', () => {
+
+  before( function (done) {
+    knex.migrate.rollback(config)
+     .then(function () {
+       return knex.migrate.latest()
+        .then(function() {
+          return knex.seed.run();
+        })
+        .then(function() {
+          // migrations are finished
+          done()
+        })
+     })
+  })
 
   it('/ returns hello teeth', (done) => {
     request(app)
@@ -44,7 +78,7 @@ describe('get requests', () => {
       recipientID: '1',
       name: 'Jeff',
       imgURL: 'https://i.ytimg.com/vi/OzVaVVjnjEI/maxresdefault.jpg',
-      received: 20,
+      received: 950,
       target: 1000,
       sobStory: 'One day I was walking along happy and carefree and all my teeth fell out.  You would think that that super glue would be better at it\'s job.  Now I haven\'t any teeth and can only gnaw at my food.  Sad that it is I love drinking my vodka and coke.  But without my teeth I can crunch into my favorite snacks.  Please donate to my sad and sorry toothless life.  Or I\'ll sneak into your homes at night and drool on you.  Bacon ipsum dolor amet incididunt pastrami exercitation anim sed ut andouille, strip steak turducken aliquip. Consectetur ut ball tip est short ribs reprehenderit sirloin in. Ipsum quis est strip steak. Duis et sint incididunt, aute nostrud dolore pork loin. Tempor ullamco beef nulla occaecat, short loin ad prosciutto.  Drumstick eiusmod fatback, ut hamburger non ribeye t-bone sirloin in consectetur nisi mollit jerky. Chuck rump spare ribs minim deserunt pork belly capicola, magna officia ut ea. Turducken cow ut cillum. Kielbasa magna irure, pastrami turkey ad t-bone prosciutto fatback cow nulla anim aute leberkas.',
       rating: 1,
@@ -77,7 +111,7 @@ describe('get requests', () => {
     })
   })
   //  app.get('/donations/:donationID', function(req, res) {
-  it('gets donations by donationid', function (done) {
+ it('gets donations by donationid', function (done) {
     var expected = {
       donationID: 'd01',
       donorID: '1111',
@@ -147,7 +181,7 @@ describe('get requests', () => {
       .expect('Content-Type', /json/)
       .end(function (err, res) {
         // console.log(res.body)
-        expect( res.body.length).to.equal(20)
+        expect( res.body.length).to.equal(19)
         expect(err).to.be.null
         done()
     })
@@ -231,36 +265,10 @@ describe('get requests', () => {
     })
   })
 
-  // the ratings are unseeded, so perform a post before testing the get requests
-  // var ratingData = {}
-  // it('it can seed the ratings', function (done) {
-  //   var ratingData = {}
-  //   request.post('/ratings')
-  //     .send(ratingData)
-  //     .end(function(err, res){
-  //
-  //
-  //
-  //
-  //       expect(err).to.be.null
-  //
-  //
-  //
-  //       console.log("post completed", res)
-  //       done()
-  //     })
-  //   })
-
-
-
-
+  // Tested after the POST test to ratings
   //  '/ratings/:recipientID'
   // '/ratings/:donorID/recipient/:recipientID'
   // '/ratings/:recipientID'
-
-
-
-
 
 
 })
