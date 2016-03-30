@@ -54,7 +54,7 @@ export default React.createClass({
 
     postRequest(url + '/donations', data, (err, res) => {
       if (err) { console.log("ERROR!", err); return }
-      getRequest(url + '/donations/recipient/${recipientID}`, (err, resp) => {
+      getRequest(url + '/donations/recipient/' + recipientID, (err, resp) => {
         if (err) { console.log("ERROR!", err); return }
         this.donationSetState(resp, recipientID)
       })
@@ -62,7 +62,7 @@ export default React.createClass({
   },
 
   componentDidMount: function () {
-    getRequest(url + '/recipients/${this.props.params.recipientID}`, (err, resp) => {
+    getRequest(url + '/recipients/' this.props.params.recipientID}`, (err, resp) => {
       if (err) { console.log("ERROR GETTING PROFILES!", err); return }
       this.setState({
         target: resp.target,
