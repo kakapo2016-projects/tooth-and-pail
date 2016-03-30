@@ -63,7 +63,7 @@ export default React.createClass({
         <NavBar/>
         <Header />
         <div className='twelve columns' id='feed'>
-          <h2>Recent Activity</h2>
+          <h2 className='recent-activity-header'>Recent Activity</h2>
           <List>
             {textsList}
           </List>

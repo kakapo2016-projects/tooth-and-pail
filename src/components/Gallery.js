@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import GalleryPhoto from './GalleryPhoto'
 import _ from 'lodash'

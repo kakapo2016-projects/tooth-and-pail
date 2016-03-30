@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import ToothIcon from '../images/tooth-icon-small.js'
 

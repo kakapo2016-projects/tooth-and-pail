@@ -1,5 +1,3 @@
-/*CLEANED*/
-
 /* General Styling */
 
 body {
@@ -29,6 +27,11 @@ h3 {
 
 .landing-text {
   text-align: center;
+}
+
+.about-header {
+  margin-bottom: 45px;
+  text-align: left;
 }
 
 /* Social & Trend */
@@ -86,6 +89,10 @@ div.photoFooter {
   margin-bottom: 0;
 }
 
+.recent-activity-header {
+  margin-bottom: 35px;
+}
+
 /* Profile */
 
 .profilePhoto img {
@@ -113,7 +120,6 @@ a:link {
 }
 
 a:hover {
-  color: white;
   text-decoration: none;
 }
 
@@ -190,7 +196,22 @@ a:active {
 }
 
 #profilelink {
-  color: #b71c1c
+  color: #b71c1c;
+}
+
+.profile-link {
+  color: #b71c1c;
+}
+
+.before-and-afters {
+  margin-top: 30px;
+}
+
+.about-image {
+  max-width: 60%;
+  min-width: 60%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
 }
 
 #fullyFunded {

@@ -40,6 +40,8 @@ node_modules
 
 tandp.sqlite3
 
+bin
+
 /nightwatch.json
 reports/data
 reports/

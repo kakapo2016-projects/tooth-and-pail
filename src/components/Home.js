@@ -1,5 +1,3 @@
-// CLEANED
-
 import React from 'react'
 import Header from './Header'
 import NavBar from './NavBar'
@@ -60,18 +58,18 @@ export default React.createClass({
     getRequest(`http://localhost:3000/donors/email/${email}`, (err, res) => {
       if (err) { console.log('ERROR: ', err); return }
       if (res !== null) { alert('you already have an account, idiot!'); return }
-      postRequest(`http://localhost:3000/encrypt`, {password: password}, (err, res) => {
-        if (err) { console.log("ERROR RETRIVING ENCRIPTION!: ", err); return }
-        let data = {
-          donorName: username,
-          passwordHash: res.text,
-          email: email
-        }
 
-        postRequest(`http://localhost:3000/donors`, data, (err, resp) => {
-          cookie.save('donorID', resp.text, { path: '/'})
+      let userObject = {
+        donorName: username,
+        password: password,
+        email: email
+      }
+
+      postRequest(`http://localhost:3000/donors`, userObject, (err, res) => {
+        if (err) { console.log("ERROR ENCRIPTING!: ", err); return }
+        console.log('RES from db: ', res.text)
+          cookie.save('donorID', res.text, { path: '/'})
           this.props.history.push('/gallery')
-        })
       })
     })
   },
