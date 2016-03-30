@@ -32,7 +32,7 @@ var knex = Knex(config.development)
 
 describe('post requests', () => {
 
-  it('it can accept a new donation', function (done) {
+  it('can accept a new donation', function (done) {
     let donationData = {
       donorID: '1111',
       recipientID: '2AAA',
@@ -143,44 +143,21 @@ describe('post requests', () => {
       rating: 5
     }
     request(app)
-      .post('/donors')
-      .send(donorData)
+      .put('/recipients/2')
+      .send(recipientData)
       .end(function(err, res){
-        // now check that we can bring back the donor from the db
+        // now check that we can bring back the recipient from the db
         request(app)
-          .get('/donors/name/Alison')
+          .get('/recipients/2')
           .expect(200)
           .expect('Content-Type', /json/)
           .end(function (err, res) {
-            var actual = res.body.donorName
+            console.log("returned rating", res.body.rating)
+            var actual = res.body.rating
             expect(err).to.be.null
-            expect(actual).to.equal('Alison')
+            expect(actual).to.equal(5)
             done()
           })
       })
   })
-
-
-
-  app.put('/recipients/:recipientID', function(req, res) {
-    knex('recipients')
-      .where('recipients.recipientID', req.params.recipientID)
-      .update({
-        name: req.body.Name,
-        imgURL: req.body.imgURL,
-        received: req.body.received,
-        target: req.body.target,
-        sobStory: req.body.sobStory,
-        rating: req.body.rating,
-        donorID: req.body.donorID
-      })
-
-      .then(function(resp) {
-
-        // console.log("in routes", resp)
-        res.send(resp)
-    })
-  })
-
-
 })

@@ -7,13 +7,13 @@ var moment = require ('moment')
 
 // var knex = require('knex')(require('../knexfile.js'))
 
-var knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: __dirname + '/../datastore/tandp.sqlite3'
-  },
-  useNullAsDefault: true
-})
+// var knex = require('knex')({
+//   client: 'sqlite3',
+//   connection: {
+//     filename: __dirname + '/../datastore/tandp.sqlite3'
+//   },
+//   useNullAsDefault: true
+// })
 
 module.exports = function routes(app) {
   var urlencodedParser = bodyparser.urlencoded({ extended: false })
@@ -167,11 +167,8 @@ module.exports = function routes(app) {
   app.post('/donors', function(req, res) {
     console.log('in post to donors')
     bcrypt.genSalt(10, function(err, salt) {
-      console.log("generating salt", req.body.password, salt)
       if (err) { console.log("ERROR GENERATING SALT: ", err); return }
       bcrypt.hash(req.body.password, salt, (err, hash) => {
-        console.log("pword", hash)
-
         if (err) { console.log("ERROR ENCRYPTING: ", err); return }
         var newId = uuid.v4()
         knex('donors')
@@ -256,6 +253,9 @@ module.exports = function routes(app) {
   // PUT REQUESTS //
 
   app.put('/recipients/:recipientID', function(req, res) {
+    console.log("in put to recipients", req.body, req.params.recipientID)
+    // knex.raw('update [recipients] set [rating] = ' + req.body.rating + ' where recipientID = ' + req.params.recipientID)
+
     knex('recipients')
       .where('recipients.recipientID', req.params.recipientID)
       .update({
@@ -270,19 +270,8 @@ module.exports = function routes(app) {
 
       .then(function(resp) {
 
-        // console.log("in routes", resp)
+        console.log("in routes", resp)
         res.send(resp)
-    })
-  })
-
-  // DELETE requests
-
-  app.delete('donations/:donationID', function (req, res){
-    knex('donations')
-    .where('donations.donationID', req.params.donationID)
-    .del()
-    .then (function (resp){
-      res.send(resp)
     })
   })
 
