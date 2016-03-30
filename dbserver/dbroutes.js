@@ -4,6 +4,7 @@ var bodyparser = require('body-parser')
 var uuid = require('uuid')
 var bcrypt = require('bcryptjs')
 var moment = require ('moment')
+
 var knex = require('knex')(require('../knexfile.js'))
 
 // var knex = require('knex')({
@@ -33,9 +34,11 @@ module.exports = function routes(app) {
   })
 
   app.get('/recipients/:recipientID', function(req, res) {
+    // console.log('recipients by rec id', req.params.recipientID)
     knex('recipients')
     .where('recipients.recipientID', req.params.recipientID)
     .then(function(resp) {
+      // console.log('recipients by rec id', req.params.recipientID, resp)
       res.send(resp[0])
     })
   })
@@ -115,7 +118,7 @@ module.exports = function routes(app) {
   })
 
   app.get('/ratings/:recipientID', function(req, res) {
-    console.log("in GET ratings for a recipient", req.params.recipientID)
+    // console.log("in GET ratings for a recipient", req.params.recipientID)
     knex('ratings')
     .where('ratings.recipientID', req.params.recipientID)
     .then(function(resp) {
@@ -135,7 +138,7 @@ module.exports = function routes(app) {
   })
 
   app.get('/ratings/:donorID/recipient/:recipientID', function(req, res) {
-    console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
+    // console.log("in GET ratings for a recipient by donorid", req.params.recipientID, req.params.donorID)
     knex('ratings')
     .where({
       recipientID: req.params.recipientID,
@@ -143,18 +146,18 @@ module.exports = function routes(app) {
     })
     .select('*')
     .then(function(resp) {
-      console.log('resp for a recipient by donorid',resp)
+      // console.log('resp for a recipient by donorid',resp)
       res.send(resp)
     })
   })
 
 
   app.get('/ratings/:recipientID', function(req, res) {
-    console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)
+    // console.log("in GET ratings for a recipient", req.params.recipientID, req.params.donorID)
     knex('ratings')
     .where('ratings.recipientID', req.params.recipientID)
     .then(function(resp) {
-      console.log(resp)
+      // console.log(resp)
       res.send(resp)
     })
   })
@@ -228,15 +231,21 @@ module.exports = function routes(app) {
 
   app.post('/ratings', function(req, res) {
     var newId = uuid.v4()
+    var recipientID = req.body.recipientID
     knex('ratings')
       .insert({
         ratingID: newId ,
-        recipientID: req.body.recipientID,
+        recipientID: recipientID,
         donorID: req.body.donorID,
         rating: req.body.rating
       })
-      .then(function(resp) {
-          res.send(resp)
+      .then(function(res1) {
+        // now get all the ratings and send them back so that the average can be calculated
+          knex('ratings')
+          .where('ratings.recipientID', recipientID)
+          .then(function(res2) {
+            res.send(res2)
+          })
       })
     })
 
@@ -256,7 +265,22 @@ module.exports = function routes(app) {
       })
 
       .then(function(resp) {
+
+        console.log("in routes", resp)
         res.send(resp)
     })
   })
+
+  // DELETE requests
+
+  app.delete('donations/:donationID', function (req, res){
+    knex('donations')
+    .where('donations.donationID', req.params.donationID)
+    .del()
+    .then (function (resp){
+      res.send(resp)
+    })
+  })
+
+
 }
