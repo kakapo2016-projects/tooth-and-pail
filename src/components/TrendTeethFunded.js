@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Chart } from 'react-google-charts'
 import getRequest from '../getRequest.js'
-import { url } from '../../config'
+import url from '../../config'
 
 console.log("url", url)
 export default React.createClass ({
