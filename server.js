@@ -1,3 +1,9 @@
+"use strict"
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+
+require('babel-core/register')
+
 var express = require('express')
 var path = require('path')
 var compression = require('compression')
@@ -5,13 +11,14 @@ var React = require('react')
 var renderToString = require('react-dom/server').renderToString
 var match = require('react-router').match
 var RouterContext = require('react-router').RouterContext
-var routes require('./src/routes')
-var _ require('lodash')
-
-require('babel-core/register')
+var routes = require('./src/routes.js')
+var http = require('http')
 
 var app = express()
 app.use(compression())
+
+var server = http.createServer(app)
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 // send all requests to index.html so browserHistory works
@@ -23,7 +30,7 @@ app.get('*', (req, res) => {
       res.redirect(redirect.pathname + redirect.search)
     } else if (props) {
       // hey we made it!
-      const appHtml = renderToString(<RouterContext Object.assign({}, props)/>)
+      const appHtml = renderToString(React.createElement(RouterContext, Object.assign({}, props)))
       res.send(renderPage(appHtml))
     } else {
       res.status(404).send('Not Found')
@@ -46,6 +53,6 @@ function renderPage(appHtml) {
 }
 
 var PORT = process.env.PORT || 8080
-app.listen(PORT, function() {
+server.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT)
 })

@@ -8,17 +8,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack && node ./server.js",
-    "start:dev": "NODE_ENV=development webpack-dev-server --inline --content-base public/ --history-api-fallback",
-    "start:prod": "npm run build && node server.bundle.js",
-    "build:client": "webpack",
-    "build:server": "webpack --config webpack.server.config.js",
-    "build": "npm run build:client",
+    "start": "webpack & node server.js",
+    "start:dev": "webpack-dev-server --inline --content-base public --history-api-fallback",
+    "start:prod": "webpack && ./node_modules/babel-cli/bin/babel-node.js server.js",
     "test": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/**/*.@(js|jsx)\"",
-    "test:server": "mocha -w --compilers js:babel-core/register --require ./test/test-helper.js \"test/server/**/*.@(js|jsx)\"",
-    "runme": "nodemon ./dbserver/dbserver.js ",
-    "test:integration": "nightwatch -g test/integration",
-    "postinstall" : "npm run build"
+    "test:integration": "nightwatch -g test/integration"
   },
   "repository": {
     "type": "git",
@@ -39,6 +33,7 @@
     "compression": "^1.6.1",
     "cors": "^2.7.1",
     "d3": "^3.5.16",
+    "domready": "^1.0.8",
     "dotenv": "^2.0.0",
     "if-env": "^1.0.0",
     "knex": "^0.10.0",
@@ -54,7 +49,7 @@
     "react-addons": "^0.9.1-deprecated",
     "react-cookie": "^0.4.5",
     "react-dom": "^0.14.7",
-    "react-google-charts": "^0.2.1",
+    "react-google-charts": "0.1.9",
     "react-router": "^2.0.1",
     "react-share": "^1.4.1",
     "react-tap-event-plugin": "^0.2.2",
