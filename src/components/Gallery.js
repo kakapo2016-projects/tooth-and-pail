@@ -8,18 +8,6 @@ const filterfuncMap = {
     var percentageFunded = ((x.received/x.target)*100)
     return percentageFunded >= 90
   },
-  "Latest Profiles": function(x) {
-    var profileDate = x.createdAt
-    // console.log("PROFILE DATE", profileDate)
-    var unixTime = Date.parse(profileDate)
-    // console.log("UNIXTIME", unixTime)
-    var currentDate = Date.now()  // unix time
-    // console.log("CURRENT DATE", currentDate)
-    var residualTime = currentDate - unixTime
-    console.log("RESIDUAL TIME", residualTime)
-    console.log("LATEST RESULTS 48 HOURS", residualTime <= 172800)
-    return residualTime <= 172800 //go back and check accuracy of this return
-  },
   "Popular Now": function(x) {
     var popularProfiles = x.rating
     return popularProfiles >= 4
@@ -31,18 +19,18 @@ export default React.createClass({
     var filterFunction = filterfuncMap[this.props.galleryFilter.primaryText]
     var filteredGallery = this.props.gallery.filter(filterFunction)
     return (
-      <div className='gallery'>
+      <div className='grid'>
         {_.map(filteredGallery,
-          function(gp){ return <GalleryPhoto
+          function(gp){ return <div className="four columns gallerydisplay"><GalleryPhoto
             key={gp.recipientID}
             className='galleryPhoto'
             name={gp.name} imgURL={gp.imgURL}
             target={gp.target}
             received={gp.received}
             recipientID={gp.recipientID}
-            rating={gp.rating}/>
+            rating={gp.rating}/></div>
           })
-        }
+            }
       </div>
     )
   }

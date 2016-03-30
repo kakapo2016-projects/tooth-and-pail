@@ -19,8 +19,7 @@ injectTapEventPlugin();
 const filterMap = {
   1: {value: 1, primaryText: "All Profiles"},
   2: {value: 2, primaryText: "Almost There"},
-  3: {value: 3, primaryText: "Latest Profiles"},
-  4: {value: 4, primaryText: "Popular Now"}
+  3: {value: 3, primaryText: "Popular Now"}
 }
 
 export default React.createClass({
