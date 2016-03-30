@@ -53,8 +53,10 @@ export default React.createClass ({
       }
     }
     let inProgress = this.state.total - this.state.completed
+    console.log("pie chart data", inProgress)
     ChartData.dataArray[1][1] = this.state.completed
     ChartData.dataArray[2][1] = inProgress
+    console.log("pie chart data", inProgress, ChartData)
     let PieChart = {
       data : ChartData.dataArray,
       options: ChartData.options,
