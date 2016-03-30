@@ -1,10 +1,12 @@
-import express from 'express'
-import path from 'path'
-import compression from 'compression'
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
-import routes from './src/routes'
+var express = require('express')
+var path = require('path')
+var compression = require('compression')
+var React = require('react')
+var renderToString = require('react-dom/server').renderToString
+var match = require('react-router').match
+var RouterContext = require('react-router').RouterContext
+var routes require('./src/routes')
+var _ require('lodash')
 
 require('babel-core/register')
 
@@ -21,7 +23,7 @@ app.get('*', (req, res) => {
       res.redirect(redirect.pathname + redirect.search)
     } else if (props) {
       // hey we made it!
-      const appHtml = renderToString(<RouterContext {...props}/>)
+      const appHtml = renderToString(<RouterContext Object.assign({}, props)/>)
       res.send(renderPage(appHtml))
     } else {
       res.status(404).send('Not Found')
